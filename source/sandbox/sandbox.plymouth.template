@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Theme Base
+Description=Base for develop plymouth themes
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/THEME_EXPORT/images
+ScriptFile=/usr/share/plymouth/themes/THEME_EXPORT/THEME_EXPORT.script

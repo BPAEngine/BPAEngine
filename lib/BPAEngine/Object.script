@@ -1,0 +1,64 @@
+#----------------------------------------- Object definition --------------------------------
+
+Object = fun (config, id)
+  {
+    new_object = [] | global.Object;
+    new_object.id = id | "id_" + Math.Random() * 100;
+    new_object.class = "Object";
+
+    new_object.x = config.x | 0;
+    new_object.y = config.y | 0;
+    new_object.z = config.z | 1;
+
+    new_object.theta = config.theta | 0.0; # Starting angle for image rotation in degrees
+    new_object.spin = config.spin | 0.0; # For image rotation
+
+    new_object.orientation = config.orientation | 0.0; # In degrees
+    new_object.speed = config.speed | 0.0;
+
+    new_object.speed_variator = config.speed_variator;
+    new_object.orientation_variator = config.orientation_variator;
+
+    new_object.animations = [];
+    new_object.sprite = Sprite();
+    new_object.sprite.SetPosition(new_object.x, new_object.y, new_object.z);
+    return new_object;
+  } | [];
+
+Object.To_String = fun ()
+  {
+    return class + "{id:"+id+", x:"+x+", y:"+y+", z:"+z+", speed:"+speed+", orientation:"+orientation+"}";
+  };
+
+Object.Update = fun (delta)
+  {
+    theta += spin;
+    for (local.i = 0; local.i < Array.Size(animations); local.i++)
+    {
+      animations[local.i].Update(delta, theta);
+    }
+
+    if (orientation_variator)
+    {
+      orientation = orientation_variator.Next(orientation, delta);
+    }
+    if (speed_variator)
+    {
+      speed = speed_variator.Next(speed, delta);
+    }
+
+    local.angle = ((orientation + 90.0) * Math.Pi) / 180.0;
+    x += speed * Math.Sin(local.angle);
+    y += speed * Math.Cos(local.angle);
+    sprite.SetPosition(x, y, z);
+  };
+
+Object.PlayAnimation = fun (index)
+  {
+    animations[index].sprite = sprite;
+    animations[index].Play();
+  };
+
+Object.Build = fun (index)
+  {
+  };

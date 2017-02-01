@@ -1,0 +1,16 @@
+#----------------------------------------- System callbacks -------------------------------
+
+fun boot_progress_callback (time, progress)
+  {
+    global.world.Update(time, progress);
+    Debug("Refresh: " + global.world.tick + " Time (s): " + global.world.time + " Delta (ms): " + global.world.delta*1000 + " Progress: " + Math.Int(progress*100) + "%", 1);
+  }
+
+Plymouth.SetBootProgressFunction(boot_progress_callback);
+
+fun refresh_callback ()
+  {
+    global.world.tick++;
+  }
+
+Plymouth.SetRefreshFunction (refresh_callback);

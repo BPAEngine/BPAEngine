@@ -1,0 +1,9 @@
+#----------------------------------------- Array helper functions --------------------------------
+
+Array.Size = fun(array)
+  {
+    size = 0;
+    while (array[size])
+        size++;
+    return size;
+  };
