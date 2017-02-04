@@ -16,7 +16,9 @@ if [ $# -eq 2 ]; then
   echo "Exporting theme '$THEME_PATH' to '$EXPORT_PATH'"
 
   # Cleaning target path
-  rm -rf "$EXPORT_PATH"
+  if [ -d "$EXPORT_PATH" ]; then
+    rm -rf "$EXPORT_PATH"
+  fi
   mkdir -p "$EXPORT_PATH"
 
   # Compiling source scripts
