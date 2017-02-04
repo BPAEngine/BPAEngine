@@ -24,12 +24,16 @@ if [ $# -gt 1 ]; then
   THEME_PATH="$2"
 fi
 
+if [ $DEBUG_ON -eq 1 ]; then
+  WITH_DEBUG="--debug --debug-file=/tmp/plymouth-debug-out.log"
+fi
+
 
 ./export.sh "$THEME_PATH" "preview_theme" # Exporting to the provisioned default theme
 
 # Preview it
 echo "Previewing theme during $DURATION seconds..."
-plymouthd # --debug --debug-file=/tmp/plymouth-debug-out.log ;
+plymouthd $WITH_DEBUG ;
 plymouth --show-splash
 for ((I=0; I<$DURATION; I++)); do
   plymouth --update=test$I;
