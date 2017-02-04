@@ -7,13 +7,13 @@
 
 
 if [ $# -eq 2 ]; then
-  PATH=$1 # Source directory
-  THEME=$2 # Name of the theme
-  EXPORT_PATH="export/$THEME"
-  SCRIPT_FILE="$EXPORT_PATH/$THEME.script"
-  PLYMOUTH_FILE="$EXPORT_PATH/$THEME.plymouth"
+  THEME_PATH=$1 # Source directory
+  THEME_NAME=$2 # Name of the theme
+  EXPORT_PATH="export/$THEME_NAME"
+  SCRIPT_FILE="$EXPORT_PATH/$THEME_NAME.script"
+  PLYMOUTH_FILE="$EXPORT_PATH/$THEME_NAME.plymouth"
 
-  echo "Exporting theme '$PATH' to '$EXPORT_PATH'"
+  echo "Exporting theme '$THEME_PATH' to '$EXPORT_PATH'"
 
   # Cleaning target path
   rm -rf "$EXPORT_PATH"
@@ -21,16 +21,16 @@ if [ $# -eq 2 ]; then
 
   # Compiling source scripts
   cat lib/**/*.script > "$SCRIPT_FILE" # Compile Engine scripts
-  cat $PATH/lib/**/*.script >>  "$SCRIPT_FILE" # Compile lib subdirs
-  cat $PATH/lib/*.script >>  "$SCRIPT_FILE" # Compile lib dir
-  cat $PATH/*.script >>  "$SCRIPT_FILE" # Compile base source
+  cat $THEME_PATH/lib/**/*.script >>  "$SCRIPT_FILE" # Compile lib subdirs
+  cat $THEME_PATH/lib/*.script >>  "$SCRIPT_FILE" # Compile lib dir
+  cat $THEME_PATH/*.script >>  "$SCRIPT_FILE" # Compile base source
 
   # Generating plymouth configuration file
-  cat $PATH/*.plymouth.template > "$PLYMOUTH_FILE"
-  sed -i -e "s/THEME_EXPORT/$THEME/g" "$PLYMOUTH_FILE"
+  cat $THEME_PATH/*.plymouth.template > "$PLYMOUTH_FILE"
+  sed -i -e "s/THEME_EXPORT/$THEME_NAME/g" "$PLYMOUTH_FILE"
 
   # Copying images directory
-  cp -rf $PATH/images "$EXPORT_PATH"
+  cp -rf $THEME_PATH/images "$EXPORT_PATH"
 
   echo "Exporting Done!"
 fi

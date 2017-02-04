@@ -19,13 +19,13 @@ if [ $# -gt 0 ]; then
   DURATION=$1
 fi
 
-PATH="source/sandbox"
+THEME_PATH="source/sandbox"
 if [ $# -gt 1 ]; then
-  PATH="$2"
+  THEME_PATH="$2"
 fi
 
 
-./export.sh "$PATH" "preview_theme" # Exporting to the provisioned default theme
+./export.sh "$THEME_PATH" "preview_theme" # Exporting to the provisioned default theme
 
 # Preview it
 echo "Previewing theme during $DURATION seconds..."
