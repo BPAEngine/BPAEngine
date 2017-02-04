@@ -48,3 +48,8 @@ World.Add = fun (object)
     objects[local.index] = object;
     return local.index;
   };
+
+World.Setup = fun ()
+  {
+
+  };
