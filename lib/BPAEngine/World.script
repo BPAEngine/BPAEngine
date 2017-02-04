@@ -15,21 +15,20 @@ World = fun (config)
     return new_world;
   } | [];
 
-World.SetBackground = fun ()
+World.SetBackgroundColors = fun ()
   {
     Window.SetBackgroundTopColor(config.background.colors[0][0], config.background.colors[0][1], config.background.colors[0][1]);
     Window.SetBackgroundBottomColor(config.background.colors[1][0], config.background.colors[1][1], config.background.colors[1][1]);
-
-  #  config.background.image.SetPosition(Window.GetX(), Window.GetY(), -10000);
   };
 
 World.Build = fun ()
   {
-    SetBackground();
+    SetBackgroundColors();
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
       objects[local.i].Build();
     }
+    Setup();
   };
 
 World.Update = fun (new_time, progress)
