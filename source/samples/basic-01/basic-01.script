@@ -4,7 +4,7 @@ WORLD = World();
 
 WORLD.Setup = fun ()
   {
-    Add(Background([]));
+    Add(Background());
   };
 
 WORLD.Build();

@@ -4,7 +4,8 @@ WORLD = World();
 
 WORLD.Setup = fun ()
   {
-    Add(Background([]));
+    local.background.image_path = "static/backgrounds/isometric_background_grid.png";
+    Add(Background(local.background));
 
     local.orientation_variator.type = "random";
     local.orientation_variator.constant = 10;

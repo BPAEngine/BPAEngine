@@ -2,9 +2,9 @@
 
 Background = fun (config)
   {
-    config.z = config.z | -10000;
     new_object =  [] | global.Background | global.Object(config);
     new_object.class = "Background";
+    new_object.z = config.z | -10000;
     new_object.image = Image(config.image_path | "static/backgrounds/background.png");
     new_object.sprite.SetImage(new_object.image);
     return new_object;
