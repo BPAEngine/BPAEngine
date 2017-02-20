@@ -10,3 +10,9 @@ Array.Size = fun(array)
       local.size++;
     return local.size;
   };
+
+Array.Add = fun(array, element)
+  {
+    array[Array.Size(array)] = element;
+    return array;
+  };

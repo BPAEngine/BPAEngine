@@ -45,9 +45,7 @@ World.Update = fun (new_time, progress)
 
 World.Add = fun (object)
   {
-    local.index = Array.Size(objects);
-    objects[local.index] = object;
-    return local.index;
+    Array.Add(objects, object);
   };
 
 World.Setup = fun ()
