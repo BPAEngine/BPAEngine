@@ -15,7 +15,7 @@ The **Better Plymouth Animations Engine (BPAEngine)** is an engine based on plym
 
 ## Licensing
 
-The **BPAEngine** is Free Software and is released under the terms of the GPL, except where noted. Additionally, 3rd-party content (like, but not exclusively, sample sprites and images) may be released under a different license. Please check the respective files for details.
+The **BPAEngine** is Free Software and is released under the terms of the [GPL v3](GPL3-LICENSE.txt) , except where noted. Additionally, 3rd-party content (like, but not exclusively, sample sprites and images) may be released under a different license. Please check the respective files for details.
 
 ## Development / Contribution
 
@@ -69,25 +69,18 @@ Windows.
 
     ```bash
     VirtualBox
-    # Login with user vagrant and password vagrant
     ```
 
-5. Become root to be able to run plymouth:
-
-    ```bash
-    sudo su -
-    ```
-
-6. Go to the vagrant directory:
+5. Login with user `root` and password `vagrant`, and then go to the vagrant directory:
 
     ```bash
     cd /vagrant
     ```
 
-5. Run a preview from the sandbox code (this is the default):
+6. Run a preview from the sandbox code (this is the default):
 
     ```bash
-    ./preview.sh #will preview the theme from source/sandbox
+    ./preview.sh #will preview the theme from source/sandbox/default
     ```
 
 ## Source Code Repository Layout
