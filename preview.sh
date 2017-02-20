@@ -19,7 +19,7 @@ if [ $# -gt 0 ]; then
   DURATION=$1
 fi
 
-THEME_PATH="source/sandbox"
+THEME_PATH="source/sandbox/default"
 if [ $# -gt 1 ]; then
   THEME_PATH="$2"
 fi
