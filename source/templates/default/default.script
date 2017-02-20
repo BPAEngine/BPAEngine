@@ -1,0 +1,10 @@
+#-----------------------------------------  Setup World --------------------------------
+
+WORLD = World();
+
+WORLD.Setup = fun ()
+  {
+    Add(Background());
+  };
+
+WORLD.Build();
