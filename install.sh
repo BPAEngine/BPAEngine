@@ -20,4 +20,7 @@ if [ $# -eq 1 ]; then
   ln -sf "/vagrant/export/$1" /usr/share/plymouth/themes/
   plymouth-set-default-theme -R "$1"
   echo "Done!"
+else
+  echo "Usage: ./install.sh NAME"
+  echo "  - NAME: Name of the exported theme to install"
 fi

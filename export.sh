@@ -35,4 +35,8 @@ if [ $# -eq 2 ]; then
   cp -rf $THEME_PATH/images "$EXPORT_PATH"
 
   echo "Exporting Done!"
+else
+  echo "Usage: ./export.sh PATH NAME"
+  echo "  - PATH: Path to the source directory of the theme, usually under source/"
+  echo "  - NAME: Name of the theme to export"  
 fi
