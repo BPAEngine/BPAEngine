@@ -72,10 +72,5 @@ World.DisplayQuestion = fun (prompt, entry)
 
 World.AskPassword = fun (prompt, bullets_size)
   {
-    local.bullets = "";
-    for (local.i = 0; local.i < bullets_size; local.i++)
-    {
-      local.bullets += "*";
-    }
-    Debug("AskPassword: " + prompt + ": " + local.bullets, 5);
+    Debug("AskPassword: " + prompt + ": " + String.Bullets(bullets_size), 5);
   };

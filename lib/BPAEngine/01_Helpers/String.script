@@ -22,3 +22,13 @@ String.Truncate = fun(string, max)
     }
     return local.truncated;
   };
+
+String.Bullets = fun(number)
+  {
+    local.bullets = "";
+    for (local.i = 0; local.i < number; local.i++)
+    {
+      local.bullets += "*";
+    }
+    return local.bullets;
+  };
