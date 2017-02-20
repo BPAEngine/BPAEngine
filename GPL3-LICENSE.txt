@@ -1,4 +1,4 @@
-This is an engine based on plymouth that enable people to develop better boot screens without much effort.
+BPAEngine is an engine based on plymouth that enable people to develop better boot screens without much effort.
 Copyright (C) 2017  Moisés Déniz Alemán
 
 This program is free software: you can redistribute it and/or modify
