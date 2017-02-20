@@ -1,0 +1,13 @@
+
+# -------------------------------------------------------------------------
+# String helper functions
+# -------------------------------------------------------------------------
+
+String.Size = fun(string)
+  {
+    local.size = 0;
+    local.str = String(string);
+    while (local.str.CharAt(local.size))
+      local.size++;
+    return local.size;
+  };
