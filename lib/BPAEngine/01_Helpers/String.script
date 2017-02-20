@@ -11,3 +11,14 @@ String.Size = fun(string)
       local.size++;
     return local.size;
   };
+
+String.Truncate = fun(string, max)
+  {
+    local.truncated = String(string);
+    if (Size(local.truncated) > max)
+    {
+      local.truncated = local.truncated.SubString(0, max - 3);
+      local.truncated += "...";
+    }
+    return local.truncated;
+  };
