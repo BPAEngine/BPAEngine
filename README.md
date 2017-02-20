@@ -33,7 +33,7 @@ In particular, we are looking forward to see the following types of contribution
 
   * Fork the repository and make a pull-request with your changes
 
-  * "NEED LINK TO TEAM!!!!" A developer of the [BPAEngine team](https://github.com/mdeniz/BPAEngine/) will review your pull-request
+  * One of our main contributors will review your pull-request
 
   * If the pull request gets a positive review the reviewer will merge it
 
