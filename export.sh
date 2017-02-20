@@ -22,7 +22,7 @@ if [ $# -eq 2 ]; then
   mkdir -p "$EXPORT_PATH"
 
   # Compiling source scripts
-  cat lib/**/*.script > "$SCRIPT_FILE" # Compile Engine scripts
+  cat lib/**/**/*.script > "$SCRIPT_FILE" # Compile Engine scripts
   cat $THEME_PATH/lib/**/*.script >>  "$SCRIPT_FILE" # Compile lib subdirs
   cat $THEME_PATH/lib/*.script >>  "$SCRIPT_FILE" # Compile lib dir
   cat $THEME_PATH/*.script >>  "$SCRIPT_FILE" # Compile base source
@@ -38,5 +38,5 @@ if [ $# -eq 2 ]; then
 else
   echo "Usage: ./export.sh PATH NAME"
   echo "  - PATH: Path to the source directory of the theme, usually under source/"
-  echo "  - NAME: Name of the theme to export"  
+  echo "  - NAME: Name of the theme to export"
 fi
