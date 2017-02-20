@@ -50,10 +50,13 @@ Object.Update = fun (delta)
       speed = speed_variator.Next(speed, delta);
     }
 
-    local.angle = ((orientation + 90.0) * Math.Pi) / 180.0;
-    x += speed * Math.Sin(local.angle);
-    y += speed * Math.Cos(local.angle);
-    sprite.SetPosition(x, y, z);
+    if (delta > 0.0)
+    {
+      local.angle = ((orientation + 90.0) * Math.Pi) / 180.0;
+      x += speed * Math.Sin(local.angle);
+      y += speed * Math.Cos(local.angle);
+      sprite.SetPosition(x, y, z);
+    }
   };
 
 Object.PlayAnimation = fun (index)
