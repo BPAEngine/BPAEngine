@@ -8,12 +8,34 @@ fun boot_progress_callback (time, progress)
     global.WORLD.Update(time, progress);
     Debug("Refresh: " + global.WORLD.tick + " Time (s): " + global.WORLD.time + " Delta (ms): " + global.WORLD.delta*1000 + " Progress: " + Math.Int(progress*100) + "%", 1);
   }
-
 Plymouth.SetBootProgressFunction(boot_progress_callback);
 
 fun refresh_callback ()
   {
     global.WORLD.tick++;
   }
-
 Plymouth.SetRefreshFunction (refresh_callback);
+
+fun update_status_callback(status)
+  {
+    global.WORLD.UpdateStatus(status);
+  }
+Plymouth.SetUpdateStatusFunction(update_status_callback);
+
+fun message_callback(message)
+  {
+    global.WORLD.ProcessMessage(message);
+  }
+Plymouth.SetMessageFunction(message_callback);
+
+fun display_question_callback(prompt, entry)
+  {
+    global.WORLD.DisplayQuestion(prompt, entry);
+  }
+Plymouth.SetDisplayQuestionFunction(display_question_callback);
+
+fun ask_passsword_callback(prompt, bullets_size)
+  {
+    global.WORLD.AskPassword(prompt, bullets_size);
+  }
+Plymouth.SetDisplayPasswordFunction(ask_passsword_callback);

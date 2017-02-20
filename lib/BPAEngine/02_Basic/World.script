@@ -54,3 +54,28 @@ World.Setup = fun ()
   {
 
   };
+
+World.ProcessMessage = fun (message)
+  {
+    Debug("ProcessMessage: " + String.Truncate(message, 40), 3);
+  };
+
+World.UpdateStatus = fun (status)
+  {
+    Debug("UpdateStatus: " + status, 4);
+  };
+
+World.DisplayQuestion = fun (prompt, entry)
+  {
+    Debug("DisplayQuestion: " + prompt + ": " + entry, 5);
+  };
+
+World.AskPassword = fun (prompt, bullets_size)
+  {
+    local.bullets = "";
+    for (local.i = 0; local.i < bullets_size; local.i++)
+    {
+      local.bullets += "*";
+    }
+    Debug("AskPassword: " + prompt + ": " + local.bullets, 5);
+  };
