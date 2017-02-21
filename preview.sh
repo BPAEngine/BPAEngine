@@ -65,7 +65,7 @@ sleep 1
 echo "Reproducing updates..."
 for ((I=0; I<$DURATION; I++)); do
   plymouth update --status="Update number $I            OK";
-  plymouth display-message --text="Message test $I";
+  plymouth display-message --text="Message test $I --> $(date)";
   sleep 1;
   done;
 
