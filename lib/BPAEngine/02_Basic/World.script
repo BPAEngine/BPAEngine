@@ -6,7 +6,7 @@
 World = fun (config)
   {
     new_world = [] | global.World;
-    new_world.background_colors = config.background_colors | [[0.8, 0.8, 0.8], [0.5, 0.5 ,0.5]];
+    new_world.background_colors = config.background_colors | [Color.FromHex("#02D35F"), Color.FromHex("#0D2C40")];
 
     new_world.tick = 0;
     new_world.time = 0.0;
@@ -24,8 +24,8 @@ World = fun (config)
 
 World.SetBackgroundColors = fun ()
   {
-    Window.SetBackgroundTopColor(background_colors[0][0], background_colors[0][1], background_colors[0][1]);
-    Window.SetBackgroundBottomColor(background_colors[1][0], background_colors[1][1], background_colors[1][1]);
+    Window.SetBackgroundTopColor(background_colors[0][0], background_colors[0][1], background_colors[0][2]);
+    Window.SetBackgroundBottomColor(background_colors[1][0], background_colors[1][1], background_colors[1][2]);
   };
 
 World.Build = fun ()
