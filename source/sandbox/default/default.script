@@ -8,11 +8,6 @@ WORLD = World();
 
 WORLD.Setup = fun ()
   {
-    Add(Background());
-
-    local.message_scroll_config.x = 150;
-    local.message_scroll_config.y = 150;
-    Add(MessageScroll(local.message_scroll_config));
   };
 
 WORLD.Build();
