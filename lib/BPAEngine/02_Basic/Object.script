@@ -6,7 +6,7 @@
 Object = fun (config, id)
   {
     new_object = [] | global.Object;
-    new_object.id = id | "id_" + Math.Random() * 100;
+    new_object.id = id | "id_" + Math.Random() * 10000;
     new_object.class = "Object";
 
     new_object.x = config.x | 0;
