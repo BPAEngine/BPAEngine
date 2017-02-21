@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Export Plymouth Splash scripts  ##
+## Export Plymouth Splash Theme     ##
 ##      by mdeniz                   ##
 ##    www.github.com/mdeniz         ##
 ##    License: GPL v3               ##

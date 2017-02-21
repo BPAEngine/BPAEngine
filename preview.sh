@@ -1,9 +1,9 @@
 #!/bin/bash
 
-## Preview Plymouth Splash ##
-##      by _khAttAm_       ##
-##    www.khattam.info     ##
-##    License: GPL v3      ##
+## Preview Plymouth Splash theme    ##
+##      by mdeniz                   ##
+##    www.github.com/mdeniz         ##
+##    License: GPL v3               ##
 
 chk_root () {
   if [ ! $( id -u ) -eq 0 ]; then

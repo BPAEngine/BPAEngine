@@ -1,10 +1,10 @@
 #!/bin/bash
 
-## Install Plymouth Splash  ##
-##   for SUSE systems       ##
-##      by mdeniz           ##
-##    www.github.com/mdeniz ##
-##    License: GPL v3       ##
+## Install Plymouth Splash Theme ##
+##   for SUSE systems            ##
+##      by mdeniz                ##
+##    www.github.com/mdeniz      ##
+##    License: GPL v3            ##
 
 chk_root () {
   if [ ! $( id -u ) -eq 0 ]; then
