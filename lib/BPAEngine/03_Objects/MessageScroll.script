@@ -30,22 +30,19 @@ MessageScroll.Add = fun (message)
   {
     local.message_lines = String.SplitByFixedSize(message, max_width);
     for (local.i = 0; local.i < Array.Size(local.message_lines); local.i++) {
-      ShiftLines();
+      # Shift lines
+      for (local.j = 0; local.j < max_lines - 1; local.j++) {
+        lines[local.j] = lines[local.j+1];
+      }
+
       lines[max_lines - 1] = Image.Text(local.message_lines[local.i], font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size);
     }
 
-    # Re-positioning the text images
+    # Re-assing the text images
     for (local.i = 0; local.i < max_lines; local.i++) {
       message_sprite[local.i].SetImage(lines[local.i]);
     }
   };
-
-MessageScroll.ShiftLines = fun ()
-    {
-      for (local.i = 0; local.i < max_lines - 1; local.i++) {
-        lines[local.i] = lines[local.i+1];
-      }
-    };
 
 MessageScroll.Update = fun (delta)
     {
