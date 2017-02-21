@@ -32,3 +32,17 @@ String.Bullets = fun(number)
     }
     return local.bullets;
   };
+
+String.SplitByFixedSize = fun(string, max)
+  {
+    local.string = String(string);
+    local.index = 0;
+    local.char_index = 0;
+    while (local.string.CharAt(local.char_index))
+    {
+      local.lines[local.index] = local.string.SubString(local.char_index, local.char_index + max);
+      local.index++;
+      local.char_index = local.index * max;
+    }
+    return local.lines;
+  };
