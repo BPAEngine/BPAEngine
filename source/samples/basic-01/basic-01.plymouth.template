@@ -1,8 +1,0 @@
-[Plymouth Theme]
-Name=Basic 01
-Description=Basic Sample 01
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/THEME_EXPORT/images
-ScriptFile=/usr/share/plymouth/themes/THEME_EXPORT/THEME_EXPORT.script
