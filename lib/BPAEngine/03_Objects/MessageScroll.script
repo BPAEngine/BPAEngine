@@ -15,15 +15,12 @@ MessageScroll = fun (config)
 
     new_object.max_lines = config.max_lines | 10;
     new_object.faded_lines = config.faded_lines | new_object.max_lines * 0.5;
+    new_object.spacing = config.spacing | 1;
 
-    local.opacity = 1.0;
     for (local.i = 0; local.i < new_object.max_lines; local.i++) {
-      new_object.lines[local.i] = ""; # Initialize the element
+      new_object.lines[local.i] = ""; # Initialize the lines
       new_object.message_sprite[local.i] = Sprite();
-      new_object.message_sprite[local.i].SetPosition(new_object.x, new_object.y + (local.i * 20), new_object.z);
-      if (local.i < new_object.faded_lines)
-        local.opacity = 1.2 - ((new_object.faded_lines - local.i) / new_object.faded_lines);
-      new_object.message_sprite[local.i].SetOpacity(local.opacity);
+      new_object.message_sprite[local.i].SetPosition(new_object.x, new_object.y + (local.i * new_object.font_size * (new_object.spacing + 1.0)), new_object.z);
     }
     return new_object;
   } | [];
@@ -47,6 +44,28 @@ MessageScroll.Update = fun (delta)
     {
       # Avoid updating coordinates, animations and so on
     };
+
+MessageScroll.Hide = fun ()
+  {
+    for (local.i = 0; local.i < max_lines; local.i++) {
+      message_sprite[local.i].SetOpacity(0);
+    }
+  };
+
+MessageScroll.Show = fun ()
+  {
+    local.opacity = 1;
+    for (local.i = 0; local.i < max_lines; local.i++) {
+      if (local.i < faded_lines)
+        local.opacity = 1.2 - (faded_lines - local.i) / faded_lines;
+      message_sprite[local.i].SetOpacity(local.opacity);
+    }
+  };
+
+MessageScroll.Build = fun ()
+  {
+    Show();
+  };
 
 /*
 NUM_SCROLL_LINES=10;
