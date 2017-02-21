@@ -63,9 +63,9 @@ plymouth ask-question --prompt="What is your name?"
 sleep 1
 
 echo "Reproducing updates..."
+IFS=$'\r\n' GLOBIGNORE='*' command eval  'LOG=($(cat /var/log/boot.log))'
 for ((I=0; I<$DURATION; I++)); do
-  plymouth update --status="Update number $I            OK";
-  plymouth display-message --text="Message test $I --> $(date)";
+  plymouth update --status="${LOG[$I]}";
   sleep 1;
   done;
 
