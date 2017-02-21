@@ -1,0 +1,21 @@
+Window.GetMaxWidth = fun ()
+  {
+    local.i = 0;
+    width = 800; # minimum
+    while (Window.GetWidth(local.i)){
+      width = Math.Max(width, Window.GetWidth(local.i));
+      local.i++;
+    }
+    return width;
+  };
+
+Window.GetMaxHeight = fun ()
+  {
+    local.i = 0;
+    height = 600; # minium
+    while (Window.GetHeight(local.i)){
+      height = Math.Max(height, Window.GetHeight(local.i));
+      local.i++;
+    }
+    return height;
+  };
