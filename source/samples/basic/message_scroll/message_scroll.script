@@ -11,7 +11,7 @@ WORLD.Setup = fun ()
   {
     local.config.max_width = 60;
     local.config.font_size = 8;
-    local.config.font_color = [0.5, 0.2, 0];
+    local.config.font_color = Color.FromHex("#87CEEB");
     local.config.spacing = 0.5;
     local.config.x = this.center.x - (local.config.max_width * local.config.font_size) / 2;
     local.config.y = this.height - 130;
