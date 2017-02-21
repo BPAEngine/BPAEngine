@@ -11,10 +11,15 @@ MessageScroll = fun (config)
     new_object.color = config.color | [0,0,0];
 
     new_object.max_lines = config.max_lines | 10;
+    new_object.faded_lines = config.faded_lines | 3;
+    local.opacity = 1.0;
     for (local.i = 0; local.i < new_object.max_lines; local.i++) {
       new_object.lines[local.i] = Image.Text("", 0, 0, 0);
       new_object.message_sprite[local.i] = Sprite();
       new_object.message_sprite[local.i].SetPosition(20, 150 + (local.i * 20), new_object.z);
+      if (local.i < new_object.faded_lines)
+        local.opacity = 1.2 - ((new_object.faded_lines - local.i) / new_object.faded_lines);
+      new_object.message_sprite[local.i].SetOpacity(local.opacity);
     }
     return new_object;
   } | [];
