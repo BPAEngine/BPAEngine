@@ -67,6 +67,7 @@ World.ProcessMessage = fun (message)
 
 World.UpdateStatus = fun (status)
   {
+    if (message_scroll) message_scroll.Add(status);
     Debug("UpdateStatus: " + status, 4);
   };
 
