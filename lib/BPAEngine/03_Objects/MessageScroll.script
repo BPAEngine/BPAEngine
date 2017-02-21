@@ -28,11 +28,8 @@ MessageScroll = fun (config)
 
 MessageScroll.Add = fun (message)
   {
-    # Shift messages
-    for (local.i = 0; local.i < max_lines - 1; local.i++) {
-      lines[local.i] = lines[local.i+1];
-    }
-
+    ShiftLines();
+    
     lines[max_lines - 1] = Image.Text(String.Truncate(message, max_width), font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size);
 
     # Re-positioning the text images
@@ -40,6 +37,13 @@ MessageScroll.Add = fun (message)
       message_sprite[local.i].SetImage(lines[local.i]);
     }
   };
+
+MessageScroll.ShiftLines = fun ()
+    {
+      for (local.i = 0; local.i < max_lines - 1; local.i++) {
+        lines[local.i] = lines[local.i+1];
+      }
+    };
 
 MessageScroll.Update = fun (delta)
     {
