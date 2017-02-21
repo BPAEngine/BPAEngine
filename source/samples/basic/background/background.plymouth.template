@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Default Template
+Description=Default Template
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/THEME_EXPORT/images
+ScriptFile=/usr/share/plymouth/themes/THEME_EXPORT/THEME_EXPORT.script
