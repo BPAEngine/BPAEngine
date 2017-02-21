@@ -5,6 +5,8 @@ WORLD = World();
 WORLD.Setup = fun ()
   {
     Add(Background());
+
+    Add(MessageScroll());
   };
 
 WORLD.Build();

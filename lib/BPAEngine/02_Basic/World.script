@@ -45,16 +45,18 @@ World.Update = fun (new_time, progress)
 
 World.Add = fun (object)
   {
+    if (object.class == "MessageScroll") this.message_scroll = object;
     Array.Add(objects, object);
   };
 
 World.Setup = fun ()
   {
-
+    # This should be overwritten in the theme code
   };
 
 World.ProcessMessage = fun (message)
   {
+    if (message_scroll) message_scroll.Add(message);
     Debug("ProcessMessage: " + String.Truncate(message, 40), 3);
   };
 
