@@ -1,6 +1,6 @@
 [Plymouth Theme]
-Name=Default Template
-Description=Default Template
+Name=Theme Base
+Description=Base for develop plymouth themes
 ModuleName=script
 
 [script]

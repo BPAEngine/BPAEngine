@@ -8,54 +8,11 @@ WORLD = World();
 
 WORLD.Setup = fun ()
   {
-    local.background.image_path = "static/backgrounds/isometric_background_grid.png";
-    Add(Background(local.background));
+    Add(Background());
 
-    local.orientation_variator.type = "random";
-    local.orientation_variator.constant = 10;
-
-    local.speed_variator.type = "random";
-    local.speed_variator.constant = 1;
-
-    local.man_config.tetha = 0.05;
-    for (local.i = 0; local.i < 5; local.i++)
-    {
-      local.man_config.x = Math.Random()*200;
-      local.man_config.y = 60 * local.i;
-      local.man_config.orientation_variator = Variator(local.orientation_variator);
-      local.man_config.speed_variator = Variator(local.speed_variator);
-      Add(Man(local.man_config));
-    }
-
-    local.fire_config.x = 300;
-    local.fire_config.y = 90;
-    local.fire_config.z = -1;
-    Add(Fire(local.fire_config));
-
-    local.water_config.x = 400;
-    local.water_config.y = 190;
-    local.water_config.z = 2;
-    Add(Water(local.water_config));
-
-    local.tile_config.x = 100;
-    local.tile_config.y = 200;
-    local.tile_config.z = -10;
-    local.tile_config.image_number = "004";
-    Add(Tile(local.tile_config));
-    local.tile_config.x += 64;
-    local.tile_config.y -= 32;
-    local.tile_config.z = -11;
-    local.tile_config.image_number = "005";
-    Add(Tile(local.tile_config));
-    local.tile_config.x += 131;
-    local.tile_config.image_number = "001";
-    Add(Tile(local.tile_config));
-    local.tile_config.x += 64;
-    local.tile_config.y += 32;
-    local.tile_config.image_number = "002";
-    Add(Tile(local.tile_config));
-
-    Add(MessageScroll());
+    local.message_scroll_config.x = 150;
+    local.message_scroll_config.y = 150;
+    Add(MessageScroll(local.message_scroll_config));
   };
 
 WORLD.Build();
