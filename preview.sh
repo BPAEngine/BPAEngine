@@ -61,6 +61,8 @@ sleep 1
 echo "Asking a question..."
 plymouth ask-question --prompt="What is your name?"
 sleep 1
+plymouth unpause-progress
+
 
 echo "Reproducing updates..."
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'LOG=($(cat /var/log/boot.log))'
@@ -68,6 +70,7 @@ for ((I=0; I<$DURATION; I++)); do
   plymouth update --status="${LOG[$I]}";
   sleep 1;
   done;
+#  plymouth display-message --text="Message test $I --> $(date)";
 
 # Set mode to boot-up
 echo "Change mode to boot-up..."
