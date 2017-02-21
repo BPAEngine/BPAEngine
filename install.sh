@@ -17,9 +17,11 @@ chk_root
 
 if [ $# -eq 1 ]; then
   if [ "$1" == "preview_theme" ]; then
-    echo "Error: preview_theme is the default exporting point, please use another name for the project"
+    plymouth-set-default-theme -R "$1"
   else
     echo "Installing $1 in Plymouth directory"
+    echo "NOTE: installing other theme inside the vagrant box will set it as the "
+    echo "      default preview theme, run install with preview_theme to recover that"
     cp -rf "/vagrant/export/$1" /usr/share/plymouth/themes/
     plymouth-set-default-theme -R "$1"
     echo "Done!"
