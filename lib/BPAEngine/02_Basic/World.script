@@ -57,7 +57,7 @@ World.Setup = fun ()
 World.ProcessMessage = fun (message)
   {
     if (message_scroll) message_scroll.Add(message);
-    Debug("ProcessMessage: " + String.Truncate(message, 40), 3);
+    Debug("ProcessMessage: " + message, 3);
   };
 
 World.UpdateStatus = fun (status)
