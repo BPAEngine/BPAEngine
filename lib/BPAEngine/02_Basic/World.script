@@ -13,6 +13,9 @@ World = fun (config)
     new_world.delta = 0.0;
     new_world.speed = 1.0;
 
+    new_world.width = Window.GetMaxWidth();
+    new_world.height = Window.GetMaxHeight();
+
     new_world.objects = [];
     return new_world;
   } | [];
@@ -53,6 +56,7 @@ World.Update = fun (new_time, progress)
 
 World.Add = fun (object)
   {
+    object.world = this;
     if (object.class == "MessageScroll") this.message_scroll = object;
     Array.Add(objects, object);
   };
