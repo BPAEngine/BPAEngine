@@ -16,10 +16,14 @@ chk_root () {
 chk_root
 
 if [ $# -eq 1 ]; then
-  echo "Installing $1 in Plymouth directory"
-  ln -sf "/vagrant/export/$1" /usr/share/plymouth/themes/
-  plymouth-set-default-theme -R "$1"
-  echo "Done!"
+  if [ "$1" == "preview_theme" ]; then
+    echo "Error: preview_theme is the default exporting point, please use another name for the project"
+  else
+    echo "Installing $1 in Plymouth directory"
+    cp -rf "/vagrant/export/$1" /usr/share/plymouth/themes/
+    plymouth-set-default-theme -R "$1"
+    echo "Done!"
+  fi
 else
   echo "Usage: ./install.sh NAME"
   echo "  - NAME: Name of the exported theme to install"
