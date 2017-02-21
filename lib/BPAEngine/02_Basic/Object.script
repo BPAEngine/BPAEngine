@@ -65,3 +65,13 @@ Object.PlayAnimation = fun (index)
 Object.Build = fun (index)
   {
   };
+
+Object.Hide = fun ()
+  {
+    sprite.SetOpacity(0);
+  };
+
+Object.Show = fun ()
+  {
+    sprite.SetOpacity(1);
+  };
