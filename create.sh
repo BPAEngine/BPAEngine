@@ -17,6 +17,7 @@ if [ $# -eq 2 ]; then
 
   # Cleaning target path
   if [ -d "$EXPORT_PATH" ]; then
+    echo "Directory already exists... Cleaning"
     rm -rf "$EXPORT_PATH"
   fi
   mkdir -p "$EXPORT_PATH"
@@ -25,10 +26,12 @@ if [ $# -eq 2 ]; then
   cp -rf source/templates/default/* "$EXPORT_PATH/"
 
   # Renaming files
-  mv "$EXPORT_PATH/default.plymouth.template" "$EXPORT_PATH/$THEME_NAME.plymouth.template"
-  mv "$EXPORT_PATH/default.script" "$EXPORT_PATH/$THEME_NAME.script"
+  if [ "$THEME_NAME" != "default" ]; then
+    mv "$EXPORT_PATH/default.plymouth.template" "$EXPORT_PATH/$THEME_NAME.plymouth.template"
+    mv "$EXPORT_PATH/default.script" "$EXPORT_PATH/$THEME_NAME.script"
+  fi
 
-  echo "Exporting Done!"
+  echo "Creation Done!"
 else
   echo "Usage: ./create.sh PATH NAME"
   echo "  - PATH: Path to the directory for the theme, it will be created under source/"
