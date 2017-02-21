@@ -9,11 +9,13 @@ MessageScroll = fun (config)
     new_object.class = "MessageScroll";
     new_object.z = config.z | 10000;
 
-    new_object.textcolor = config.textcolor | [0,0,0];
-    new_object.font = config.font | "Sans 10";
+    new_object.font_color = config.font_color | [0, 0, 0];
+    new_object.font_type  = config.font_type | "Sans";
+    new_object.font_size  = config.font_size | 10;
 
     new_object.max_lines = config.max_lines | 10;
     new_object.faded_lines = config.faded_lines | new_object.max_lines * 0.5;
+
     local.opacity = 1.0;
     for (local.i = 0; local.i < new_object.max_lines; local.i++) {
       new_object.lines[local.i] = ""; # Initialize the element
@@ -28,18 +30,23 @@ MessageScroll = fun (config)
 
 MessageScroll.Add = fun (message)
   {
-    # Shift messages up
+    # Shift messages
     for (local.i = 0; local.i < max_lines - 1; local.i++) {
       lines[local.i] = lines[local.i+1];
     }
 
-    lines[max_lines - 1] = Image.Text(message, this.textcolor[0], this.textcolor[1], this.textcolor[2], 1, this.font);
+    lines[max_lines - 1] = Image.Text(message, font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size);
 
     # Re-positioning the text images
     for (local.i = 0; local.i < max_lines; local.i++) {
       message_sprite[local.i].SetImage(lines[local.i]);
     }
   };
+
+MessageScroll.Update = fun (delta)
+    {
+      # Avoid updating coordinates, animations and so on
+    };
 
 /*
 NUM_SCROLL_LINES=10;
