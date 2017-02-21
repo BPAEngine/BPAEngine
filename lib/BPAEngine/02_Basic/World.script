@@ -33,6 +33,11 @@ World.Build = fun ()
     Setup();
   };
 
+World.Tick = fun ()
+  {
+    tick++;
+  };
+
 World.Update = fun (new_time, progress)
   {
     delta = (new_time - time) * speed;

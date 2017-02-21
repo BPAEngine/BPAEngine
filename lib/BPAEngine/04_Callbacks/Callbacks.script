@@ -12,7 +12,7 @@ Plymouth.SetBootProgressFunction(boot_progress_callback);
 
 fun refresh_callback ()
   {
-    global.WORLD.tick++;
+    global.WORLD.Tick();
   }
 Plymouth.SetRefreshFunction (refresh_callback);
 
