@@ -3,18 +3,22 @@
 # Debug functions
 # -------------------------------------------------------------------------
 
+DEBUG=0;
 DebugString = "";
 fun Debug(text, channel)
   {
-    if (channel)
+    if (global.DEBUG)
     {
-      global.DebugSprite[channel] = Sprite(Image.Text(text, 1, 1, 1, 1, "Fixed 10"));
-      global.DebugSprite[channel].SetY(channel * 12);
-    }
-    else
-    {
-      DebugString += "\n" + text;
-      global.DebugSpriteLog = Sprite(Image.Text(DebugString, 1, 1, 1, 1, "Fixed 10"));
-      global.DebugSprite[channel].SetY(20);
+      if (channel)
+      {
+        global.DebugSprite[channel] = Sprite(Image.Text(text, 1, 1, 1, 1, "Fixed 10"));
+        global.DebugSprite[channel].SetY(channel * 12);
+      }
+      else
+      {
+        DebugString += "\n" + text;
+        global.DebugSpriteLog = Sprite(Image.Text(DebugString, 1, 1, 1, 1, "Fixed 10"));
+        global.DebugSprite[channel].SetY(20);
+      }
     }
   }
