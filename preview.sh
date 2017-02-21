@@ -24,7 +24,7 @@ if [ $# -gt 1 ]; then
   THEME_PATH="$2"
 fi
 
-if [ $DEBUG_ON -eq 1 ]; then
+if [[ $DEBUG_ON -eq 1 ]]; then
   WITH_DEBUG="--debug --debug-file=/tmp/plymouth-debug-out.log"
 fi
 
