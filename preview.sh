@@ -28,8 +28,8 @@ if [ $DEBUG_ON -eq 1 ]; then
   WITH_DEBUG="--debug --debug-file=/tmp/plymouth-debug-out.log"
 fi
 
-
-./export.sh "$THEME_PATH" "preview_theme" # Exporting to the provisioned default theme
+ # Exporting to the provisioned default theme
+./export.sh "$THEME_PATH" "preview_theme"
 
 # Preview it
 echo "Previewing theme during $DURATION seconds..."
@@ -48,7 +48,7 @@ fi
 
 # Show splash
 echo "Showing theme..."
-plymouth --show-splash
+plymouth show-splash
 plymouth change-mode  --updates
 sleep 5
 
