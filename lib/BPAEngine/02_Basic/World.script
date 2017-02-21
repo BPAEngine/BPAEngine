@@ -26,11 +26,11 @@ World.SetBackgroundColors = fun ()
 World.Build = fun ()
   {
     SetBackgroundColors();
+    Setup();
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
       objects[local.i].Build();
     }
-    Setup();
   };
 
 World.Tick = fun ()
