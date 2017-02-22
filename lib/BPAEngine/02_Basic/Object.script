@@ -97,10 +97,20 @@ Object.Set3DPosition = fun (x, y, z)
     SetZ(z);
   };
 
-Object.Move2DPosition = fun (dx, dy)
+Object.MoveX = fun (dx)
   {
     SetX(x + dx);
+  };
+
+Object.MoveY = fun (dy)
+  {
     SetY(y + dy);
+  };
+
+Object.Move2DPosition = fun (dx, dy)
+  {
+    MoveX(dx);
+    MoveY(dy);
   };
 
 Object.GetWidth = fun ()
