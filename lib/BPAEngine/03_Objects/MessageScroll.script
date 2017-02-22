@@ -45,9 +45,9 @@ MessageScroll.Add = fun (message)
   };
 
 MessageScroll.Update = fun (delta)
-    {
-      # Avoid updating coordinates, animations and so on
-    };
+  {
+    # Avoid updating coordinates, animations and so on
+  };
 
 MessageScroll.Hide = fun ()
   {
