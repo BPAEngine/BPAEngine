@@ -11,13 +11,39 @@ WORLD.Setup = fun ()
   {
     local.box_config.x = 100;
     local.box_config.y = 200;
-    local.box = DummyBox100(local.box_config);
-    Add(local.box);
+    local.box[0] = DummyBox100(local.box_config);
 
-    local.box_config2.boxcolor = "white";
-    local.box2 = DummyBox100(local.box_config2);
-    local.box2.AlignToObject(local.box, "rb", "mc");
-    Add(local.box2);
+    local.box_config.boxcolor = "white";
+    local.box[1] = DummyBox100(local.box_config);
+    local.box[1].AlignToObject(local.box[0], "rb", "lt"); # box[1] left-top anchor to the right-bottom anchor of box[0]
+
+    local.box_config.boxcolor = "red";
+    local.box[2] = DummyBox100(local.box_config);
+    local.box[2].AlignToObject(local.box[1], "rb", "cm"); # box[2] center-middle anchor to the right-bottom anchor of box[1]
+
+    local.box_config.boxcolor = "blue";
+    local.box[3] = DummyBox100(local.box_config);
+    local.box[3].AlignToObject(local.box[2], "cb", "rt"); # box[3] right-top anchor to the center-bottom anchor of box[2]
+
+    local.box_config.boxcolor = "green";
+    local.box[4] = DummyBox100(local.box_config);
+    local.box[4].AlignToObject(local.box[3], "lb", "rb"); # box[4] right-bottom anchor to the left-bottom anchor of box[3]
+
+    local.box_config.boxcolor = "purple";
+    local.box[5] = DummyBox100(local.box_config);
+    local.box[5].AlignToObject(local.box[1], "rt", "lb"); # box[5] left-bottom anchor to the right-top anchor of box[1]
+
+    local.box_config.boxcolor = "yellow";
+    local.box[6] = DummyBox100(local.box_config);
+    local.box[6].AlignToObject(local.box[5], "rm", "lb"); # box[6] left-bottom anchor to the right-middle anchor of box[5]
+
+    local.box_config.boxcolor = "cyan";
+    local.box[7] = DummyBox100(local.box_config);
+    local.box[7].AlignToObject(local.box[6], "cm", "cb"); # box[7] center-bottom anchor to the center-middle anchor of box[6]
+
+    for (local.i = 0; local.i < Array.Size(local.box); local.i++) {
+      Add(local.box[local.i]);
+    }
   };
 
 WORLD.Build();
