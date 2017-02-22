@@ -24,7 +24,7 @@ if [ $# -gt 1 ]; then
   THEME_PATH="$2"
 fi
 
-MODE="long"
+MODE="short"
 if [ $# -gt 2 ]; then
   MODE=$3
 fi
