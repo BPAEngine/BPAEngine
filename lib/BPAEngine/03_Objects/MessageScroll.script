@@ -7,7 +7,7 @@ MessageScroll = fun (config)
   {
     new_object =  [] | global.MessageScroll | global.Object(config);
     new_object.class = "MessageScroll";
-    new_object.z = config.z | 10000;
+    new_object.z = config.z | 1000;
 
     new_object.font_color = config.font_color | [0, 0, 0];
     new_object.font_type  = config.font_type | "Fixed";
