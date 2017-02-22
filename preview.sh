@@ -24,6 +24,11 @@ if [ $# -gt 1 ]; then
   THEME_PATH="$2"
 fi
 
+MODE="long"
+if [ $# -gt 2 ]; then
+  MODE=$3
+fi
+
 if [[ $DEBUG_ON -eq 1 ]]; then
   WITH_DEBUG="--debug --debug-file=/tmp/plymouth-debug-out.log"
 fi
@@ -52,39 +57,48 @@ plymouth show-splash
 plymouth change-mode  --updates
 sleep 5
 
-# Ask for password
-echo "Asking for password..."
-plymouth ask-for-password --prompt="Introduce the password"
-sleep 1
+# ----------------------------------------------------------------------
 
-# Ask a random question
-echo "Asking a question..."
-plymouth ask-question --prompt="What is your name?"
-sleep 1
-plymouth unpause-progress
+if [ $MODE == "long" ]; then
+  # Ask for password
+  echo "Asking for password..."
+  plymouth ask-for-password --prompt="Introduce the password"
+  sleep 1
 
+  # Ask a random question
+  echo "Asking a question..."
+  plymouth ask-question --prompt="What is your name?"
+  sleep 1
+  plymouth unpause-progress
+fi
 
 echo "Reproducing updates..."
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'LOG=($(cat /var/log/boot.log))'
 for ((I=0; I<$DURATION * 2; I++)); do
-  plymouth update --status="${LOG[$I]}";
+  if [ $MODE == "long" ]; then
+    plymouth update --status="${LOG[$I]}";
+  else
+    plymouth update --status="Status update number $I";
+  fi
   sleep 0.5;
   done;
 #  plymouth display-message --text="Message test $I --> $(date)";
 
-# Set mode to boot-up
-echo "Change mode to boot-up..."
-plymouth change-mode --boot-up
-sleep 1
-plymouth display-message --text="Change mode to boot-up...";
-sleep 3
+if [ $MODE == "long" ]; then
+  # Set mode to boot-up
+  echo "Change mode to boot-up..."
+  plymouth change-mode --boot-up
+  sleep 1
+  plymouth display-message --text="Change mode to boot-up...";
+  sleep 3
 
-# Set mode to shutdown
-echo "Change mode to shutdown..."
-plymouth change-mode --shutdown
-sleep 1
-plymouth display-message --text="Change mode to shutdown...";
-sleep 3
+  # Set mode to shutdown
+  echo "Change mode to shutdown..."
+  plymouth change-mode --shutdown
+  sleep 1
+  plymouth display-message --text="Change mode to shutdown...";
+  sleep 3
+fi
 
 plymouth quit
 echo "Preview Done!"
