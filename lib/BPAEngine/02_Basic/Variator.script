@@ -8,13 +8,18 @@ Variator = fun (config)
     new_variator = [] | global.Variator;
     new_variator.type = config.type | "linear";
     new_variator.constant = config.constant | 1.0;
+    new_variator.max = config.max;
     return new_variator;
   } | [];
 
 Variator.Next = fun (value, delta)
   {
     if (type == "linear")
-      return value + constant;
+      local.next_value =  value + constant;
     if (type == "random")
-      return value + (Math.Random() * constant) - constant / 2;
+      local.next_value =  value + (Math.Random() * constant) - constant / 2;
+    if (max || max == 0.0)
+      return Math.Min(local.next_value, max);
+    else
+      return local.next_value;
   };
