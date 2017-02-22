@@ -1,0 +1,23 @@
+
+# -------------------------------------------------------------------------
+# Setup World
+# -------------------------------------------------------------------------
+
+DEBUG=1;
+
+WORLD = World();
+
+WORLD.Setup = fun ()
+  {
+    local.box_config.x = 100;
+    local.box_config.y = 200;
+    local.box = DummyBox100(local.box_config);
+    Add(local.box);
+
+    local.box_config2.boxcolor = "white";
+    local.box2 = DummyBox100(local.box_config2);
+    local.box2.AlignToObject(local.box, "rb", "mc");
+    Add(local.box2);
+  };
+
+WORLD.Build();

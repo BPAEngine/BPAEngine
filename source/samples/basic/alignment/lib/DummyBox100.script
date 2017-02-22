@@ -1,0 +1,14 @@
+
+# -------------------------------------------------------------------------
+# Dummy Box with colors
+# -------------------------------------------------------------------------
+
+DummyBox100 = fun (config)
+  {
+    new_object =  [] | global.Dummy | global.Object(config);
+    new_object.class = "Dummy";
+    new_object.boxcolor = config.boxcolor | "black";
+    new_object.image = Image("static/dummy/dummy_box_" + new_object.boxcolor + "_100x100.png");
+    new_object.sprite.SetImage(new_object.image);
+    return new_object;
+  } | [];
