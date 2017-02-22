@@ -87,6 +87,12 @@ Object.Set3DPosition = fun (x, y, z)
     SetZ(z);
   };
 
+Object.Move2DPosition = fun (dx, dy)
+  {
+    SetX(x + dx);
+    SetY(y + dy);
+  };
+
 Object.GetWidth = fun ()
   {
     sprite.GetImage().GetWidth();
