@@ -34,7 +34,13 @@ Object = fun (config, id)
 
 Object.To_String = fun ()
   {
-    return class + "{id:"+id+", c["+x+", "+y+", "+z+"], d["+dx+", "+dy+"], speed:"+speed+", orientation:"+orientation+"}";
+    return class + "{"+id+", c["+x+", "+y+", "+z+"], d["+dx+", "+dy+"], dim["+GetWidth()+", "+GetHeight()+"], speed:"+speed+", orientation:"+orientation+"}";
+  };
+
+Object.ShowInfo = fun ()
+  {
+    this.info_sprite = Sprite(Image.Text(class + " ("+id+")\n{\n coord: ["+x+", "+y+", "+z+"]\n disp:  ["+dx+", "+dy+"]\n dim:   ["+GetWidth()+", "+GetHeight()+"]\n speed: "+speed+"\n orien: "+orientation+"\n}", 1, 1, 1, 1, "Fixed 8"));
+    this.info_sprite.SetPosition(GetX()+20, GetY()+20, 100000);
   };
 
 Object.Update = fun (delta)
