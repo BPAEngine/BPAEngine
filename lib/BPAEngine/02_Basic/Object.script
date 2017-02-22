@@ -22,13 +22,17 @@ Object = fun (config, id)
 
     new_object.orientation = config.orientation | 0.0; # In degrees
     new_object.speed = config.speed | 0.0;
+    new_object.opacity = config.opacity | 1.0;
 
     new_object.speed_variator = config.speed_variator;
     new_object.orientation_variator = config.orientation_variator;
+    new_object.opacity_variator = config.opacity_variator;
 
     new_object.animations = [];
     new_object.sprite = Sprite();
     new_object.sprite.SetPosition(new_object.x + new_object.dx, new_object.y + new_object.dy, new_object.z);
+    new_object.sprite.SetOpacity(new_object.opacity);
+    
     return new_object;
   } | [];
 
@@ -58,6 +62,11 @@ Object.Update = fun (delta)
     if (speed_variator)
     {
       speed = speed_variator.Next(speed, delta);
+    }
+    if (opacity_variator)
+    {
+      opacity = opacity_variator.Next(opacity, delta);
+      SetOpacity(opacity);
     }
 
     local.angle = ((orientation + 90.0) * Math.Pi) / 180.0;
@@ -164,10 +173,15 @@ Object.Build = fun (index)
 
 Object.Hide = fun ()
   {
-    sprite.SetOpacity(0);
+    SetOpacity(0);
   };
 
 Object.Show = fun ()
   {
-    sprite.SetOpacity(1);
+    SetOpacity(1);
+  };
+
+Object.SetOpacity = fun (opacity)
+  {
+    sprite.SetOpacity(opacity);
   };
