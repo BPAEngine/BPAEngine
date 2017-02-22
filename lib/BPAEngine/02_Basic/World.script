@@ -6,7 +6,7 @@
 World = fun (config)
   {
     new_world = [] | global.World;
-    new_world.background_colors = config.background_colors | [Color.FromHex("#02D35F"), Color.FromHex("#0D2C40")];
+    new_world.background_colors = config.background_colors | [Color.FromPalette("Gray"), Color.FromPalette("DarkGray")];
 
     new_world.tick = 0;
     new_world.time = 0.0;
