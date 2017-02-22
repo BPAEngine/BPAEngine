@@ -18,7 +18,7 @@ fun Debug(text, channel)
       {
         DebugString += "\n" + text;
         global.DebugSpriteLog = Sprite(Image.Text(DebugString, 1, 1, 1, 1, "Fixed 10"));
-        global.DebugSprite[channel].SetY(20);
+        global.DebugSpriteLog.SetY(80);
       }
     }
   }
