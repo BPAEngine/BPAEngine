@@ -28,13 +28,13 @@ Object = fun (config, id)
 
     new_object.animations = [];
     new_object.sprite = Sprite();
-    new_object.sprite.SetPosition(new_object.x, new_object.y, new_object.z);
+    new_object.sprite.SetPosition(new_object.x + new_object.dx, new_object.y + new_object.dy, new_object.z);
     return new_object;
   } | [];
 
 Object.To_String = fun ()
   {
-    return class + "{id:"+id+", x:"+x+", y:"+y+", z:"+z+", speed:"+speed+", orientation:"+orientation+"}";
+    return class + "{id:"+id+", c["+x+", "+y+", "+z+"], d["+dx+", "+dy+"], speed:"+speed+", orientation:"+orientation+"}";
   };
 
 Object.Update = fun (delta)
