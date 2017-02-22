@@ -87,6 +87,16 @@ Object.Set3DPosition = fun (x, y, z)
     SetZ(z);
   };
 
+Object.GetWidth = fun ()
+  {
+    sprite.GetImage().GetWidth();
+  };
+
+Object.GetHeight = fun ()
+  {
+    sprite.GetImage().GetHeight();
+  };
+
 Object.PlayAnimation = fun (index)
   {
     animations[index].sprite = sprite;
