@@ -89,3 +89,23 @@ World.AskPassword = fun (prompt, bullets_size)
   {
     Debug("AskPassword: " + prompt + ": " + String.Bullets(bullets_size), 3);
   };
+
+World.GetX = fun ()
+  {
+    return 0.0;
+  };
+
+World.GetY = fun ()
+  {
+    return 0.0;
+  };
+
+World.GetWidth = fun ()
+  {
+    return width;
+  };
+
+World.GetHeight = fun ()
+  {
+    return height;
+  };
