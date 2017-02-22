@@ -5,6 +5,10 @@
 
 DEBUG=0;
 DebugString = "";
+DebugSpriteLog = Sprite();
+DebugSpriteLog.SetY(80);
+DebugSpriteLog.SetZ(100000);
+
 fun Debug(text, channel)
   {
     if (global.DEBUG)
@@ -13,12 +17,12 @@ fun Debug(text, channel)
       {
         global.DebugSprite[channel] = Sprite(Image.Text(text, 1, 1, 1, 1, "Fixed 10"));
         global.DebugSprite[channel].SetY(channel * 12);
+        global.DebugSprite[channel].SetZ(100000);
       }
       else
       {
         DebugString += "\n" + text;
-        global.DebugSpriteLog = Sprite(Image.Text(DebugString, 1, 1, 1, 1, "Fixed 10"));
-        global.DebugSpriteLog.SetY(80);
+        global.DebugSpriteLog.SetImage(Image.Text(DebugString, 1, 1, 1, 1, "Fixed 10"));
       }
     }
   }
