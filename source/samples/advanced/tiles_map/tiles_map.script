@@ -1,0 +1,51 @@
+
+# -------------------------------------------------------------------------
+# Setup World
+# -------------------------------------------------------------------------
+
+DEBUG=1;
+
+WORLD = World();
+
+WORLD.Setup = fun ()
+  {
+    fun _2DToIso(x, y)
+      {
+        local.pt.x = x - y;
+        local.pt.y = (x + y) / 2.0;
+        return local.pt;
+      }
+
+    local.map = [
+    ["098", "036", "028", "005", "098", "109", "036", "067", "067"],
+    ["097", "107", "126", "064", "067", "082", "067", "067", "021"],
+    ["117", "067", "125", "031", "074", "090", "074", "107", "103"],
+    ["027", "027", "068", "066", "066", "046", "060", "049", "028"],
+    ["066", "066", "066", "066", "066", "046", "066", "060", "027"],
+    ["124", "107", "126", "050", "066", "046", "066", "066", "066"],
+    ["029", "067", "096", "031", "074", "104", "074", "074", "074"],
+    ["036", "067", "082", "062", "077", "027", "068", "076", "043"],
+    ["029", "114", "094", "119", "059", "034", "066", "016", "021"]
+    ];
+    local.cell_width = 64;
+
+    local.rows = Array.Size(local.map);
+    local.columns = Array.Size(local.map[0]);
+    for (local.i = 0; local.i < local.rows; local.i++) {
+      for (local.j = 0; local.j < local.columns; local.j++) {
+        local.isoPoint = _2DToIso(local.j * local.cell_width, local.i * local.cell_width);
+        local.tile_config.x = isoPoint.x + this.center.x - local.cell_width;
+        local.tile_config.y = isoPoint.y + 86;
+        local.tile_config.z = isoPoint.y; # Ordered by y
+        local.tile_config.image_number = local.map[i][j];
+        local.tile_config.opacity = 0.0;
+        local.variator.constant = Math.Random() * 0.05 + 0.01;
+        local.variator.max = 1.0;
+        local.tile_config.opacity_variator = Variator(local.variator);
+        local.tile = Tile(local.tile_config);
+        Add(local.tile);
+      }
+    }
+  };
+
+WORLD.Build();
