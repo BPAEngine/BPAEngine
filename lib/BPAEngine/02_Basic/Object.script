@@ -125,19 +125,19 @@ Object.GetHeight = fun ()
 
 Object.AlignToObject = fun (object, object_anchor, my_anchor)
   {
-    local.object_anchor_x = object_anchor.CharAt(0); # Can be "l", "m", "r"
-    local.object_anchor_y = object_anchor.CharAt(1); # Can be "t", "c", "b"
+    local.object_anchor_x = object_anchor.CharAt(0); # Can be "l", "c", "r"
+    local.object_anchor_y = object_anchor.CharAt(1); # Can be "t", "m", "b"
     local.my_anchor_x = my_anchor.CharAt(0);
     local.my_anchor_y = my_anchor.CharAt(1);
     local.dx = 0.0;
     local.dy = 0.0;
-    if (local.my_anchor_x == "m") local.dx -= GetWidth() / 2.0;
+    if (local.my_anchor_x == "c") local.dx -= GetWidth() / 2.0;
     if (local.my_anchor_x == "r") local.dx -= GetWidth();
-    if (local.object_anchor_x == "m") local.dx += object.GetWidth() / 2.0;
+    if (local.object_anchor_x == "c") local.dx += object.GetWidth() / 2.0;
     if (local.object_anchor_x == "r") local.dx += object.GetWidth();
-    if (local.my_anchor_y == "c") local.dy -= GetHeight() / 2.0;
+    if (local.my_anchor_y == "m") local.dy -= GetHeight() / 2.0;
     if (local.my_anchor_y == "b") local.dy -= GetHeight();
-    if (local.object_anchor_y == "c") local.dy += object.GetHeight() / 2.0;
+    if (local.object_anchor_y == "m") local.dy += object.GetHeight() / 2.0;
     if (local.object_anchor_y == "b") local.dy += object.GetHeight();
     Set2DPosition(object.GetX() + local.dx, object.GetY()  + local.dy);
   };
