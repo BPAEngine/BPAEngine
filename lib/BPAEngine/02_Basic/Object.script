@@ -13,6 +13,10 @@ Object = fun (config, id)
     new_object.y = config.y | 0;
     new_object.z = config.z | 1;
 
+    # For sprite displacement
+    new_object.dx = config.dx | 0;
+    new_object.dy = config.dy | 0;
+
     new_object.theta = config.theta | 0.0; # Starting angle for image rotation in degrees
     new_object.spin = config.spin | 0.0; # For image rotation
 
@@ -51,31 +55,31 @@ Object.Update = fun (delta)
     }
 
     local.angle = ((orientation + 90.0) * Math.Pi) / 180.0;
-    x += speed * Math.Sin(local.angle);
-    y += speed * Math.Cos(local.angle);
-    sprite.SetPosition(x, y, z);
+    SetX(x + speed * Math.Sin(local.angle));
+    SetY(y + speed * Math.Cos(local.angle));
+    SetZ(z);
   };
 
 Object.GetX = fun ()
   {
-    return x;
+    return x + this.dx;
   };
 
 Object.GetY = fun ()
   {
-    return y;
+    return y + this.dy;
   };
 
 Object.SetX = fun (x)
   {
     this.x = x;
-    sprite.SetX(x);
+    sprite.SetX(x + this.dx);
   };
 
 Object.SetY = fun (y)
   {
     this.y = y;
-    sprite.SetY(y);
+    sprite.SetY(y + this.dy);
   };
 
 Object.SetZ = fun (z)
