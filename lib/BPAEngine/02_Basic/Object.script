@@ -56,6 +56,37 @@ Object.Update = fun (delta)
     sprite.SetPosition(x, y, z);
   };
 
+Object.SetX = fun (x)
+  {
+    this.x = x;
+    sprite.SetX(x);
+  };
+
+Object.SetY = fun (y)
+  {
+    this.y = y;
+    sprite.SetY(y);
+  };
+
+Object.SetZ = fun (z)
+  {
+    this.z = z;
+    sprite.SetZ(z);
+  };
+
+Object.Set2DPosition = fun (x, y)
+  {
+    SetX(x);
+    SetY(y);
+  };
+
+Object.Set3DPosition = fun (x, y, z)
+  {
+    SetX(x);
+    SetY(y);
+    SetZ(z);
+  };
+
 Object.PlayAnimation = fun (index)
   {
     animations[index].sprite = sprite;
