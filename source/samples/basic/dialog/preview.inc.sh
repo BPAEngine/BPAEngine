@@ -3,8 +3,8 @@ QUESTIONS=("What is your name?"
            "How many kids do you have?")
 IFS=""
 for question in ${QUESTIONS[*]}; do
+  sleep 1
   echo "Asking a question: ${question}"
   plymouth ask-question --prompt="${question}"
-  sleep 1
 done
 plymouth unpause-progress
