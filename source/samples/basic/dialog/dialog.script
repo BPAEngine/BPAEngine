@@ -11,9 +11,7 @@ WORLD.Setup = fun ()
   {
     Add(Background());
 
-    config.background_color = "black";
-    config.background_opacity = 0.5;
-    Add(Dialog(config));
+    Add(Dialog());
   };
 
 WORLD.Build();
