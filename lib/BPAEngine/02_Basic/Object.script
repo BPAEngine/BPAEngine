@@ -235,5 +235,6 @@ Object.GetOpacity = fun ()
 Object.Add = fun (object)
   {
     object.parent = this;
+    object.world = this.world;
     Array.Add(objects, object);
   };
