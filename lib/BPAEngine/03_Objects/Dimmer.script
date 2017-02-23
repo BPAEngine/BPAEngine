@@ -1,0 +1,20 @@
+
+# -------------------------------------------------------------------------
+# Dimmer for background
+# -------------------------------------------------------------------------
+
+Dimmer = fun (config)
+  {
+    config.opacity |= 0.85;
+    new_object =  [] | global.Dimmer | global.Object(config);
+    new_object.class = "Dimmer";
+
+    new_object.color = config.color | "black";
+    new_object.sprite.SetImage(Image("static/dialog/" + new_object.color + "_background.png"));
+    return new_object;
+  } | [];
+
+Dimmer.Build = fun ()
+  {
+    sprite.SetImage(sprite.GetImage().Scale(world.GetWidth(), world.GetHeight()));
+  };
