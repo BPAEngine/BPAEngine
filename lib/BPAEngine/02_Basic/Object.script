@@ -178,7 +178,7 @@ Object.Hide = fun ()
 
 Object.Show = fun ()
   {
-    SetOpacity(1);
+    SetOpacity(opacity);
   };
 
 Object.SetOpacity = fun (opacity)
