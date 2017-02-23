@@ -1,0 +1,19 @@
+
+# -------------------------------------------------------------------------
+# Setup World
+# -------------------------------------------------------------------------
+
+DEBUG=1;
+
+WORLD = World();
+
+WORLD.Setup = fun ()
+  {
+    Add(Background());
+
+    config.background_color = "black";
+    config.background_opacity = 0.5;
+    Add(Dialog(config));
+  };
+
+WORLD.Build();
