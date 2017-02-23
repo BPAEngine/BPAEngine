@@ -1,0 +1,119 @@
+
+# -------------------------------------------------------------------------
+# Box for UI
+# -------------------------------------------------------------------------
+
+Box = fun (config)
+  {
+    new_object =  [] | global.Box | global.Object(config);
+    new_object.class = "Box";
+
+    new_object.color = config.color | "black";
+
+    new_object.corner_size = config.corner_size | 5;
+    new_object.width = config.width | 100;
+    new_object.height = config.height | 30;
+
+    # Top Left Corner
+    new_object.images.tl_corner = Image("static/dialog/box/" + new_object.color + "/tl_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
+    new_object.parts[0] = Sprite(new_object.images.tl_corner);
+
+    # Top Right Corner
+    new_object.images.tr_corner = Image("static/dialog/box/" + new_object.color + "/tr_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
+    new_object.parts[1] = Sprite(new_object.images.tr_corner);
+
+    # Bottom Left Corner
+    new_object.images.bl_corner = Image("static/dialog/box/" + new_object.color + "/bl_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
+    new_object.parts[2] = Sprite(new_object.images.bl_corner);
+
+    # Bottom Right Corner
+    new_object.images.br_corner = Image("static/dialog/box/" + new_object.color + "/br_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
+    new_object.parts[3] = Sprite(new_object.images.br_corner);
+
+    # Top Border
+    new_object.images.top_border = Image("static/dialog/box/" + new_object.color + "/top_border.png");
+    new_object.parts[4] = Sprite(new_object.images.top_border.Scale(new_object.width - 2 * new_object.corner_size, new_object.corner_size));
+
+    # Right Border
+    new_object.images.right_border = Image("static/dialog/box/" + new_object.color + "/right_border.png");
+    new_object.parts[5] = Sprite(new_object.images.right_border.Scale(new_object.corner_size, new_object.height - 2 * new_object.corner_size));
+
+    # Left Border
+    new_object.images.left_border = Image("static/dialog/box/" + new_object.color + "/left_border.png");
+    new_object.parts[6] = Sprite(new_object.images.left_border.Scale(new_object.corner_size, new_object.height - 2 * new_object.corner_size));
+
+    # Bottom Border
+    new_object.images.bottom_border = Image("static/dialog/box/" + new_object.color + "/bottom_border.png");
+    new_object.parts[7] = Sprite(new_object.images.bottom_border.Scale(new_object.width - 2 * new_object.corner_size, new_object.corner_size));
+
+    # Center
+    new_object.images.center = Image("static/dialog/box/" + new_object.color + "/center.png");
+    new_object.parts[8] = Sprite(new_object.images.center.Scale(new_object.width - 2 * new_object.corner_size, new_object.height - 2 * new_object.corner_size));
+
+    return new_object;
+  } | [];
+
+Box.Build = fun ()
+  {
+    Set3DPosition(x, y ,z);
+    SetOpacity(opacity);
+    #Hide();
+  };
+
+Box.SetOpacity = fun (opacity)
+  {
+    for (local.i = 0; local.i < 9; local.i++)
+    {
+      parts[local.i].SetOpacity(opacity);
+    }
+  };
+
+Box.SetX = fun (x)
+  {
+    this.x = x;
+    local.right = x + width - corner_size;
+    local.left = x + corner_size;
+    parts[0].SetX(x);
+    parts[1].SetX(local.right);
+    parts[2].SetX(x);
+    parts[3].SetX(local.right);
+    parts[4].SetX(local.left);
+    parts[5].SetX(local.right);
+    parts[6].SetX(x);
+    parts[7].SetX(local.left);
+    parts[8].SetX(local.left);
+  };
+
+Box.SetY = fun (y)
+  {
+    this.y = y;
+    local.bottom = y + height - corner_size;
+    local.top = y + corner_size;
+    parts[0].SetY(y);
+    parts[1].SetY(y);
+    parts[2].SetY(local.bottom);
+    parts[3].SetY(local.bottom);
+    parts[4].SetY(y);
+    parts[5].SetY(local.top);
+    parts[6].SetY(local.top);
+    parts[7].SetY(local.bottom);
+    parts[8].SetY(local.top);
+  };
+
+Box.SetZ = fun (z)
+  {
+    this.z = z;
+    for (local.i = 0; local.i < 9; local.i++) {
+      parts[local.i].SetZ(z);
+    }
+  };
+
+Box.GetWidth = fun ()
+  {
+    return width;
+  };
+
+Box.GetHeight = fun ()
+  {
+    return height;
+  };
