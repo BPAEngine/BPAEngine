@@ -117,3 +117,21 @@ Box.GetHeight = fun ()
   {
     return height;
   };
+
+Box.SetWidth = fun (new_width)
+  {
+    parts[4].SetImage(images.top_border.Scale(new_width - 2 * corner_size, corner_size)); # Top Border
+    parts[7].SetImage(images.bottom_border.Scale(new_width - 2 * corner_size, corner_size)); # Bottom Border
+    parts[8].SetImage(images.center.Scale(new_width - 2 * corner_size, height - 2 * corner_size)); # Center
+    width = new_width;
+    SetX(x);
+  };
+
+Box.SetHeight = fun (new_height)
+  {
+    parts[5].SetImage(images.right_border.Scale(corner_size, new_height - 2 * corner_size)); # Right Border
+    parts[6].SetImage(images.left_border.Scale(corner_size, new_height - 2 * corner_size)); # Left Border
+    parts[8].SetImage(images.center.Scale(width - 2 * corner_size, new_height - 2 * corner_size));  # Center
+    height = new_height;
+    SetY(y);
+  };
