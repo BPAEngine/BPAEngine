@@ -1,0 +1,52 @@
+
+# -------------------------------------------------------------------------
+# DialogBox for UI
+# -------------------------------------------------------------------------
+
+DialogBox = fun (config)
+  {
+    new_object =  [] | global.DialogBox | global.Object(config);
+    new_object.class = "DialogBox";
+
+    new_object.background_color = config.background_color | "black";
+    new_object.background_image = Image("static/dialog/" + new_object.background_color + "_background.png");
+    new_object.background_sprite = Sprite(new_object.background_image);
+    new_object.background_sprite.SetPosition(0, 0, DIALOG_Z);
+    new_object.background_sprite.SetOpacity(0);
+
+    return new_object;
+  } | [];
+
+DialogBox.Build = fun ()
+  {
+    if (mode == "simple") {
+      background_sprite.SetImage(background_image.Scale(world.GetWidth(), world.GetHeight()));
+
+    }
+    else {
+
+    }
+  };
+
+DialogBox.Prompt = fun (prompt, entry)
+  {
+    sprite.SetImage(Image.Text(prompt, font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size)); # Prompt
+    if (this.mode == "simple") {
+    }
+    else {
+    }
+    AlignToObject(world, "cm", "cm"); # Align prompt
+    Show();
+  };
+
+DialogBox.SetOpacity = fun (opacity)
+  {
+    background_sprite.SetOpacity(opacity * background_opacity);
+    if (mode == "simple") {
+
+    }
+    else {
+
+    }
+    sprite.SetOpacity(opacity);
+  };
