@@ -179,6 +179,18 @@ Object.GetHeight = fun ()
     return sprite.GetImage().GetHeight() | 0;
   };
 
+Object.SetWidth = fun (new_width)
+  {
+    sprite.SetImage(sprite.GetImage().Scale(new_width, width));
+    width = new_width;
+  };
+
+Object.SetHeight = fun (new_height)
+  {
+    sprite.SetImage(sprite.GetImage().Scale(new_height, height));
+    height = new_height;
+  };
+
 Object.AlignToObject = fun (object, object_anchor, my_anchor)
   {
     local.object_anchor_x = object_anchor.CharAt(0); # Can be "l", "c", "r"
