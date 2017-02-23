@@ -32,6 +32,7 @@ if [ $# -eq 2 ]; then
   sed -i -e "s/THEME_EXPORT/$THEME_NAME/g" "$PLYMOUTH_FILE"
 
   # Copying images directory
+  cp -rf lib/BPAEngine/images "$EXPORT_PATH"
   cp -rf $THEME_PATH/images "$EXPORT_PATH"
 
   echo "Exporting Done!"
