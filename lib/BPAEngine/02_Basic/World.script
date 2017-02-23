@@ -60,6 +60,7 @@ World.Add = fun (object)
   {
     object.world = this;
     if (object.class == "MessageScroll") this.message_scroll = object;
+    if (object.class == "Dialog") this.dialog = object;
     Array.Add(objects, object);
   };
 
@@ -82,6 +83,7 @@ World.UpdateStatus = fun (status)
 
 World.DisplayQuestion = fun (prompt, entry)
   {
+    if (this.dialog) this.dialog.Prompt(prompt, entry);
     Debug("DisplayQuestion: " + prompt + ": " + entry, 3);
   };
 

@@ -1,0 +1,44 @@
+
+# -------------------------------------------------------------------------
+# Dialog simple/box
+# -------------------------------------------------------------------------
+
+Dialog = fun (config)
+  {
+    new_object =  [] | global.Dialog | global.Object(config);
+    new_object.class = "Dialog";
+    new_object.mode = config.mode | "simple";
+    new_object.background_color = config.background_color | "black";
+    if (new_object.mode == "simple") {
+      new_object.background_image = Image("static/dialog/" + new_object.background_color + "background.png");
+      new_object.background_sprite.SetImage(new_object.background_image);
+      new_object.background_sprite.SetPosition(0, 0, DIALOG_Z);
+      new_object.background_sprite.SetOpacity(0.75);
+    }
+    else {
+
+    }
+    return new_object;
+  } | [];
+
+Dialog.Build = fun ()
+  {
+    if (this.mode == "simple") {
+      this.background_sprite.SetImage(this.background_sprite.GetImage().Scale(this.world.GetWidth(), this.world.GetHeight()));
+    }
+    else {
+
+    }
+    ShowInfo();
+  };
+
+Dialog.Prompt = fun (prompt, entry)
+  {
+    Debug("mode: " + mode + ", ");
+    if (this.mode == "simple") {
+      Show();
+    }
+    else {
+
+    }
+  };
