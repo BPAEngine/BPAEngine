@@ -105,24 +105,23 @@ Object.GetZ = fun ()
 
 Object.SetX = fun (x)
   {
-    this.x = x;
     sprite.SetX(x + this.dx);
-
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
-      objects[local.i].SetX(x + objects[local.i].GetX()); # Subobjects are relative
+      objects[local.i].SetX(x - this.x + objects[local.i].GetX()); # Subobjects are relative
     }
+    this.x = x;
 };
 
 Object.SetY = fun (y)
   {
-    this.y = y;
     sprite.SetY(y + this.dy);
 
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
-      objects[local.i].SetY(y + objects[local.i].GetY()); # Subobjects are relative
+      objects[local.i].SetY(y - this.y + objects[local.i].GetY()); # Subobjects are relative
     }
+    this.y = y;
   };
 
 Object.SetZ = fun (z)
