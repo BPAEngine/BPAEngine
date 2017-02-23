@@ -103,11 +103,6 @@ Object.GetZ = fun ()
     return z;
   };
 
-Object.GetOpacity = fun ()
-  {
-    return sprite.GetOpacity();
-  };
-
 Object.SetX = fun (x)
   {
     this.x = x;
@@ -227,6 +222,11 @@ Object.SetOpacity = fun (opacity)
     {
       objects[local.i].SetOpacity(opacity * objects[local.i].GetOpacity()); # Subobjects are opacity relative too
     }
+  };
+
+Object.GetOpacity = fun ()
+  {
+    return opacity;
   };
 
 Object.Add = fun (object)
