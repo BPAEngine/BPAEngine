@@ -8,6 +8,13 @@ Dialog = fun (config)
     new_object =  [] | global.Dialog | global.Object(config);
     new_object.class = "Dialog";
     new_object.mode = config.mode | "simple";
+
+    new_object.font_color = config.font_color | Color.FromPalette("White");
+    new_object.font_type  = config.font_type | "Sans Bold";
+    new_object.font_size  = config.font_size | 14;
+
+    new_object.z = DIALOG_Z + 20; # Text must be in front
+
     new_object.background_color = config.background_color | "black";
     new_object.background_opacity = config.background_opacity | 0.75;
     if (new_object.mode == "simple") {
@@ -26,6 +33,7 @@ Dialog.Build = fun ()
   {
     if (mode == "simple") {
       background_sprite.SetImage(background_image.Scale(world.GetWidth(), world.GetHeight()));
+
     }
     else {
 
@@ -34,12 +42,13 @@ Dialog.Build = fun ()
 
 Dialog.Prompt = fun (prompt, entry)
   {
+    sprite.SetImage(Image.Text(prompt, font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size)); # Prompt
     if (this.mode == "simple") {
-      Show();
     }
     else {
-
     }
+    AlignToObject(world, "cm", "cm"); # Align prompt
+    Show();
   };
 
 Dialog.SetOpacity = fun (opacity)
@@ -51,4 +60,5 @@ Dialog.SetOpacity = fun (opacity)
     else {
 
     }
+    sprite.SetOpacity(opacity);
   };
