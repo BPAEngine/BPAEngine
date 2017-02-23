@@ -13,7 +13,6 @@ WORLD.Setup = fun ()
 
     config.background_color = "black";
     config.background_opacity = 0.5;
-    config.font_type = "Lato";
     Add(Dialog(config));
   };
 
