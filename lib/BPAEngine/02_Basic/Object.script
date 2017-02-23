@@ -201,9 +201,14 @@ Object.PlayAnimation = fun (index)
 
 Object.Build = fun (index)
   {
+  };
+
+Object.BuildSubobjects = fun (index)
+  {
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
       objects[local.i].Build();
+      objects[local.i].BuildSubobjects();
     }
   };
 

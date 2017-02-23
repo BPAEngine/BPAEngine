@@ -51,10 +51,6 @@ Dialog.Build = fun ()
     }
     else {
     }
-    for (local.i = 0; local.i < Array.Size(objects); local.i++)
-    {
-      objects[local.i].Build();
-    }
   };
 
 Dialog.Prompt = fun (text, entry)
