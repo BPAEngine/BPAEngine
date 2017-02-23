@@ -39,3 +39,9 @@ fun ask_passsword_callback(prompt, bullets_size)
     global.WORLD.AskPassword(prompt, bullets_size);
   }
 Plymouth.SetDisplayPasswordFunction(ask_passsword_callback);
+
+fun display_normal_callback()
+  {
+    global.WORLD.DisplayNormal();
+  }
+Plymouth.SetDisplayNormalFunction(display_normal_callback);

@@ -92,6 +92,12 @@ World.AskPassword = fun (prompt, bullets_size)
     Debug("AskPassword: " + prompt + ": " + String.Bullets(bullets_size), 3);
   };
 
+World.DisplayNormal = fun ()
+  {
+    if (this.dialog) this.dialog.Hide();
+    Debug("", 3);
+  };
+
 World.GetX = fun ()
   {
     return 0.0;
