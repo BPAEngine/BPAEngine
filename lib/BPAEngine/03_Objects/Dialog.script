@@ -33,7 +33,16 @@ Dialog.Build = fun ()
   {
     if (mode == "simple") {
       background_sprite.SetImage(background_image.Scale(world.GetWidth(), world.GetHeight()));
-
+      local.config = [];
+      config.width = 200;
+      config.height = 30;
+      config.z =  10;
+      config.opacity = 0.7;
+      config.color = "white";
+      dialog_box = Box(config);
+    #  dialog_box.AlignToObject(this, "cb", "ct");
+    #  dialog_box.MoveY(10);
+      Add(dialog_box);
     }
     else {
 
@@ -44,10 +53,10 @@ Dialog.Prompt = fun (prompt, entry)
   {
     sprite.SetImage(Image.Text(prompt, font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size)); # Prompt
     if (this.mode == "simple") {
+      AlignToObject(world, "cm", "cm"); # Align prompt
     }
     else {
     }
-    AlignToObject(world, "cm", "cm"); # Align prompt
     Show();
   };
 
