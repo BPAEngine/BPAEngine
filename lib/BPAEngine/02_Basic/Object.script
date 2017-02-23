@@ -12,6 +12,7 @@ Object = fun (config, id)
     new_object.x = config.x | 0;
     new_object.y = config.y | 0;
     new_object.z = config.z | 1;
+    new_object.last_z = new_object.z;
 
     # For sprite displacement
     new_object.dx = config.dx | 0;
@@ -70,9 +71,14 @@ Object.Update = fun (delta)
     }
 
     local.angle = ((orientation + 90.0) * Math.Pi) / 180.0;
-    SetX(x + speed * Math.Sin(local.angle));
-    SetY(y + speed * Math.Cos(local.angle));
-    SetZ(z);
+    local.dx = speed * Math.Sin(local.angle);
+    local.dy = speed * Math.Cos(local.angle);
+    if (Math.Int(local.dx)) SetX(x + local.dx);
+    if (Math.Int(local.dy)) SetY(y + local.dy);
+    if (last_z != z) {
+      SetZ(z);
+      last_z = z;
+    }
   };
 
 Object.GetX = fun ()
