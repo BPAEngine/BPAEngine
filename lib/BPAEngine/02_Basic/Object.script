@@ -34,6 +34,8 @@ Object = fun (config, id)
     new_object.sprite.SetPosition(new_object.x + new_object.dx, new_object.y + new_object.dy, new_object.z);
     new_object.sprite.SetOpacity(new_object.opacity);
 
+    new_object.objects = [];
+
     return new_object;
   } | [];
 
@@ -54,6 +56,11 @@ Object.Update = fun (delta)
     for (local.i = 0; local.i < Array.Size(animations); local.i++)
     {
       animations[local.i].Update(delta, theta);
+    }
+
+    for (local.i = 0; local.i < Array.Size(objects); local.i++)
+    {
+      objects[local.i].Update(delta);
     }
 
     if (orientation_variator)
@@ -91,22 +98,47 @@ Object.GetY = fun ()
     return y + this.dy;
   };
 
+Object.GetZ = fun ()
+  {
+    return z;
+  };
+
+Object.GetOpacity = fun ()
+  {
+    return sprite.GetOpacity();
+  };
+
 Object.SetX = fun (x)
   {
     this.x = x;
     sprite.SetX(x + this.dx);
-  };
+
+    for (local.i = 0; local.i < Array.Size(objects); local.i++)
+    {
+      objects[local.i].SetX(x + objects[local.i].GetX()); # Subobjects are relative
+    }
+};
 
 Object.SetY = fun (y)
   {
     this.y = y;
     sprite.SetY(y + this.dy);
+
+    for (local.i = 0; local.i < Array.Size(objects); local.i++)
+    {
+      objects[local.i].SetY(y + objects[local.i].GetY()); # Subobjects are relative
+    }
   };
 
 Object.SetZ = fun (z)
   {
     this.z = z;
     sprite.SetZ(z);
+
+    for (local.i = 0; local.i < Array.Size(objects); local.i++)
+    {
+      objects[local.i].SetZ(z + objects[local.i].GetZ()); # Subobjects are relative
+    }
   };
 
 Object.Set2DPosition = fun (x, y)
@@ -190,4 +222,15 @@ Object.Show = fun ()
 Object.SetOpacity = fun (opacity)
   {
     sprite.SetOpacity(opacity);
+
+    for (local.i = 0; local.i < Array.Size(objects); local.i++)
+    {
+      objects[local.i].SetOpacity(opacity * objects[local.i].GetOpacity()); # Subobjects are opacity relative too
+    }
+  };
+
+Object.Add = fun (object)
+  {
+    object.parent = this;
+    Array.Add(objects, object);
   };
