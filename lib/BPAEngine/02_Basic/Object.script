@@ -201,6 +201,10 @@ Object.PlayAnimation = fun (index)
 
 Object.Build = fun (index)
   {
+    for (local.i = 0; local.i < Array.Size(objects); local.i++)
+    {
+      objects[local.i].Build();
+    }
   };
 
 Object.Hide = fun ()
