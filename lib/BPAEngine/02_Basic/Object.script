@@ -32,7 +32,7 @@ Object = fun (config, id)
     new_object.sprite = Sprite();
     new_object.sprite.SetPosition(new_object.x + new_object.dx, new_object.y + new_object.dy, new_object.z);
     new_object.sprite.SetOpacity(new_object.opacity);
-    
+
     return new_object;
   } | [];
 
@@ -44,7 +44,7 @@ Object.To_String = fun ()
 Object.ShowInfo = fun ()
   {
     this.info_sprite = Sprite(Image.Text(class + " ("+id+")\n{\n coord: ["+x+", "+y+", "+z+"]\n disp:  ["+dx+", "+dy+"]\n dim:   ["+GetWidth()+", "+GetHeight()+"]\n speed: "+speed+"\n orien: "+orientation+"\n}", 1, 1, 1, 1, "Fixed 8"));
-    this.info_sprite.SetPosition(GetX()+20, GetY()+20, 100000);
+    this.info_sprite.SetPosition(GetX() + 20, GetY() + 20, TOP_Z);
   };
 
 Object.Update = fun (delta)

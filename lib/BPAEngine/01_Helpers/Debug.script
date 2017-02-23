@@ -3,26 +3,26 @@
 # Debug functions
 # -------------------------------------------------------------------------
 
-DEBUG=0;
+DEBUG = 0;
 DebugString = "";
 DebugSpriteLog = Sprite();
 DebugSpriteLog.SetY(80);
-DebugSpriteLog.SetZ(100000);
+DebugSpriteLog.SetZ(TOP_Z);
 
 fun Debug(text, channel)
   {
-    if (global.DEBUG)
+    if (DEBUG)
     {
       if (channel)
       {
         global.DebugSprite[channel] = Sprite(Image.Text(text, 1, 1, 1, 1, "Fixed 10"));
         global.DebugSprite[channel].SetY(channel * 12);
-        global.DebugSprite[channel].SetZ(100000);
+        global.DebugSprite[channel].SetZ(TOP_Z);
       }
       else
       {
         DebugString += "\n" + text;
-        global.DebugSpriteLog.SetImage(Image.Text(DebugString, 1, 1, 1, 1, "Fixed 10"));
+        DebugSpriteLog.SetImage(Image.Text(DebugString, 1, 1, 1, 1, "Fixed 10"));
       }
     }
   }
