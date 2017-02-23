@@ -140,12 +140,12 @@ Object.Move2DPosition = fun (dx, dy)
 
 Object.GetWidth = fun ()
   {
-    sprite.GetImage().GetWidth();
+    return sprite.GetImage().GetWidth();
   };
 
 Object.GetHeight = fun ()
   {
-    sprite.GetImage().GetHeight();
+    return sprite.GetImage().GetHeight();
   };
 
 Object.AlignToObject = fun (object, object_anchor, my_anchor)
