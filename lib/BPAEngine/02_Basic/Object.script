@@ -181,15 +181,27 @@ Object.GetHeight = fun ()
     return sprite.GetImage().GetHeight() | 0;
   };
 
-Object.SetWidth = fun (new_width)
+Object.SetWidth = fun (new_width, use_ratio)
   {
-    sprite.SetImage(sprite.GetImage().Scale(new_width, width));
+    new_height = GetHeight();
+    if (use_ratio) {
+      actual_width = GetWidth() | 1;
+      new_height = new_width * new_height / actual_width;
+    }
+
+    sprite.SetImage(sprite.GetImage().Scale(new_width, new_height));
     width = new_width;
   };
 
-Object.SetHeight = fun (new_height)
+Object.SetHeight = fun (new_height, use_ratio)
   {
-    sprite.SetImage(sprite.GetImage().Scale(new_height, height));
+    new_width = GetWidth();
+    if (use_ratio) {
+      actual_height = GetHeight() | 1;
+      new_width = new_width * new_height / actual_height;
+    }
+
+    sprite.SetImage(sprite.GetImage().Scale(new_width, new_height));
     height = new_height;
   };
 
