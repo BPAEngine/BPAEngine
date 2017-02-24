@@ -16,8 +16,15 @@ Text = fun (config)
     return new_object;
   } | [];
 
-Text.SetText = fun (text)
+Text.SetText = fun (text, max_width)
   {
-    this.text = text;
-    sprite.SetImage(Image.Text(text, font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size));
+    text_image = Image.Text(text, font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size);
+    if (max_width) {
+    local.max = Math.Max(font_size, max_width);
+      while (text_image.GetWidth() > local.max) {
+        text = text.SubString(1, String.Size(text));
+        text_image = Image.Text(text, font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size);
+      }
+    }
+    sprite.SetImage(text_image);
   };
