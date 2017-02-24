@@ -15,39 +15,39 @@ Box = fun (config)
     new_object.height = config.height | 30;
 
     # Top Left Corner
-    new_object.images.tl_corner = Image("static/dialog/box/" + new_object.color + "/tl_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
+    new_object.images.tl_corner = Image("static/box/" + new_object.color + "/tl_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
     new_object.parts[0] = Sprite(new_object.images.tl_corner);
 
     # Top Right Corner
-    new_object.images.tr_corner = Image("static/dialog/box/" + new_object.color + "/tr_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
+    new_object.images.tr_corner = Image("static/box/" + new_object.color + "/tr_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
     new_object.parts[1] = Sprite(new_object.images.tr_corner);
 
     # Bottom Left Corner
-    new_object.images.bl_corner = Image("static/dialog/box/" + new_object.color + "/bl_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
+    new_object.images.bl_corner = Image("static/box/" + new_object.color + "/bl_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
     new_object.parts[2] = Sprite(new_object.images.bl_corner);
 
     # Bottom Right Corner
-    new_object.images.br_corner = Image("static/dialog/box/" + new_object.color + "/br_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
+    new_object.images.br_corner = Image("static/box/" + new_object.color + "/br_corner_" + new_object.corner_size + "x" + new_object.corner_size + ".png");
     new_object.parts[3] = Sprite(new_object.images.br_corner);
 
     # Top Border
-    new_object.images.top_border = Image("static/dialog/box/" + new_object.color + "/top_border.png");
+    new_object.images.top_border = Image("static/box/" + new_object.color + "/top_border.png");
     new_object.parts[4] = Sprite(new_object.images.top_border.Scale(new_object.width - 2 * new_object.corner_size, new_object.corner_size));
 
     # Right Border
-    new_object.images.right_border = Image("static/dialog/box/" + new_object.color + "/right_border.png");
+    new_object.images.right_border = Image("static/box/" + new_object.color + "/right_border.png");
     new_object.parts[5] = Sprite(new_object.images.right_border.Scale(new_object.corner_size, new_object.height - 2 * new_object.corner_size));
 
     # Left Border
-    new_object.images.left_border = Image("static/dialog/box/" + new_object.color + "/left_border.png");
+    new_object.images.left_border = Image("static/box/" + new_object.color + "/left_border.png");
     new_object.parts[6] = Sprite(new_object.images.left_border.Scale(new_object.corner_size, new_object.height - 2 * new_object.corner_size));
 
     # Bottom Border
-    new_object.images.bottom_border = Image("static/dialog/box/" + new_object.color + "/bottom_border.png");
+    new_object.images.bottom_border = Image("static/box/" + new_object.color + "/bottom_border.png");
     new_object.parts[7] = Sprite(new_object.images.bottom_border.Scale(new_object.width - 2 * new_object.corner_size, new_object.corner_size));
 
     # Center
-    new_object.images.center = Image("static/dialog/box/" + new_object.color + "/center.png");
+    new_object.images.center = Image("static/box/" + new_object.color + "/center.png");
     new_object.parts[8] = Sprite(new_object.images.center.Scale(new_object.width - 2 * new_object.corner_size, new_object.height - 2 * new_object.corner_size));
 
     return new_object;
