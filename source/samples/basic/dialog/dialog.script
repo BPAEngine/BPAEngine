@@ -10,8 +10,12 @@ WORLD = World();
 WORLD.Setup = fun ()
   {
     Add(Background());
-
-    Add(Dialog());
+    
+    if (Plymouth.GetMode () == "shutdown") # For having 2 kinds of dialogs in the same preview
+    {
+      local.config.mode = "window";
+    }
+    Add(Dialog(local.config));
   };
 
 WORLD.Build();
