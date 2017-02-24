@@ -60,7 +60,6 @@ Box.Build = fun ()
   {
     Set3DPosition(x, y ,z);
     SetOpacity(opacity);
-    #Hide();
   };
 
 Box.SetSpritesOpacity = fun (new_opacity)
