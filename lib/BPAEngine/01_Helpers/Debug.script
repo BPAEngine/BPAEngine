@@ -3,7 +3,7 @@
 # Debug functions
 # -------------------------------------------------------------------------
 
-DEBUG = 0;
+DEBUG = FALSE;
 DebugString = "";
 DebugSpriteLog = Sprite();
 DebugSpriteLog.SetY(80);
