@@ -63,6 +63,7 @@ World.Add = fun (object)
     object.world = this;
     if (object.class == "MessageScroll") this.message_scroll = object;
     if (object.class == "Dialog") this.dialog = object;
+    if (object.class == "PasswordDialog") this.password_dialog = object;
     Array.Add(objects, object);
   };
 
@@ -91,6 +92,7 @@ World.DisplayQuestion = fun (prompt, entry)
 
 World.AskPassword = fun (prompt, bullets_size)
   {
+    if (this.password_dialog) this.password_dialog.Prompt(prompt, entry);
     Debug("AskPassword: " + prompt + ": " + String.Bullets(bullets_size), 3);
   };
 
