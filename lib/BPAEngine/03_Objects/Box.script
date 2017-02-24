@@ -60,11 +60,11 @@ Box.Build = fun ()
     #Hide();
   };
 
-Box.SetOpacity = fun (opacity)
+Box.SetSpritesOpacity = fun (new_opacity)
   {
     for (local.i = 0; local.i < 9; local.i++)
     {
-      parts[local.i].SetOpacity(opacity);
+      parts[local.i].SetOpacity(new_opacity);
     }
   };
 

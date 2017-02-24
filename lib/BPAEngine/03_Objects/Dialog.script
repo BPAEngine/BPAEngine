@@ -86,12 +86,3 @@ Dialog.Prompt = fun (text, entry)
 
     Show();
   };
-
-Dialog.SetOpacity = fun (opacity)
-  {
-    sprite.SetOpacity(opacity * background_opacity);
-    for (local.i = 0; local.i < Array.Size(objects); local.i++)
-    {
-      objects[local.i].SetOpacity(opacity * objects[local.i].GetOpacity()); # Subobjects are opacity relative too
-    }
-  };

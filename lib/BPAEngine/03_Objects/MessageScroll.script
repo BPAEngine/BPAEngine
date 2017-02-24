@@ -49,10 +49,11 @@ MessageScroll.Update = fun (delta)
     # Avoid updating coordinates, animations and so on
   };
 
-MessageScroll.Hide = fun ()
+MessageScroll.SetSpritesOpacity = fun (new_opacity)
   {
     for (local.i = 0; local.i < max_lines; local.i++) {
-      message_sprite[local.i].SetOpacity(0);
+    {
+      message_sprite[local.i].SetOpacity(new_opacity);
     }
   };
 

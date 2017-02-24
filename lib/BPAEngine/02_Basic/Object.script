@@ -231,21 +231,35 @@ Object.BuildSubobjects = fun (index)
 
 Object.Hide = fun ()
   {
-    SetOpacity(0);
+    SetSpritesOpacity(0);
+    for (local.i = 0; local.i < Array.Size(objects); local.i++)
+    {
+      objects[local.i].Hide();
+    }
   };
 
 Object.Show = fun ()
   {
-    SetOpacity(opacity);
+    SetSpritesOpacity(this.opacity);
+    for (local.i = 0; local.i < Array.Size(objects); local.i++)
+    {
+      objects[local.i].Show();
+    }
   };
 
-Object.SetOpacity = fun (opacity)
+Object.SetSpritesOpacity = fun (new_opacity)
   {
-    sprite.SetOpacity(opacity);
+    sprite.SetOpacity(new_opacity);
+  };
+
+Object.SetOpacity = fun (new_opacity)
+  {
+    this.opacity = new_opacity;
+    SetSpritesOpacity(this.opacity);
 
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
-      objects[local.i].SetOpacity(opacity * objects[local.i].GetOpacity()); # Subobjects are opacity relative too
+      objects[local.i].SetOpacity(this.opacity * objects[local.i].GetOpacity()); # Subobjects are opacity relative too
     }
   };
 
