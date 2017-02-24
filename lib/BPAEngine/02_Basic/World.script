@@ -99,6 +99,7 @@ World.AskPassword = fun (prompt, bullets_size)
 World.DisplayNormal = fun ()
   {
     if (this.dialog) this.dialog.Hide();
+    if (this.password_dialog) this.password_dialog.Hide();
     Debug("", 3);
   };
 
