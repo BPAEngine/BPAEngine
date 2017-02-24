@@ -15,16 +15,16 @@ Dialog = fun (config)
     new_object.dimmer_config.z =  0; # DIALOG_Z
     new_object.dimmer = Dimmer(new_object.dimmer_config);
 
+    new_object.prompt_config.z =  10; # DIALOG_Z + 10
+    new_object.prompt_config.font_color = config.prompt_font_color | Color.FromPalette("White");
+    new_object.prompt_config.font_type  = config.prompt_font_type | "Sans Bold";
+    new_object.prompt_config.font_size  = config.prompt_font_size | 14;
+
     new_object.input_box_config.z =  5; # DIALOG_Z + 5
     new_object.input_box_config.width = config.input_box_width | 300;
     new_object.input_box_config.height = config.input_box_height | 30;
     new_object.input_box_config.opacity = config.input_box_opacity | 0.75;
     new_object.input_box_config.color = config.input_box_color | "white";
-
-    new_object.prompt_config.z =  10; # DIALOG_Z + 10
-    new_object.prompt_config.font_color = config.prompt_font_color | Color.FromPalette("White");
-    new_object.prompt_config.font_type  = config.prompt_font_type | "Sans Bold";
-    new_object.prompt_config.font_size  = config.prompt_font_size | 14;
 
     new_object.input_text_config.z =  10; # DIALOG_Z + 10
     new_object.input_text_config.font_color = config.input_text_font_color | Color.FromPalette("Black");
@@ -38,9 +38,10 @@ Dialog = fun (config)
       new_object.window_config.color = config.window_color | "white";
       new_object.window = Box(new_object.window_config);
 
-      new_object.input_box_config.color = config.input_box_color | "black";
+      new_object.input_box_config.color = config.input_box_color | "black_bordered";
+      new_object.input_box_config.opacity = config.input_box_opacity | 0.2;
       new_object.prompt_config.font_color = config.prompt_font_color | Color.FromPalette("Black");
-      new_object.input_text_config.font_color = config.input_text_font_color | Color.FromPalette("White");
+      new_object.input_text_config.font_color = config.input_text_font_color | Color.FromPalette("Gray");
     }
 
     new_object.input_box = Box(new_object.input_box_config);
