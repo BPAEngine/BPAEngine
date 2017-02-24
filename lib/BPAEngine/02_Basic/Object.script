@@ -123,7 +123,6 @@ Object.SetX = fun (x)
 Object.SetY = fun (y)
   {
     sprite.SetY(y + this.dy);
-
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
       objects[local.i].SetY(y - this.y + objects[local.i].GetY()); # Subobjects are relative
