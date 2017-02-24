@@ -82,8 +82,7 @@ Dialog.Prompt = fun (text, entry)
     input_box.MoveY(20);
 
     input_text.SetText(entry);
-    input_text.AlignToObject(input_box, "lm", "lm");
-    input_text.MoveX(input_box.corner_size);
+    input_text.AlignToObject(input_box, "input", "lm");
 
     Show();
   };

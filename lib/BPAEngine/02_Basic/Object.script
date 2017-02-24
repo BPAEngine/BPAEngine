@@ -36,6 +36,8 @@ Object = fun (config, id)
 
     new_object.objects = [];
 
+    new_object.anchors = []; # Named anchors to align to
+
     return new_object;
   } | [];
 
@@ -191,22 +193,41 @@ Object.SetHeight = fun (new_height)
     height = new_height;
   };
 
+Object.GetAnchor = fun (anchor_name)
+  {
+    return anchors[anchor_name];
+  };
+
 Object.AlignToObject = fun (object, object_anchor, my_anchor)
   {
-    local.object_anchor_x = object_anchor.CharAt(0); # Can be "l", "c", "r"
-    local.object_anchor_y = object_anchor.CharAt(1); # Can be "t", "m", "b"
-    local.my_anchor_x = my_anchor.CharAt(0);
-    local.my_anchor_y = my_anchor.CharAt(1);
     local.dx = 0.0;
     local.dy = 0.0;
-    if (local.my_anchor_x == "c") local.dx -= GetWidth() / 2.0;
-    if (local.my_anchor_x == "r") local.dx -= GetWidth();
-    if (local.object_anchor_x == "c") local.dx += object.GetWidth() / 2.0;
-    if (local.object_anchor_x == "r") local.dx += object.GetWidth();
-    if (local.my_anchor_y == "m") local.dy -= GetHeight() / 2.0;
-    if (local.my_anchor_y == "b") local.dy -= GetHeight();
-    if (local.object_anchor_y == "m") local.dy += object.GetHeight() / 2.0;
-    if (local.object_anchor_y == "b") local.dy += object.GetHeight();
+
+    if (GetAnchor(my_anchor)) {
+      local.dx -= GetAnchor(my_anchor).x;
+      local.dy -= GetAnchor(my_anchor).y;
+    }
+    else {
+      local.my_anchor_x = my_anchor.CharAt(0);
+      local.my_anchor_y = my_anchor.CharAt(1);
+      if (my_anchor_x == "c") local.dx -= GetWidth() / 2.0;
+      if (my_anchor_x == "r") local.dx -= GetWidth();
+      if (my_anchor_y == "m") local.dy -= GetHeight() / 2.0;
+      if (my_anchor_y == "b") local.dy -= GetHeight();
+    }
+
+    if (object.GetAnchor(object_anchor)) {
+      local.dx += object.GetAnchor(object_anchor).x;
+      local.dy += object.GetAnchor(object_anchor).y;
+    }
+    else {
+      local.object_anchor_x = object_anchor.CharAt(0); # Can be "l", "c", "r"
+      local.object_anchor_y = object_anchor.CharAt(1); # Can be "t", "m", "b"
+      if (object_anchor_x == "c") local.dx += object.GetWidth() / 2.0;
+      if (object_anchor_x == "r") local.dx += object.GetWidth();
+      if (object_anchor_y == "m") local.dy += object.GetHeight() / 2.0;
+      if (object_anchor_y == "b") local.dy += object.GetHeight();
+    }
     Set2DPosition(object.GetX() + local.dx, object.GetY()  + local.dy);
   };
 

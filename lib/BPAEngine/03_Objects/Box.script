@@ -50,6 +50,9 @@ Box = fun (config)
     new_object.images.center = Image("static/box/" + new_object.color + "/center.png");
     new_object.parts[8] = Sprite(new_object.images.center.Scale(new_object.width - 2 * new_object.corner_size, new_object.height - 2 * new_object.corner_size));
 
+    new_object.anchors["input"].x = new_object.corner_size;
+    new_object.anchors["input"].y = new_object.height / 2.0;
+
     return new_object;
   } | [];
 
@@ -108,6 +111,11 @@ Box.SetZ = fun (z)
     }
   };
 
+Box.GetInnerWidth = fun ()
+  {
+    return width - 2 * corner_size;
+  };
+
 Box.GetWidth = fun ()
   {
     return width;
@@ -133,5 +141,6 @@ Box.SetHeight = fun (new_height)
     parts[6].SetImage(images.left_border.Scale(corner_size, new_height - 2 * corner_size)); # Left Border
     parts[8].SetImage(images.center.Scale(width - 2 * corner_size, new_height - 2 * corner_size));  # Center
     height = new_height;
+    anchors["input"].y = height / 2.0;
     SetY(y);
   };
