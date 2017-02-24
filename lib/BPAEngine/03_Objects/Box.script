@@ -116,6 +116,11 @@ Box.GetInnerWidth = fun ()
     return width - 2 * corner_size;
   };
 
+Box.GetInnerHeight = fun ()
+  {
+    return height - 2 * corner_size;
+  };
+
 Box.GetWidth = fun ()
   {
     return width;
