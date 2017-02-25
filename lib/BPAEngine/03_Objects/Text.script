@@ -27,4 +27,5 @@ Text.SetText = fun (text, max_width)
       }
     }
     sprite.SetImage(text_image);
+    return this;
   };
