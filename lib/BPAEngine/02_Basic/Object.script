@@ -118,6 +118,7 @@ Object.SetX = fun (x)
       objects[local.i].SetX(x - this.x + objects[local.i].GetX()); # Subobjects are relative
     }
     this.x = x;
+    return this;
 };
 
 Object.SetY = fun (y)
@@ -128,6 +129,7 @@ Object.SetY = fun (y)
       objects[local.i].SetY(y - this.y + objects[local.i].GetY()); # Subobjects are relative
     }
     this.y = y;
+    return this;
   };
 
 Object.SetZ = fun (z)
@@ -139,12 +141,14 @@ Object.SetZ = fun (z)
     {
       objects[local.i].SetZ(z + objects[local.i].GetZ()); # Subobjects are relative
     }
+    return this;
   };
 
 Object.Set2DPosition = fun (x, y)
   {
     SetX(x);
     SetY(y);
+    return this;
   };
 
 Object.Set3DPosition = fun (x, y, z)
@@ -152,22 +156,26 @@ Object.Set3DPosition = fun (x, y, z)
     SetX(x);
     SetY(y);
     SetZ(z);
+    return this;
   };
 
 Object.MoveX = fun (dx)
   {
     SetX(x + dx);
+    return this;
   };
 
 Object.MoveY = fun (dy)
   {
     SetY(y + dy);
+    return this;
   };
 
 Object.Move2DPosition = fun (dx, dy)
   {
     MoveX(dx);
     MoveY(dy);
+    return this;
   };
 
 Object.GetWidth = fun ()
@@ -190,6 +198,7 @@ Object.SetWidth = fun (new_width, use_ratio)
 
     sprite.SetImage(sprite.GetImage().Scale(new_width, new_height));
     width = new_width;
+    return this;
   };
 
 Object.SetHeight = fun (new_height, use_ratio)
@@ -202,6 +211,7 @@ Object.SetHeight = fun (new_height, use_ratio)
 
     sprite.SetImage(sprite.GetImage().Scale(new_width, new_height));
     height = new_height;
+    return this;
   };
 
 Object.GetAnchor = fun (anchor_name)
@@ -240,12 +250,14 @@ Object.AlignToObject = fun (object, object_anchor, my_anchor)
       if (object_anchor_y == "b") local.dy += object.GetHeight();
     }
     Set2DPosition(object.GetX() + local.dx, object.GetY()  + local.dy);
+    return this;
   };
 
 Object.PlayAnimation = fun (index)
   {
     animations[index].sprite = sprite;
     animations[index].Play();
+    return this;
   };
 
 Object.Build = fun (index)
@@ -268,6 +280,7 @@ Object.Hide = fun ()
     {
       objects[local.i].Hide();
     }
+    return this;
   };
 
 Object.Show = fun ()
@@ -277,6 +290,7 @@ Object.Show = fun ()
     {
       objects[local.i].Show();
     }
+    return this;
   };
 
 Object.SetSpritesOpacity = fun (new_opacity)
@@ -293,6 +307,7 @@ Object.SetOpacity = fun (new_opacity)
     {
       objects[local.i].SetOpacity(this.opacity * objects[local.i].GetOpacity()); # Subobjects are opacity relative too
     }
+    return this;
   };
 
 Object.GetOpacity = fun ()
