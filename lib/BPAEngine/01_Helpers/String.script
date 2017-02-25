@@ -46,3 +46,13 @@ String.SplitByFixedSize = fun(string, max)
     }
     return local.lines;
   };
+
+String.Join = fun(lines, joint)
+  {
+    local.new_string = lines[0];
+    for (local.i = 1; local.i < Array.Size(lines); local.i++)
+    {
+      new_string += joint + lines[i];
+    }
+    return new_string;
+  }
