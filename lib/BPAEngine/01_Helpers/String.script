@@ -55,4 +55,4 @@ String.Join = fun(lines, joint)
       new_string += joint + lines[i];
     }
     return new_string;
-  }
+  };
