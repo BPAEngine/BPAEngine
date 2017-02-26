@@ -46,3 +46,8 @@ String.SplitByFixedSize = fun(string, max)
     }
     return local.lines;
   };
+
+String.Multiline = fun(string, max)
+  {
+    return Array.Join(String.SplitByFixedSize(string, max), "\n");    
+  };
