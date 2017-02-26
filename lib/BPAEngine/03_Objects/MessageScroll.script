@@ -65,6 +65,7 @@ MessageScroll.Show = fun ()
         local.opacity = 1.2 - (faded_lines - local.i) / faded_lines;
       message_sprite[local.i].SetOpacity(local.opacity);
     }
+    return this;
   };
 
 MessageScroll.Build = fun ()
@@ -78,6 +79,7 @@ MessageScroll.SetX = fun (x)
     for (local.i = 0; local.i < max_lines; local.i++) {
       message_sprite[local.i].SetX(x);
     }
+    return this;
   };
 
 MessageScroll.SetY = fun (y)
@@ -86,6 +88,7 @@ MessageScroll.SetY = fun (y)
     for (local.i = 0; local.i < max_lines; local.i++) {
       message_sprite[local.i].SetY(y + (local.i * font_size * (spacing + 1.0)));
     }
+    return this;
   };
 
 MessageScroll.SetZ = fun (z)
@@ -94,6 +97,7 @@ MessageScroll.SetZ = fun (z)
     for (local.i = 0; local.i < max_lines; local.i++) {
       message_sprite[local.i].SetZ(z);
     }
+    return this;
   };
 
 MessageScroll.GetWidth = fun ()
