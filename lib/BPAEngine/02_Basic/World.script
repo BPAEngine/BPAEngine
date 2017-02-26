@@ -32,6 +32,8 @@ World.Build = fun ()
   {
     SetBackgroundColors();
     Setup();
+    if (this.dialog) this.dialog.Hide();
+    if (this.password_dialog) this.password_dialog.Hide();
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
       objects[local.i].Build();
