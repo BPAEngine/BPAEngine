@@ -8,7 +8,30 @@ Background = fun (config)
     new_object =  [] | global.Background | global.Object(config);
     new_object.class = "Background";
     new_object.z = config.z | BACKGROUND_Z;
+    new_object.downscale = config.downscale | TRUE;
+    new_object.upscale = config.upscale | FALSE;
     new_object.image = Image(config.image_path | "static/backgrounds/background.png");
-    new_object.sprite.SetImage(new_object.image);
     return new_object;
   } | [];
+
+Background.Build = fun (index)
+  {
+    local.screen_ratio = world.GetHeight() / world.GetWidth();
+    local.image_ratio = image.GetHeight() / image.GetWidth();
+
+    if (screen_ratio > image_ratio) # Screen ratio is taller than image ratio, we will match the screen height
+    {
+       local.scale_factor =  world.GetHeight() / image.GetHeight();
+    }
+    else  # Screen ratio is wider than image ratio, we will match the screen width
+    {
+       local.scale_factor =  world.GetWidth() / image.GetWidth();
+    }
+
+    local.scaled_image = image;
+    if ((downscale && scale_factor < 1.0) || (upscale && scale_factor > 1.0)) {
+      local.scaled_image = image.Scale(image.GetWidth()  * scale_factor, image.GetHeight() * scale_factor);
+    }
+
+    sprite.SetImage(scaled_image).AlignToObject(world, "cm", "cm");
+  };
