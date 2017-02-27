@@ -32,9 +32,10 @@ Object = fun (config)
     new_object.animations = [];
     new_object.sprite = Sprite();
     new_object.image_path = config.image_path;
+    new_object.image = config.image;
 
-    if (new_object.image_path) {
-      new_object.image = Image(new_object.image_path);
+    if (new_object.image_path || new_object.image) {
+      new_object.image = new_object.image | Image(new_object.image_path);
       new_object.width = config.width | new_object.image.GetWidth();
       new_object.height = config.height | new_object.image.GetHeight();
       if (config.width > 0 || config.height > 0) {
