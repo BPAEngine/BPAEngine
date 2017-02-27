@@ -3,10 +3,10 @@
 # Object definition
 # -------------------------------------------------------------------------
 
-Object = fun (config, id)
+Object = fun (config)
   {
     new_object = [] | global.Object;
-    new_object.id = id | "id_" + Math.Random() * 10000;
+    new_object.id = config.id | "id_" + Math.Int(Math.Random() * 10000);
     new_object.class = "Object";
 
     new_object.x = config.x | 0;
