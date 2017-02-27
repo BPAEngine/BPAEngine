@@ -31,9 +31,13 @@ if [ $# -eq 2 ]; then
   cat $THEME_PATH/*.plymouth.template > "$PLYMOUTH_FILE"
   sed -i -e "s/THEME_EXPORT/$THEME_NAME/g" "$PLYMOUTH_FILE"
 
-  # Copying images directory
+  # Copying images, fonts and bash scripts directories
   cp -rf lib/BPAEngine/images "$EXPORT_PATH"
   cp -rf $THEME_PATH/images "$EXPORT_PATH"
+  cp -rf lib/BPAEngine/fonts "$EXPORT_PATH"
+  cp -rf $THEME_PATH/fonts "$EXPORT_PATH"
+  cp -f lib/BPAEngine/scripts/install.sh "$EXPORT_PATH"
+  sed -i -e "s/THEME_EXPORT/$THEME_NAME/g" "$EXPORT_PATH/install.sh"
 
   echo "Exporting Done!"
 else

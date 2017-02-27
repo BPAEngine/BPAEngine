@@ -16,6 +16,8 @@ chk_root () {
 chk_root
 
 if [ $# -eq 1 ]; then
+  rm -f /usr/share/fonts/truetype/plymouth_fonts
+  ln -sf "/vagrant/export/$1/fonts" /usr/share/fonts/truetype/plymouth_fonts
   if [ "$1" == "preview_theme" ]; then
     plymouth-set-default-theme -R "$1"
   else
