@@ -9,7 +9,27 @@ WORLD = World();
 
 WORLD.Setup = fun ()
   {
-    Add(Background());
+    local.config.alignment = ["lt", "lt"];
+    if (Plymouth.GetMode() == "boot") {
+      local.config.downscale = TRUE;
+      config.image_path = "static/backgrounds/scale.png";
+    }
+    if (Plymouth.GetMode() == "shutdown") {
+      local.config.upscale = TRUE;
+      config.image_path = "static/backgrounds/640x480.png";
+    }
+    if (Plymouth.GetMode() == "updates") {
+      local.config.downscale = TRUE;
+      local.config.upscale = TRUE;
+      config.image_path = "static/backgrounds/1024x768.png";
+    }
+    Add(Background(config), "background");
+  };
+
+WORLD.PostBuild = fun ()
+  {
+    local.background = this.objects_by_name["background"];
+    Debug("Downscale: " + background.downscale + "\nUpscale: " + background.upscale + "\nScale Factor: " + background.scale_factor, 6);
   };
 
 WORLD.Build();

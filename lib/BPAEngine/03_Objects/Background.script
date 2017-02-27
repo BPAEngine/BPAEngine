@@ -22,11 +22,11 @@ Background.Build = fun (index)
 
     if (screen_ratio > image_ratio) # Screen ratio is taller than image ratio, we will match the screen height
     {
-       local.scale_factor =  world.GetHeight() / image.GetHeight();
+       this.scale_factor =  world.GetHeight() / image.GetHeight();
     }
     else  # Screen ratio is wider than image ratio, we will match the screen width
     {
-       local.scale_factor =  world.GetWidth() / image.GetWidth();
+       this.scale_factor =  world.GetWidth() / image.GetWidth();
     }
 
     local.scaled_image = image;
