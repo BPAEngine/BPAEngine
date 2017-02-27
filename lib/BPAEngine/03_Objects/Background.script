@@ -7,6 +7,7 @@ Background = fun (config)
   {
     new_object =  [] | global.Background | global.Object(config);
     new_object.class = "Background";
+    new_object.alignment = config.alignment | ["cm", "cm"];
     new_object.z = config.z | BACKGROUND_Z;
     new_object.downscale = config.downscale | TRUE;
     new_object.upscale = config.upscale | FALSE;
