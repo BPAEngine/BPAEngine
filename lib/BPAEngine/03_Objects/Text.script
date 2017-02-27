@@ -13,7 +13,6 @@ Text = fun (config)
     new_object.font_type  = config.font_type | "Sans";
     new_object.font_size  = config.font_size | 12;
 
-    new_object.sprite.SetImage(Image.Text(new_object.text, font_color[0], font_color[1], font_color[2], 1, font_type + " " + font_size));
     return new_object;
   } | [];
 
