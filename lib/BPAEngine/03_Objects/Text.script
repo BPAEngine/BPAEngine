@@ -10,7 +10,7 @@ Text = fun (config)
 
     new_object.text = config.text | "";
     new_object.font_color = config.font_color | Color.FromPalette("Black");
-    new_object.font_type  = config.font_type | "Sans";
+    new_object.font_type  = config.font_type | "Lato";
     new_object.font_size  = config.font_size | 12;
 
     return new_object;
