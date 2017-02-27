@@ -79,7 +79,7 @@ World.Add = fun (object, name)
     if (object.class == "Dialog") this.dialog = object;
     if (object.class == "PasswordDialog") this.password_dialog = object;
     Array.Add(objects, object);
-    objects_by_name[name] = object;
+    objects_by_name[name | object.id] = object;
   };
 
 World.ProcessMessage = fun (message)
