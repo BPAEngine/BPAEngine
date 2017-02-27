@@ -39,6 +39,17 @@ World.Build = fun ()
       objects[local.i].Build();
       objects[local.i].BuildSubobjects();
     }
+    PostBuild();
+  };
+
+World.Setup = fun ()
+  {
+    # This should be overwritten in the theme code
+  };
+
+World.PostBuild = fun ()
+  {
+    # This should be overwritten in the theme code
   };
 
 World.Tick = fun ()
@@ -67,11 +78,6 @@ World.Add = fun (object)
     if (object.class == "Dialog") this.dialog = object;
     if (object.class == "PasswordDialog") this.password_dialog = object;
     Array.Add(objects, object);
-  };
-
-World.Setup = fun ()
-  {
-    # This should be overwritten in the theme code
   };
 
 World.ProcessMessage = fun (message)
