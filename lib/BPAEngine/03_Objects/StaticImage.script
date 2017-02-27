@@ -7,13 +7,10 @@ StaticImage = fun (config)
   {
     new_object =  [] | global.StaticImage | global.Object(config);
     new_object.class = "StaticImage";
-    new_object.z = config.z | 0;
-    new_object.image = Image(config.image_path);
-    new_object.width = config.width | new_object.image.GetWidth();
-    new_object.height = config.height | new_object.image.GetHeight();
-    if (new_object.width > 0 || new_object.height > 0) {
-      new_object.image = new_object.image.Scale(new_object.width, new_object.height);
-    }
-    new_object.sprite.SetImage(new_object.image);
     return new_object;
   } | [];
+
+StaticImage.Update = fun (delta)
+  {
+    # Avoid updating coordinates, animations and so on
+  };
