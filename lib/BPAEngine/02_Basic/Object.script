@@ -54,7 +54,7 @@ Object = fun (config)
 
 Object.To_String = fun ()
   {
-    return class + "{"+id+", c["+x+", "+y+", "+z+"], d["+dx+", "+dy+"], dim["+GetWidth()+", "+GetHeight()+"], speed:"+speed+", orientation:"+orientation+", opacity:"+opacity+"}";
+    return class + "{"+id+", c["+x+", "+y+", "+z+"], d["+dx+", "+dy+"], dim["+GetWidth()+", "+GetHeight()+"], speed:"+speed+", orien:"+orientation+", opac:"+opacity+"}";
   };
 
 Object.ShowInfo = fun ()
