@@ -1,0 +1,32 @@
+
+# -------------------------------------------------------------------------
+# Setup World
+# -------------------------------------------------------------------------
+
+DEBUG = FALSE;
+
+WORLD = World();
+
+WORLD.Setup = fun ()
+  {
+    local.lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
+    local.font_sizes = [40, 20, 12 , 10, 8, 6];
+    local.font_types = ["Sans", "Lato", "Fixed", "DejaVuSans"];
+    for (local.j = 0; local.j < Array.Size(font_sizes); local.j++)
+    {
+      config.font_size = font_sizes[j];
+      for (local.i = 0; local.i < Array.Size(font_types); local.i++)
+      {
+        config.font_type = font_types[i];
+        local.index = i + j * Array.Size(font_types);
+        text_image[index] = Text(config).SetText(config.font_type + "(" + config.font_size + "): " + lorem_ipsum);
+        if (index > 0) {
+          text_image[index].AlignToObject(text_image[index -1], "lb", "lt");
+        }
+        Add(text_image[index]);
+      }
+    }
+  };
+
+WORLD.Build();
