@@ -1,0 +1,27 @@
+
+# -------------------------------------------------------------------------
+# Setup World
+# -------------------------------------------------------------------------
+
+DEBUG = TRUE;
+
+WORLD = World();
+
+WORLD.Setup = fun ()
+  {
+    Add(Box(), "default_box");
+
+    box_config.width = 300;
+    box_config.height = 200;
+    box_config.color = "white";
+    white_box = Box(box_config);
+    Add(white_box, "white_box");
+  };
+
+WORLD.PostBuild = fun ()
+  {
+    objects_by_name["default_box"].AlignToObject(global.WORLD, "cm", "cm");
+    objects_by_name["white_box"].AlignToObject(objects_by_name["default_box"], "cb", "ct").MoveY(20);
+  };
+
+WORLD.Build();
