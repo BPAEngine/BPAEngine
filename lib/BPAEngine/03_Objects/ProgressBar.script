@@ -1,0 +1,36 @@
+
+# -------------------------------------------------------------------------
+# ProgressBar for UI
+# -------------------------------------------------------------------------
+
+ProgressBar = fun (config)
+  {
+    new_object =  [] | global.ProgressBar | global.Object(config);
+    new_object.class = "ProgressBar";
+
+    # MAXIMOS (CALCULAR TAMAÑO EN BASE AL PROGRESO), ORIENTACIÓN,
+
+    new_object.corner_size = config.corner_size | 5;
+    new_object.width = config.width | 200;
+    new_object.height = config.height | 12;
+
+    if (!new_object.IsImageConfigured()) {
+      new_object.background_box_config.width = new_object.width;
+      new_object.background_box_config.height = new_object.height;
+      new_object.background_box_config.opacity = config.background_box_opacity | 1.0;
+      new_object.background_box_config.color = config.background_box_color | "white";
+      new_object.background_box = Box(new_object.background_box_config);
+    }
+
+#    new_object.anchors["input"].x = new_object.corner_size;
+#    new_object.anchors["input"].y = new_object.height / 2.0;
+
+    return new_object;
+  } | [];
+
+ProgressBar.Build = fun ()
+  {
+    if (!new_object.IsImageConfigured()) {
+      Add(background_box);
+    }
+  };
