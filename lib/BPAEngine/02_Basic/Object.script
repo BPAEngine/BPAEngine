@@ -13,6 +13,8 @@ Object = fun (config)
     new_object.y = config.y | 0;
     new_object.z = config.z | 1;
     new_object.last_z = new_object.z;
+    new_object.width = config.width | 0;
+    new_object.height = config.height | 0;
 
     # For sprite displacement
     new_object.dx = config.dx | 0;
@@ -55,7 +57,7 @@ Object = fun (config)
 
 Object.To_String = fun ()
   {
-    return class + "{"+id+", c["+x+", "+y+", "+z+"], d["+dx+", "+dy+"], dim["+GetWidth()+", "+GetHeight()+"], speed:"+speed+", orien:"+orientation+", opac:"+opacity+"}";
+    return class + "{"+id+", c["+x+", "+y+", "+z+"], d["+dx+", "+dy+"], dim["+GetWidth()+", "+GetHeight()+"], speed:"+speed+", orien:"+orientation+", opac:"+opacity+", objs:"+Array.Size(objects)+"}";
   };
 
 Object.ShowInfo = fun ()
@@ -192,12 +194,24 @@ Object.Move2DPosition = fun (dx, dy)
 
 Object.GetWidth = fun ()
   {
-    return sprite.GetImage().GetWidth() | 0;
+    if (IsImageConfigured()) {
+      return sprite.GetImage().GetWidth() | 0;
+    }
+    else
+    {
+      return width;
+    }
   };
 
 Object.GetHeight = fun ()
   {
-    return sprite.GetImage().GetHeight() | 0;
+    if (IsImageConfigured()) {
+      return sprite.GetImage().GetHeight() | 0;
+    }
+    else
+    {
+      return height;
+    }
   };
 
 Object.SetWidth = fun (new_width, use_ratio)
@@ -332,4 +346,9 @@ Object.Add = fun (object)
     object.parent = this;
     object.world = this.world;
     Array.Add(objects, object);
+  };
+
+Object.IsImageConfigured = fun ()
+  {
+      return image || image_path;
   };
