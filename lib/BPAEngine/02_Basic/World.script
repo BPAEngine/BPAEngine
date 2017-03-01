@@ -50,7 +50,7 @@ World.Setup = fun ()
 
 World.PostBuild = fun ()
   {
-    # This should be overwritten in the theme code
+    # This should be overwritten in the theme code, all the positioning should be here
   };
 
 World.Tick = fun ()
