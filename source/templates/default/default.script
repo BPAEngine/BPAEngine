@@ -9,6 +9,12 @@ WORLD = World();
 
 WORLD.Setup = fun ()
   {
+    # Creation and adding objects to the world should be here
+  };
+
+WORLD.PostBuild = fun ()
+  {
+    # Alignment and positioning should be here
   };
 
 WORLD.Build();
