@@ -51,7 +51,7 @@ MessageScroll.Update = fun (delta)
 
 MessageScroll.SetSpritesOpacity = fun (new_opacity)
   {
-    for (local.i = 0; local.i < max_lines; local.i++) {
+    for (local.i = 0; local.i < max_lines; local.i++)
     {
       message_sprite[local.i].SetOpacity(new_opacity);
     }
