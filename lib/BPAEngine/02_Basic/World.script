@@ -70,11 +70,15 @@ World.Update = fun (new_time, progress)
         objects[local.i].UpdateSubobjects(delta);
       }
     }
+    if (this.progress_bar) {
+      this.progress_bar.UpdateProgress(progress);
+    }
   };
 
 World.Add = fun (object, name)
   {
     object.world = this;
+    if (object.class == "ProgressBar") this.progress_bar = object;
     if (object.class == "MessageScroll") this.message_scroll = object;
     if (object.class == "Dialog") this.dialog = object;
     if (object.class == "PasswordDialog") this.password_dialog = object;
