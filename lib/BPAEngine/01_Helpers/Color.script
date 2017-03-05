@@ -26,6 +26,12 @@ Color.FromHex = fun (hex)
     hexTable["D"] = 13;
     hexTable["E"] = 14;
     hexTable["F"] = 15;
+    hexTable["a"] = 10;
+    hexTable["b"] = 11;
+    hexTable["c"] = 12;
+    hexTable["d"] = 13;
+    hexTable["e"] = 14;
+    hexTable["f"] = 15;
 
     local.red   = hexTable[hex.CharAt(1)] * 16 + hexTable[hex.CharAt(2)];
     local.green = hexTable[hex.CharAt(3)] * 16 + hexTable[hex.CharAt(4)];
