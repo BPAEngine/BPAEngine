@@ -34,5 +34,6 @@ Background.Build = fun (index)
       local.scaled_image = image.Scale(image.GetWidth()  * scale_factor, image.GetHeight() * scale_factor);
     }
 
-    sprite.SetImage(scaled_image).AlignToObject(world, "cm", "cm");
+    sprite.SetImage(scaled_image);
+    AlignToObject(world, alignment[0], alignment[1]);
   };
