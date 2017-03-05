@@ -11,23 +11,15 @@ Background = fun (config)
     new_object.z = config.z | BACKGROUND_Z;
     new_object.downscale = config.downscale | TRUE;
     new_object.upscale = config.upscale | FALSE;
+    new_object.scale_factor = 1.0;
     new_object.image = Image(config.image_path | "static/backgrounds/background.png");
+    new_object.image_ratio = new_object.image.GetHeight() / new_object.image.GetWidth();
     return new_object;
   } | [];
 
 Background.Build = fun (index)
   {
-    local.screen_ratio = world.GetHeight() / world.GetWidth();
-    local.image_ratio = image.GetHeight() / image.GetWidth();
-
-    if (screen_ratio > image_ratio) # Screen ratio is taller than image ratio, we will match the screen height
-    {
-       this.scale_factor =  world.GetHeight() / image.GetHeight();
-    }
-    else  # Screen ratio is wider than image ratio, we will match the screen width
-    {
-       this.scale_factor =  world.GetWidth() / image.GetWidth();
-    }
+    ScaleFactor(world);
 
     local.scaled_image = image;
     if ((downscale && scale_factor < 1.0) || (upscale && scale_factor > 1.0)) {
@@ -36,4 +28,17 @@ Background.Build = fun (index)
 
     sprite.SetImage(scaled_image);
     AlignToObject(world, alignment[0], alignment[1]);
+  };
+
+Background.ScaleFactor = fun (the_world)
+  {
+    if (the_world.screen_ratio > image_ratio) # Screen ratio is taller than image ratio, we will match the screen height
+    {
+       this.scale_factor =  the_world.GetHeight() / image.GetHeight();
+    }
+    else  # Screen ratio is wider than image ratio, we will match the screen width
+    {
+       this.scale_factor =  the_world.GetWidth() / image.GetWidth();
+    }
+    return this.scale_factor;
   };
