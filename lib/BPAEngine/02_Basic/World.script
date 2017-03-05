@@ -15,6 +15,7 @@ World = fun (config)
 
     new_world.width = Window.GetMaxWidth();
     new_world.height = Window.GetMaxHeight();
+    new_world.screen_ratio = new_world.height / new_world.width;
     new_world.center.x = new_world.width / 2;
     new_world.center.y = new_world.height / 2;
 
