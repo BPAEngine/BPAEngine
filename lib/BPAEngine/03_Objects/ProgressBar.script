@@ -28,8 +28,8 @@ ProgressBar = fun (config)
     new_object.progress_box_config.color = config.progress_box_color | "black";
     new_object.progress_box = Box(new_object.progress_box_config);
 
-#    new_object.anchors["percentage"].x = new_object.corner_size;
-#    new_object.anchors["percentage"].y = new_object.height / 2.0;
+    new_object.anchors["percentage"].x = progress_box.GetWidth();
+    new_object.anchors["percentage"].y = progress_box.GetHeight() / 2.0;
 
     return new_object;
   } | [];
@@ -50,5 +50,6 @@ ProgressBar.UpdateProgress = fun (progress)
     else
     {
       progress_box.SetWidth(this.width * progress).Show();
+      anchors["percentage"].x = progress_box.GetWidth();
     }
   };
