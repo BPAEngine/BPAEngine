@@ -55,6 +55,9 @@ Box = fun (config)
     new_object.anchors["input"].x = new_object.corner_size;
     new_object.anchors["input"].y = new_object.height / 2.0;
 
+    new_object.anchors["inner_lt"].x = new_object.corner_size;
+    new_object.anchors["inner_lt"].y = new_object.corner_size;
+
     return new_object;
   } | [];
 
@@ -153,5 +156,13 @@ Box.SetHeight = fun (new_height)
     height = new_height;
     anchors["input"].y = height / 2.0;
     SetY(y);
+    return this;
+  };
+
+Box.WrapObject = fun (object)
+  {
+    SetHeight(object.GetHeight() + 2 * corner_size);
+    SetWidth(object.GetWidth() + 2 * corner_size);
+    AlignToObject(object, "lt", "inner_lt");
     return this;
   };
