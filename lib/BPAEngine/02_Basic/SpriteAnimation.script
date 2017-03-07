@@ -10,10 +10,10 @@ BPAE.SpriteAnimation = fun (config)
     new_animation.frames_number = config.frames_number | 1;
     new_animation.length = config.length | 1.0;
     new_animation.loop = config.loop | -1;
+    new_animation.speed = config.speed | 1.0;
 
     new_animation.frame_duration = new_animation.length / new_animation.frames_number;
     new_animation.running = 0;
-    new_animation.speed = 1.0;
     new_animation.actual_time = 0.0;
     new_animation.actual_frame = 0;
     new_animation.frames = [];
