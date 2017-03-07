@@ -16,12 +16,26 @@ WORLD.Setup = fun ()
     box_config.color = "white";
     white_box = BPAE.Box(box_config);
     Add(white_box, "white_box");
+
+    box_config.width = 200;
+    box_config.height = 100;
+    box_config.color = "black_bordered";
+    black_bordered = BPAE.Box(box_config);
+    Add(black_bordered, "black_bordered");
+
+    box_config.width = 50;
+    box_config.height = 200;
+    box_config.color = "dimension_marks";
+    dimension_marks = BPAE.Box(box_config);
+    Add(dimension_marks, "dimension_marks");
   };
 
 WORLD.PostBuild = fun ()
   {
     objects_by_name["default_box"].AlignToObject(global.WORLD, "cm", "cm");
     objects_by_name["white_box"].AlignToObject(objects_by_name["default_box"], "cb", "ct").MoveY(20);
+    objects_by_name["black_bordered"].AlignToObject(objects_by_name["white_box"], "rm", "lm").MoveX(20);
+    objects_by_name["dimension_marks"].AlignToObject(objects_by_name["black_bordered"], "ct", "cb").MoveY(-50);
   };
 
 WORLD.Build();
