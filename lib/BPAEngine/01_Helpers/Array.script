@@ -6,15 +6,27 @@
 Array.Size = fun(array)
   {
     local.size = 0;
-    while (array[local.size])
-      local.size++;
-    return local.size;
+    while (array[size] || array[size] == 0)
+      size++;
+    return size;
   };
 
 Array.Add = fun(array, element)
   {
     array[Array.Size(array)] = element;
     return array;
+  };
+
+Array.Pop = fun(array)
+  {
+    local.last =  Array.Size(array) - 1;
+    local.pop = array[0];
+    for (local.i = 0; local.i < last; local.i++)
+    {
+      array[i] = array[i + 1];
+    }
+    array[last] = NULL;
+    return pop;
   };
 
 Array.Join = fun(lines, joint)
