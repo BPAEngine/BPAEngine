@@ -282,6 +282,8 @@ BPAE.Object.PlayAnimation = fun (index)
   {
     animations[index].sprite = sprite;
     animations[index].Play();
+    width = sprite.GetImage().GetWidth();
+    height = sprite.GetImage().GetHeight();
     this.actual_animation = index;
     return this;
   };

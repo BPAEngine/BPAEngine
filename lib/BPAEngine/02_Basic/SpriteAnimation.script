@@ -69,6 +69,7 @@ BPAE.SpriteAnimation.Play = fun (start)
   {
     actual_time = start | actual_time;
     running = 1;
+    Update(0);
   };
 
 BPAE.SpriteAnimation.Pause = fun ()
