@@ -3,14 +3,14 @@
 # Static Image
 # -------------------------------------------------------------------------
 
-StaticImage = fun (config)
+BPAE.StaticImage = fun (config)
   {
-    new_object =  [] | global.StaticImage | global.Object(config);
-    new_object.class = "StaticImage";
+    new_object =  [] | global.BPAE.StaticImage | global.BPAE.Object(config);
+    new_object.class = "BPAE.StaticImage";
     return new_object;
   } | [];
 
-StaticImage.Update = fun (delta)
+BPAE.StaticImage.Update = fun (delta)
   {
     # Avoid updating coordinates, animations and so on
   };

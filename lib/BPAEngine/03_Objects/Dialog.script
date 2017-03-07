@@ -1,42 +1,42 @@
 
 # -------------------------------------------------------------------------
-# Dialog simple/box
+# BPAE.Dialog simple/box
 # -------------------------------------------------------------------------
 
-Dialog = fun (config)
+BPAE.Dialog = fun (config)
   {
-    new_object =  [] | global.Dialog | global.Object(config);
-    new_object.class = "Dialog";
+    new_object =  [] | global.BPAE.Dialog | global.BPAE.Object(config);
+    new_object.class = "BPAE.Dialog";
     new_object.mode = config.mode | "simple";
-    new_object.z = DIALOG_Z;
+    new_object.z = BPAE.DIALOG_Z;
 
     new_object.dimmer_config.color = config.background_color | "black";
     new_object.dimmer_config.opacity = config.background_opacity | 0.6;
-    new_object.dimmer_config.z =  0; # DIALOG_Z
-    new_object.dimmer = Dimmer(new_object.dimmer_config);
+    new_object.dimmer_config.z =  0; # BPAE.DIALOG_Z
+    new_object.dimmer = BPAE.Dimmer(new_object.dimmer_config);
 
-    new_object.prompt_config.z =  10; # DIALOG_Z + 10
+    new_object.prompt_config.z =  10; # BPAE.DIALOG_Z + 10
     new_object.prompt_config.font_color = config.prompt_font_color | Color.FromPalette("White");
     new_object.prompt_config.font_type  = config.prompt_font_type | "Sans Bold";
     new_object.prompt_config.font_size  = config.prompt_font_size | 14;
 
-    new_object.input_box_config.z =  5; # DIALOG_Z + 5
+    new_object.input_box_config.z =  5; # BPAE.DIALOG_Z + 5
     new_object.input_box_config.width = config.input_box_width | 300;
     new_object.input_box_config.height = config.input_box_height | 30;
     new_object.input_box_config.opacity = config.input_box_opacity | 0.75;
     new_object.input_box_config.color = config.input_box_color | "white";
 
-    new_object.input_text_config.z =  10; # DIALOG_Z + 10
+    new_object.input_text_config.z =  10; # BPAE.DIALOG_Z + 10
     new_object.input_text_config.font_color = config.input_text_font_color | Color.FromPalette("Black");
     new_object.input_text_config.font_type  = config.input_text_font_type | "Sans";
     new_object.input_text_config.font_size  = config.input_text_font_size | 12;
 
     if (new_object.mode == "window") {
-      new_object.window_config.z =  5; # DIALOG_Z + 5
+      new_object.window_config.z =  5; # BPAE.DIALOG_Z + 5
       new_object.window_config.height = 40 + new_object.input_text_config.font_size + new_object.prompt_config.font_size + 80;
       new_object.window_config.opacity = config.window_opacity | 1.0;
       new_object.window_config.color = config.window_color | "white";
-      new_object.window = Box(new_object.window_config);
+      new_object.window = BPAE.Box(new_object.window_config);
 
       new_object.input_box_config.color = config.input_box_color | "black_bordered";
       new_object.input_box_config.opacity = config.input_box_opacity | 0.2;
@@ -44,14 +44,14 @@ Dialog = fun (config)
       new_object.input_text_config.font_color = config.input_text_font_color | Color.FromPalette("Gray");
     }
 
-    new_object.input_box = Box(new_object.input_box_config);
-    new_object.prompt = Text(new_object.prompt_config);
-    new_object.input_text = Text(new_object.input_text_config);
+    new_object.input_box = BPAE.Box(new_object.input_box_config);
+    new_object.prompt = BPAE.Text(new_object.prompt_config);
+    new_object.input_text = BPAE.Text(new_object.input_text_config);
 
     return new_object;
   } | [];
 
-Dialog.Build = fun ()
+BPAE.Dialog.Build = fun ()
   {
     Add(dimmer);
     Add(prompt);
@@ -62,7 +62,7 @@ Dialog.Build = fun ()
     }
   };
 
-Dialog.Prompt = fun (text, entry)
+BPAE.Dialog.Prompt = fun (text, entry)
   {
     AlignToObject(world, "cm", "cm");
     dimmer.AlignToObject(world, "lt", "lt");

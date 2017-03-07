@@ -1,11 +1,11 @@
 
 # -------------------------------------------------------------------------
-# Setup World
+# Setup BPAE.World
 # -------------------------------------------------------------------------
 
 DEBUG=1;
 
-WORLD = World();
+WORLD = BPAE.World();
 
 WORLD.Setup = fun ()
   {
@@ -15,7 +15,7 @@ WORLD.Setup = fun ()
     local.config.spacing = 0.5;
     local.config.x = this.center.x - (local.config.max_width * local.config.font_size) / 2;
     local.config.y = this.height - 130;
-    Add(MessageScroll(local.config));
+    Add(BPAE.MessageScroll(local.config));
   };
 
 WORLD.Build();

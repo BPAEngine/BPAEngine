@@ -1,12 +1,12 @@
 
 # -------------------------------------------------------------------------
-# Box for UI
+# BPAE.Box for UI
 # -------------------------------------------------------------------------
 
-Box = fun (config)
+BPAE.Box = fun (config)
   {
-    new_object =  [] | global.Box | global.Object(config);
-    new_object.class = "Box";
+    new_object =  [] | global.BPAE.Box | global.BPAE.Object(config);
+    new_object.class = "BPAE.Box";
 
     new_object.color = config.color | "black";
 
@@ -61,13 +61,13 @@ Box = fun (config)
     return new_object;
   } | [];
 
-Box.Build = fun ()
+BPAE.Box.Build = fun ()
   {
     Set3DPosition(x, y ,z);
     SetOpacity(opacity);
   };
 
-Box.SetSpritesOpacity = fun (new_opacity)
+BPAE.Box.SetSpritesOpacity = fun (new_opacity)
   {
     for (local.i = 0; local.i < 9; local.i++)
     {
@@ -75,7 +75,7 @@ Box.SetSpritesOpacity = fun (new_opacity)
     }
   };
 
-Box.SetX = fun (x)
+BPAE.Box.SetX = fun (x)
   {
     this.x = x;
     local.right = x + width - corner_size;
@@ -92,7 +92,7 @@ Box.SetX = fun (x)
     return this;
   };
 
-Box.SetY = fun (y)
+BPAE.Box.SetY = fun (y)
   {
     this.y = y;
     local.bottom = y + height - corner_size;
@@ -109,7 +109,7 @@ Box.SetY = fun (y)
     return this;
   };
 
-Box.SetZ = fun (z)
+BPAE.Box.SetZ = fun (z)
   {
     this.z = z;
     for (local.i = 0; local.i < 9; local.i++) {
@@ -118,27 +118,27 @@ Box.SetZ = fun (z)
     return this;
   };
 
-Box.GetInnerWidth = fun ()
+BPAE.Box.GetInnerWidth = fun ()
   {
     return width - 2 * corner_size;
   };
 
-Box.GetInnerHeight = fun ()
+BPAE.Box.GetInnerHeight = fun ()
   {
     return height - 2 * corner_size;
   };
 
-Box.GetWidth = fun ()
+BPAE.Box.GetWidth = fun ()
   {
     return width;
   };
 
-Box.GetHeight = fun ()
+BPAE.Box.GetHeight = fun ()
   {
     return height;
   };
 
-Box.SetWidth = fun (new_width)
+BPAE.Box.SetWidth = fun (new_width)
   {
     parts[4].SetImage(images.top_border.Scale(new_width - 2 * corner_size, corner_size)); # Top Border
     parts[7].SetImage(images.bottom_border.Scale(new_width - 2 * corner_size, corner_size)); # Bottom Border
@@ -148,7 +148,7 @@ Box.SetWidth = fun (new_width)
     return this;
   };
 
-Box.SetHeight = fun (new_height)
+BPAE.Box.SetHeight = fun (new_height)
   {
     parts[5].SetImage(images.right_border.Scale(corner_size, new_height - 2 * corner_size)); # Right Border
     parts[6].SetImage(images.left_border.Scale(corner_size, new_height - 2 * corner_size)); # Left Border
@@ -159,7 +159,7 @@ Box.SetHeight = fun (new_height)
     return this;
   };
 
-Box.WrapObject = fun (object)
+BPAE.Box.WrapObject = fun (object)
   {
     SetHeight(object.GetHeight() + 2 * corner_size);
     SetWidth(object.GetWidth() + 2 * corner_size);

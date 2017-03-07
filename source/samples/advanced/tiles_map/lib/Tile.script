@@ -8,7 +8,7 @@ Tile = fun (config)
     tile_image = Image("static/isometricLandscape/PNG/landscapeTiles_" + config.image_number + ".png");
     config.dx = -1;
     config.dy = -tile_image.GetHeight();
-    new_object =  [] | global.Tile | global.Object(config);
+    new_object =  [] | global.Tile | global.BPAE.Object(config);
     new_object.class = "Tile";
     new_object.image_number = config.image_number;
     new_object.sprite.SetImage(tile_image);

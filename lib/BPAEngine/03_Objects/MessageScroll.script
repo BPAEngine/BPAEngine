@@ -3,10 +3,10 @@
 # Message scroll
 # -------------------------------------------------------------------------
 
-MessageScroll = fun (config)
+BPAE.MessageScroll = fun (config)
   {
-    new_object =  [] | global.MessageScroll | global.Object(config);
-    new_object.class = "MessageScroll";
+    new_object =  [] | global.BPAE.MessageScroll | global.BPAE.Object(config);
+    new_object.class = "BPAE.MessageScroll";
     new_object.z = config.z | 1000;
 
     new_object.font_color = config.font_color | [0, 0, 0];
@@ -26,7 +26,7 @@ MessageScroll = fun (config)
     return new_object;
   } | [];
 
-MessageScroll.Add = fun (message)
+BPAE.MessageScroll.Add = fun (message)
   {
     local.message_lines = String.SplitByFixedSize(message, max_width);
     for (local.i = 0; local.i < Array.Size(local.message_lines); local.i++) {
@@ -44,12 +44,12 @@ MessageScroll.Add = fun (message)
     }
   };
 
-MessageScroll.Update = fun (delta)
+BPAE.MessageScroll.Update = fun (delta)
   {
     # Avoid updating coordinates, animations and so on
   };
 
-MessageScroll.SetSpritesOpacity = fun (new_opacity)
+BPAE.MessageScroll.SetSpritesOpacity = fun (new_opacity)
   {
     for (local.i = 0; local.i < max_lines; local.i++)
     {
@@ -57,7 +57,7 @@ MessageScroll.SetSpritesOpacity = fun (new_opacity)
     }
   };
 
-MessageScroll.Show = fun ()
+BPAE.MessageScroll.Show = fun ()
   {
     local.opacity = 1;
     for (local.i = 0; local.i < max_lines; local.i++) {
@@ -68,12 +68,12 @@ MessageScroll.Show = fun ()
     return this;
   };
 
-MessageScroll.Build = fun ()
+BPAE.MessageScroll.Build = fun ()
   {
     Show();
   };
 
-MessageScroll.SetX = fun (x)
+BPAE.MessageScroll.SetX = fun (x)
   {
     this.x = x;
     for (local.i = 0; local.i < max_lines; local.i++) {
@@ -82,7 +82,7 @@ MessageScroll.SetX = fun (x)
     return this;
   };
 
-MessageScroll.SetY = fun (y)
+BPAE.MessageScroll.SetY = fun (y)
   {
     this.y = y;
     for (local.i = 0; local.i < max_lines; local.i++) {
@@ -91,7 +91,7 @@ MessageScroll.SetY = fun (y)
     return this;
   };
 
-MessageScroll.SetZ = fun (z)
+BPAE.MessageScroll.SetZ = fun (z)
   {
     this.z = z;
     for (local.i = 0; local.i < max_lines; local.i++) {
@@ -100,12 +100,12 @@ MessageScroll.SetZ = fun (z)
     return this;
   };
 
-MessageScroll.GetWidth = fun ()
+BPAE.MessageScroll.GetWidth = fun ()
   {
     return max_width * font_size;
   };
 
-MessageScroll.GetHeight = fun ()
+BPAE.MessageScroll.GetHeight = fun ()
   {
     return max_lines * font_size * (spacing + 1.0);
   };

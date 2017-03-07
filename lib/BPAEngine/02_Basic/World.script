@@ -1,11 +1,11 @@
 
 # -------------------------------------------------------------------------
-# World definition
+# BPAE.World definition
 # -------------------------------------------------------------------------
 
-World = fun (config)
+BPAE.World = fun (config)
   {
-    new_world = [] | global.World;
+    new_world = [] | global.BPAE.World;
     new_world.background_colors = config.background_colors | [Color.FromPalette("Gray"), Color.FromPalette("DarkGray")];
 
     new_world.tick = 0;
@@ -24,13 +24,13 @@ World = fun (config)
     return new_world;
   } | [];
 
-World.SetBackgroundColors = fun ()
+BPAE.World.SetBackgroundColors = fun ()
   {
     Window.SetBackgroundTopColor(background_colors[0][0], background_colors[0][1], background_colors[0][2]);
     Window.SetBackgroundBottomColor(background_colors[1][0], background_colors[1][1], background_colors[1][2]);
   };
 
-World.Build = fun ()
+BPAE.World.Build = fun ()
   {
     SetBackgroundColors();
     Setup();
@@ -44,22 +44,22 @@ World.Build = fun ()
     PostBuild();
   };
 
-World.Setup = fun ()
+BPAE.World.Setup = fun ()
   {
     # This should be overwritten in the theme code
   };
 
-World.PostBuild = fun ()
+BPAE.World.PostBuild = fun ()
   {
     # This should be overwritten in the theme code, all the positioning should be here
   };
 
-World.Tick = fun ()
+BPAE.World.Tick = fun ()
   {
     tick++;
   };
 
-World.Update = fun (new_time, progress)
+BPAE.World.Update = fun (new_time, progress)
   {
     delta = (new_time - time) * speed;
     if (delta > 0.0)
@@ -76,64 +76,64 @@ World.Update = fun (new_time, progress)
     }
   };
 
-World.Add = fun (object, name)
+BPAE.World.Add = fun (object, name)
   {
     object.world = this;
-    if (object.class == "ProgressBar") this.progress_bar = object;
-    if (object.class == "MessageScroll") this.message_scroll = object;
-    if (object.class == "Dialog") this.dialog = object;
-    if (object.class == "PasswordDialog") this.password_dialog = object;
+    if (object.class == "BPAE.ProgressBar") this.progress_bar = object;
+    if (object.class == "BPAE.MessageScroll") this.message_scroll = object;
+    if (object.class == "BPAE.Dialog") this.dialog = object;
+    if (object.class == "BPAE.PasswordDialog") this.password_dialog = object;
     Array.Add(objects, object);
     objects_by_name[name | object.id] = object;
   };
 
-World.ProcessMessage = fun (message)
+BPAE.World.ProcessMessage = fun (message)
   {
     if (message_scroll) message_scroll.Add(message);
     Debug("ProcessMessage: " + message, 3);
   };
 
-World.UpdateStatus = fun (status)
+BPAE.World.UpdateStatus = fun (status)
   {
     if (message_scroll) message_scroll.Add(status);
     Debug("UpdateStatus: " + status, 3);
   };
 
-World.DisplayQuestion = fun (prompt, entry)
+BPAE.World.DisplayQuestion = fun (prompt, entry)
   {
     if (this.dialog) this.dialog.Prompt(prompt, entry);
     Debug("DisplayQuestion: " + prompt + ": " + entry, 3);
   };
 
-World.AskPassword = fun (prompt, bullets_size)
+BPAE.World.AskPassword = fun (prompt, bullets_size)
   {
     if (this.password_dialog) this.password_dialog.Prompt(prompt, bullets_size);
     Debug("AskPassword: " + prompt + ": " + String.Bullets(bullets_size), 3);
   };
 
-World.DisplayNormal = fun ()
+BPAE.World.DisplayNormal = fun ()
   {
     if (this.dialog) this.dialog.Hide();
     if (this.password_dialog) this.password_dialog.Hide();
     Debug("", 3);
   };
 
-World.GetX = fun ()
+BPAE.World.GetX = fun ()
   {
     return 0.0;
   };
 
-World.GetY = fun ()
+BPAE.World.GetY = fun ()
   {
     return 0.0;
   };
 
-World.GetWidth = fun ()
+BPAE.World.GetWidth = fun ()
   {
     return width;
   };
 
-World.GetHeight = fun ()
+BPAE.World.GetHeight = fun ()
   {
     return height;
   };

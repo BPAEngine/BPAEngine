@@ -1,20 +1,20 @@
 
 # -------------------------------------------------------------------------
-# Dimmer for background
+# BPAE.Dimmer for background
 # -------------------------------------------------------------------------
 
-Dimmer = fun (config)
+BPAE.Dimmer = fun (config)
   {
     config.opacity |= 0.85;
-    new_object =  [] | global.Dimmer | global.Object(config);
-    new_object.class = "Dimmer";
+    new_object =  [] | global.BPAE.Dimmer | global.BPAE.Object(config);
+    new_object.class = "BPAE.Dimmer";
 
     new_object.color = config.color | "black";
     new_object.sprite.SetImage(Image("static/dimmer/" + new_object.color + ".png"));
     return new_object;
   } | [];
 
-Dimmer.Build = fun ()
+BPAE.Dimmer.Build = fun ()
   {
     sprite.SetImage(sprite.GetImage().Scale(world.GetWidth(), world.GetHeight()));
   };

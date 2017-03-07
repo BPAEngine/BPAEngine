@@ -7,7 +7,7 @@ DEBUG = FALSE;
 DebugString = "";
 DebugSpriteLog = Sprite();
 DebugSpriteLog.SetY(80);
-DebugSpriteLog.SetZ(TOP_Z);
+DebugSpriteLog.SetZ(BPAE.TOP_Z);
 
 fun Debug(text, channel)
   {
@@ -17,7 +17,7 @@ fun Debug(text, channel)
       {
         global.DebugSprite[channel] = Sprite(Image.Text(text, 1, 1, 1, 1, "Fixed 10"));
         global.DebugSprite[channel].SetY(channel * 12);
-        global.DebugSprite[channel].SetZ(TOP_Z);
+        global.DebugSprite[channel].SetZ(BPAE.TOP_Z);
       }
       else
       {

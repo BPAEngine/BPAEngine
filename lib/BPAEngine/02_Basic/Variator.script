@@ -3,16 +3,16 @@
 # Variators
 # -------------------------------------------------------------------------
 
-Variator = fun (config)
+BPAE.Variator = fun (config)
   {
-    new_variator = [] | global.Variator;
+    new_variator = [] | global.BPAE.Variator;
     new_variator.type = config.type | "linear";
     new_variator.constant = config.constant | 1.0;
     new_variator.max = config.max;
     return new_variator;
   } | [];
 
-Variator.Next = fun (value, delta)
+BPAE.Variator.Next = fun (value, delta)
   {
     if (type == "linear")
       local.next_value =  value + constant;

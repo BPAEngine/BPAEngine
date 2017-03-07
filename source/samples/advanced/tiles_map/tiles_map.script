@@ -1,11 +1,11 @@
 
 # -------------------------------------------------------------------------
-# Setup World
+# Setup BPAE.World
 # -------------------------------------------------------------------------
 
 DEBUG = TRUE;
 
-WORLD = World();
+WORLD = BPAE.World();
 
 WORLD.Setup = fun ()
   {
@@ -41,7 +41,7 @@ WORLD.Setup = fun ()
         local.tile_config.opacity = 0.0;
         local.variator.constant = Math.Random() * 0.05 + 0.01;
         local.variator.max = 1.0;
-        local.tile_config.opacity_variator = Variator(local.variator);
+        local.tile_config.opacity_variator = BPAE.Variator(local.variator);
         local.tile = Tile(local.tile_config);
         Add(local.tile);
       }

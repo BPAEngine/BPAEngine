@@ -1,12 +1,12 @@
 
 # -------------------------------------------------------------------------
-# ProgressBar for UI
+# BPAE.ProgressBar for UI
 # -------------------------------------------------------------------------
 
-ProgressBar = fun (config)
+BPAE.ProgressBar = fun (config)
   {
-    new_object =  [] | global.ProgressBar | global.Object(config);
-    new_object.class = "ProgressBar";
+    new_object =  [] | global.BPAE.ProgressBar | global.BPAE.Object(config);
+    new_object.class = "BPAE.ProgressBar";
 
     new_object.show_label = config.show_label | TRUE;
     new_object.corner_size = config.corner_size | 5;
@@ -18,27 +18,27 @@ ProgressBar = fun (config)
       new_object.background_box_config.height = new_object.height;
       new_object.background_box_config.opacity = config.background_box_opacity | 1.0;
       new_object.background_box_config.color = config.background_box_color | "white";
-      new_object.background_box = Box(new_object.background_box_config);
+      new_object.background_box = BPAE.Box(new_object.background_box_config);
     }
 
     new_object.progress_box_config.width = new_object.corner_size * 2;
     new_object.progress_box_config.height = new_object.height;
     new_object.progress_box_config.opacity = config.progress_box_opacity | 0.5;
     new_object.progress_box_config.color = config.progress_box_color | "black";
-    new_object.progress_box = Box(new_object.progress_box_config);
+    new_object.progress_box = BPAE.Box(new_object.progress_box_config);
     new_object.progress_box.anchors["percentage"].x = new_object.progress_box.GetWidth();
     new_object.progress_box.anchors["percentage"].y = new_object.progress_box.GetHeight() / 2.0;
 
     new_object.label_config.font_color = Color.FromPalette("White");
     new_object.label_config.font_size = Math.Int((new_object.height - new_object.corner_size * 2) * 0.8);
-    new_object.progress_label = Text(new_object.label_config);
+    new_object.progress_label = BPAE.Text(new_object.label_config);
 
 
 
     return new_object;
   } | [];
 
-ProgressBar.Build = fun ()
+BPAE.ProgressBar.Build = fun ()
   {
     if (!new_object.IsImageConfigured()) {
       Add(background_box);
@@ -50,7 +50,7 @@ ProgressBar.Build = fun ()
     }
   };
 
-ProgressBar.UpdateProgress = fun (percentage_done)
+BPAE.ProgressBar.UpdateProgress = fun (percentage_done)
   {
     if (percentage_done == 0) {
       progress_box.Hide();

@@ -1,20 +1,20 @@
 
 # -------------------------------------------------------------------------
-# Setup World
+# Setup BPAE.World
 # -------------------------------------------------------------------------
 
 DEBUG = TRUE;
 
-WORLD = World();
+WORLD = BPAE.World();
 
 WORLD.Setup = fun ()
   {
-    Add(Box(), "default_box");
+    Add(BPAE.Box(), "default_box");
 
     box_config.width = 300;
     box_config.height = 200;
     box_config.color = "white";
-    white_box = Box(box_config);
+    white_box = BPAE.Box(box_config);
     Add(white_box, "white_box");
   };
 

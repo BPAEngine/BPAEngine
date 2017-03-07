@@ -3,9 +3,9 @@
 # Sprite Animations
 # -------------------------------------------------------------------------
 
-SpriteAnimation = fun (config)
+BPAE.SpriteAnimation = fun (config)
   {
-    new_animation = [] | global.SpriteAnimation;
+    new_animation = [] | global.BPAE.SpriteAnimation;
     new_animation.filename = config.filename | "animation-";
     new_animation.frames_number = config.frames_number | 1;
     new_animation.length = config.length | 1.0;
@@ -21,7 +21,7 @@ SpriteAnimation = fun (config)
     return new_animation;
   } | [];
 
-SpriteAnimation.LoadImages = fun ()
+BPAE.SpriteAnimation.LoadImages = fun ()
   {
     for (local.i = 0; local.i < frames_number; local.i++)
     {
@@ -29,7 +29,7 @@ SpriteAnimation.LoadImages = fun ()
     }
   };
 
-SpriteAnimation.Update = fun (delta, theta)
+BPAE.SpriteAnimation.Update = fun (delta, theta)
   {
     if (running)
     {
@@ -54,18 +54,18 @@ SpriteAnimation.Update = fun (delta, theta)
     }
   };
 
-SpriteAnimation.Play = fun (start)
+BPAE.SpriteAnimation.Play = fun (start)
   {
     actual_time = start | actual_time;
     running = 1;
   };
 
-SpriteAnimation.Pause = fun ()
+BPAE.SpriteAnimation.Pause = fun ()
   {
     running = 0;
   };
 
-SpriteAnimation.Stop = fun ()
+BPAE.SpriteAnimation.Stop = fun ()
   {
     actual_time = 0.0;
     running = 0;

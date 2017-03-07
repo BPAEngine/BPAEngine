@@ -1,13 +1,13 @@
 
 # -------------------------------------------------------------------------
-# Object definition
+# BPAE.Object definition
 # -------------------------------------------------------------------------
 
-Object = fun (config)
+BPAE.Object = fun (config)
   {
-    new_object = [] | global.Object;
+    new_object = [] | global.BPAE.Object;
     new_object.id = config.id | "id_" + Math.Int(Math.Random() * 10000);
-    new_object.class = "Object";
+    new_object.class = "BPAE.Object";
 
     new_object.x = config.x | 0;
     new_object.y = config.y | 0;
@@ -57,18 +57,18 @@ Object = fun (config)
     return new_object;
   } | [];
 
-Object.To_String = fun ()
+BPAE.Object.To_String = fun ()
   {
     return class + "{"+id+", c["+x+", "+y+", "+z+"], d["+dx+", "+dy+"], dim["+GetWidth()+", "+GetHeight()+"], speed:"+speed+", orien:"+orientation+", opac:"+opacity+", objs:"+Array.Size(objects)+"}";
   };
 
-Object.ShowInfo = fun ()
+BPAE.Object.ShowInfo = fun ()
   {
     this.info_sprite = Sprite(Image.Text(class + " ("+id+")\n{\n coord: ["+x+", "+y+", "+z+"]\n disp:  ["+dx+", "+dy+"]\n dim:   ["+GetWidth()+", "+GetHeight()+"]\n speed: "+speed+"\n orien: "+orientation+"\n opacity: "+opacity+"\n}", 1, 1, 1, 1, "Fixed 8"));
-    this.info_sprite.SetPosition(GetX() + 20, GetY() + 20, TOP_Z);
+    this.info_sprite.SetPosition(GetX() + 20, GetY() + 20, BPAE.TOP_Z);
   };
 
-Object.Update = fun (delta)
+BPAE.Object.Update = fun (delta)
   {
     theta += spin;
     animations[actual_animation].Update(delta, theta);
@@ -108,22 +108,22 @@ Object.Update = fun (delta)
     }
   };
 
-Object.GetX = fun ()
+BPAE.Object.GetX = fun ()
   {
     return x + this.dx;
   };
 
-Object.GetY = fun ()
+BPAE.Object.GetY = fun ()
   {
     return y + this.dy;
   };
 
-Object.GetZ = fun ()
+BPAE.Object.GetZ = fun ()
   {
     return z;
   };
 
-Object.SetX = fun (x)
+BPAE.Object.SetX = fun (x)
   {
     sprite.SetX(x + this.dx);
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
@@ -134,7 +134,7 @@ Object.SetX = fun (x)
     return this;
 };
 
-Object.SetY = fun (y)
+BPAE.Object.SetY = fun (y)
   {
     sprite.SetY(y + this.dy);
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
@@ -145,7 +145,7 @@ Object.SetY = fun (y)
     return this;
   };
 
-Object.SetZ = fun (z)
+BPAE.Object.SetZ = fun (z)
   {
     this.z = z;
     sprite.SetZ(z);
@@ -157,14 +157,14 @@ Object.SetZ = fun (z)
     return this;
   };
 
-Object.Set2DPosition = fun (x, y)
+BPAE.Object.Set2DPosition = fun (x, y)
   {
     SetX(x);
     SetY(y);
     return this;
   };
 
-Object.Set3DPosition = fun (x, y, z)
+BPAE.Object.Set3DPosition = fun (x, y, z)
   {
     SetX(x);
     SetY(y);
@@ -172,26 +172,26 @@ Object.Set3DPosition = fun (x, y, z)
     return this;
   };
 
-Object.MoveX = fun (dx)
+BPAE.Object.MoveX = fun (dx)
   {
     SetX(x + dx);
     return this;
   };
 
-Object.MoveY = fun (dy)
+BPAE.Object.MoveY = fun (dy)
   {
     SetY(y + dy);
     return this;
   };
 
-Object.Move2DPosition = fun (dx, dy)
+BPAE.Object.Move2DPosition = fun (dx, dy)
   {
     MoveX(dx);
     MoveY(dy);
     return this;
   };
 
-Object.GetWidth = fun ()
+BPAE.Object.GetWidth = fun ()
   {
     if (IsImageConfigured()) {
       return sprite.GetImage().GetWidth() | 0;
@@ -202,7 +202,7 @@ Object.GetWidth = fun ()
     }
   };
 
-Object.GetHeight = fun ()
+BPAE.Object.GetHeight = fun ()
   {
     if (IsImageConfigured()) {
       return sprite.GetImage().GetHeight() | 0;
@@ -213,7 +213,7 @@ Object.GetHeight = fun ()
     }
   };
 
-Object.SetWidth = fun (new_width, use_ratio)
+BPAE.Object.SetWidth = fun (new_width, use_ratio)
   {
     new_height = GetHeight();
     if (use_ratio) {
@@ -226,7 +226,7 @@ Object.SetWidth = fun (new_width, use_ratio)
     return this;
   };
 
-Object.SetHeight = fun (new_height, use_ratio)
+BPAE.Object.SetHeight = fun (new_height, use_ratio)
   {
     new_width = GetWidth();
     if (use_ratio) {
@@ -239,12 +239,12 @@ Object.SetHeight = fun (new_height, use_ratio)
     return this;
   };
 
-Object.GetAnchor = fun (anchor_name)
+BPAE.Object.GetAnchor = fun (anchor_name)
   {
     return anchors[anchor_name];
   };
 
-Object.AlignToObject = fun (object, object_anchor, my_anchor)
+BPAE.Object.AlignToObject = fun (object, object_anchor, my_anchor)
   {
     local.dx = 0.0;
     local.dy = 0.0;
@@ -278,7 +278,7 @@ Object.AlignToObject = fun (object, object_anchor, my_anchor)
     return this;
   };
 
-Object.PlayAnimation = fun (index)
+BPAE.Object.PlayAnimation = fun (index)
   {
     animations[index].sprite = sprite;
     animations[index].Play();
@@ -286,11 +286,11 @@ Object.PlayAnimation = fun (index)
     return this;
   };
 
-Object.Build = fun (index)
+BPAE.Object.Build = fun (index)
   {
   };
 
-Object.BuildSubobjects = fun (index)
+BPAE.Object.BuildSubobjects = fun (index)
   {
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
@@ -299,7 +299,7 @@ Object.BuildSubobjects = fun (index)
     }
   };
 
-Object.Hide = fun ()
+BPAE.Object.Hide = fun ()
   {
     SetSpritesOpacity(0);
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
@@ -309,7 +309,7 @@ Object.Hide = fun ()
     return this;
   };
 
-Object.Show = fun ()
+BPAE.Object.Show = fun ()
   {
     SetSpritesOpacity(this.opacity);
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
@@ -319,12 +319,12 @@ Object.Show = fun ()
     return this;
   };
 
-Object.SetSpritesOpacity = fun (new_opacity)
+BPAE.Object.SetSpritesOpacity = fun (new_opacity)
   {
     sprite.SetOpacity(new_opacity);
   };
 
-Object.SetOpacity = fun (new_opacity)
+BPAE.Object.SetOpacity = fun (new_opacity)
   {
     this.opacity = new_opacity;
     SetSpritesOpacity(this.opacity);
@@ -336,19 +336,19 @@ Object.SetOpacity = fun (new_opacity)
     return this;
   };
 
-Object.GetOpacity = fun ()
+BPAE.Object.GetOpacity = fun ()
   {
     return opacity;
   };
 
-Object.Add = fun (object)
+BPAE.Object.Add = fun (object)
   {
     object.parent = this;
     object.world = this.world;
     Array.Add(objects, object);
   };
 
-Object.IsImageConfigured = fun ()
+BPAE.Object.IsImageConfigured = fun ()
   {
       return image || image_path;
   };

@@ -1,11 +1,11 @@
 
 # -------------------------------------------------------------------------
-# Setup World
+# Setup BPAE.World
 # -------------------------------------------------------------------------
 
 DEBUG = FALSE;
 
-WORLD = World();
+WORLD = BPAE.World();
 
 WORLD.Setup = fun ()
   {
@@ -20,7 +20,7 @@ WORLD.Setup = fun ()
       {
         config.font_type = font_types[i];
         local.index = i + j * Array.Size(font_types);
-        text_image[index] = Text(config).SetText(config.font_type + "(" + config.font_size + "): " + lorem_ipsum);
+        text_image[index] = BPAE.Text(config).SetText(config.font_type + "(" + config.font_size + "): " + lorem_ipsum);
         if (index > 0) {
           text_image[index].AlignToObject(text_image[index -1], "lb", "lt");
         }

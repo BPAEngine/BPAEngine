@@ -9,3 +9,5 @@
 # GitHub: https://github.com/mdeniz/BPAEngine
 # License: GPL v3
 #
+
+BPAE = [];

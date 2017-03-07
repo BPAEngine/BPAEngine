@@ -1,11 +1,11 @@
 
 # -------------------------------------------------------------------------
-# Setup World
+# Setup BPAE.World
 # -------------------------------------------------------------------------
 
 DEBUG = TRUE;
 
-WORLD = World();
+WORLD = BPAE.World();
 
 WORLD.Setup = fun ()
   {
@@ -23,7 +23,7 @@ WORLD.Setup = fun ()
       local.config.upscale = TRUE;
       config.image_path = "static/backgrounds/1024x768.png";
     }
-    Add(Background(config), "background");
+    Add(BPAE.Background(config), "background");
   };
 
 WORLD.PostBuild = fun ()
