@@ -51,7 +51,6 @@ BPAE.SpriteAnimation.ToggleDirection = fun () {
   else {
     direction = "forward";
   }
-#  Debug("toggle to " +direction + " at " + actual_time);
 };
 
 BPAE.SpriteAnimation.GetIncrement = fun () {
