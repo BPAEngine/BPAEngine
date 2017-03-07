@@ -32,6 +32,8 @@ Object = fun (config)
     new_object.opacity_variator = config.opacity_variator;
 
     new_object.animations = [];
+    new_object.actual_animation = 0;
+
     new_object.sprite = Sprite();
     new_object.image_path = config.image_path;
     new_object.image = config.image;
@@ -69,10 +71,7 @@ Object.ShowInfo = fun ()
 Object.Update = fun (delta)
   {
     theta += spin;
-    for (local.i = 0; local.i < Array.Size(animations); local.i++)
-    {
-      animations[local.i].Update(delta, theta);
-    }
+    animations[actual_animation].Update(delta, theta);
 
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
@@ -283,6 +282,7 @@ Object.PlayAnimation = fun (index)
   {
     animations[index].sprite = sprite;
     animations[index].Play();
+    this.actual_animation = index;
     return this;
   };
 
