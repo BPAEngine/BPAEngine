@@ -48,7 +48,7 @@ BPAE.SpriteAnimation.Update = fun (delta, theta)
           return;
         }
       }
-      actual_frame = Math.Int(actual_time / frame_duration);
+      actual_frame = Math.Clamp(Math.Int(actual_time / frame_duration), 0, frames_number - 1);
       if (sprite)
         sprite.SetImage(frames[actual_frame].Rotate(theta));
     }
