@@ -29,7 +29,7 @@ WORLD.Setup = fun (mode)
 WORLD.PostBuild = fun ()
   {
     local.background = this.objects_by_name["background"];
-    Debug("Downscale: " + background.downscale + "\nUpscale: " + background.upscale + "\nScale Factor: " + background.scale_factor, 6);
+    Debug("Downscale: " + background.downscale + "\nUpscale: " + background.upscale + "\nScale Factor: " + background.scale_factor + "\nImage Ratio: " + background.image_ratio, 6);
   };
 
 WORLD.Build();
