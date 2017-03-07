@@ -52,7 +52,7 @@ Object = fun (config)
 
     new_object.objects = [];
 
-    new_object.anchors = []; # Named anchors to align to
+    new_object.anchors = config.anchors | []; # Named anchors to align to
 
     return new_object;
   } | [];
