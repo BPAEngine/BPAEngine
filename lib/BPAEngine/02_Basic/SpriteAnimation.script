@@ -12,6 +12,8 @@ BPAE.SpriteAnimation = fun (config)
     new_animation.end_frame = config.end_frame | 0;
     new_animation.length = config.length | 1.0;
     new_animation.loop = config.loop | -1;
+    new_animation.rebound = config.rebound | FALSE;
+    new_animation.direction = config.direction | "forward";
     new_animation.speed = config.speed | 1.0;
 
     new_animation.frames_number = new_animation.end_frame - new_animation.start_frame + 1;
@@ -40,18 +42,42 @@ BPAE.SpriteAnimation.LoadImages = fun ()
     }
   };
 
+BPAE.SpriteAnimation.ToggleDirection = fun () {
+  if (direction == "forward") {
+    direction = "backward";
+  }
+  else {
+    direction = "forward";
+  }
+#  Debug("toggle to " +direction + " at " + actual_time);
+};
+
+BPAE.SpriteAnimation.GetIncrement = fun () {
+  if (direction == "forward") {
+    return 1;
+  }
+  else {
+    return -1;
+  }
+};
+
 BPAE.SpriteAnimation.Update = fun (delta, theta)
   {
     if (running)
     {
-      actual_time += delta * speed;
-      if (actual_time >= length)
+      actual_time += delta * speed * GetIncrement();
+      if ((actual_time >= length &&  direction == "forward") ||
+          (actual_time <= 0.0 && direction != "forward"))
       {
         if (loop != 0)
         {
-          if (loop > 0)
+          if (loop > 0) {
             loop--;
-          Play(0.0);
+          }
+          if (rebound) {
+            ToggleDirection();
+          }
+          RePlay();
         }
         else
         {
@@ -70,6 +96,16 @@ BPAE.SpriteAnimation.Play = fun (start)
     actual_time = start | actual_time;
     running = 1;
     Update(0);
+  };
+
+BPAE.SpriteAnimation.RePlay = fun ()
+  {
+    if (direction == "forward") {
+      Play(0);
+    }
+    else {
+      Play(length);
+    }
   };
 
 BPAE.SpriteAnimation.Pause = fun ()
