@@ -7,11 +7,14 @@ BPAE.SpriteAnimation = fun (config)
   {
     new_animation = [] | global.BPAE.SpriteAnimation;
     new_animation.filename = config.filename | "animation-";
-    new_animation.frames_number = config.frames_number | 1;
+    new_animation.digits = config.digits | FALSE;
+    new_animation.start_frame = config.start_frame | 0;
+    new_animation.end_frame = config.end_frame | 0;
     new_animation.length = config.length | 1.0;
     new_animation.loop = config.loop | -1;
     new_animation.speed = config.speed | 1.0;
 
+    new_animation.frames_number = new_animation.end_frame - new_animation.start_frame + 1;
     new_animation.frame_duration = new_animation.length / new_animation.frames_number;
     new_animation.running = 0;
     new_animation.actual_time = 0.0;
@@ -23,9 +26,17 @@ BPAE.SpriteAnimation = fun (config)
 
 BPAE.SpriteAnimation.LoadImages = fun ()
   {
-    for (local.i = 0; local.i < frames_number; local.i++)
+    local.base_path = "sprites/" + filename;
+    for (local.i = start_frame; local.i <= end_frame; local.i++)
     {
-      frames[local.i] = Image("sprites/" + filename + local.i + ".png");
+      local.string_index = "" + i;
+      if (digits) {
+        local.zeros_needed = digits - String.Size(string_index);
+        for (local.j = 0; local.j < zeros_needed; local.j++) {
+          string_index = "0" + string_index;
+        }
+      }
+      frames[i-start_frame] = Image(base_path + string_index + ".png");
     }
   };
 
