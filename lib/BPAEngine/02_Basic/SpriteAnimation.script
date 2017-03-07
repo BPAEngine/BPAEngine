@@ -3,6 +3,8 @@
 # Sprite Animations
 # -------------------------------------------------------------------------
 
+BPAE.INFINITE_LOOP = -1;
+
 BPAE.SpriteAnimation = fun (config)
   {
     new_animation = [] | global.BPAE.SpriteAnimation;
@@ -11,7 +13,7 @@ BPAE.SpriteAnimation = fun (config)
     new_animation.start_frame = config.start_frame | 0;
     new_animation.end_frame = config.end_frame | 0;
     new_animation.length = config.length | 1.0;
-    new_animation.loop = config.loop | -1;
+    new_animation.loop = config.loop | BPAE.INFINITE_LOOP;
     new_animation.rebound = config.rebound | FALSE;
     new_animation.direction = config.direction | "forward";
     new_animation.speed = config.speed | 1.0;
