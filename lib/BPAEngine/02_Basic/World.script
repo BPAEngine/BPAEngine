@@ -33,7 +33,7 @@ BPAE.World.SetBackgroundColors = fun ()
 BPAE.World.Build = fun ()
   {
     SetBackgroundColors();
-    Setup();
+    Setup(Plymouth.GetMode());
     if (this.dialog) this.dialog.Hide();
     if (this.password_dialog) this.password_dialog.Hide();
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
@@ -44,7 +44,7 @@ BPAE.World.Build = fun ()
     PostBuild();
   };
 
-BPAE.World.Setup = fun ()
+BPAE.World.Setup = fun (mode)
   {
     # This should be overwritten in the theme code
   };

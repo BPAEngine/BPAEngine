@@ -7,7 +7,7 @@ DEBUG = TRUE;
 
 WORLD = BPAE.World();
 
-WORLD.Setup = fun ()
+WORLD.Setup = fun (mode)
   {
     # Creation and adding objects to the world should be here
   };

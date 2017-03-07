@@ -7,18 +7,18 @@ DEBUG = TRUE;
 
 WORLD = BPAE.World();
 
-WORLD.Setup = fun ()
+WORLD.Setup = fun (mode)
   {
     local.config.alignment = ["lt", "lt"];
-    if (Plymouth.GetMode() == "boot") {
+    if (mode == "boot") {
       local.config.downscale = TRUE;
       config.image_path = "static/backgrounds/scale.png";
     }
-    if (Plymouth.GetMode() == "shutdown") {
+    if (mode == "shutdown") {
       local.config.upscale = TRUE;
       config.image_path = "static/backgrounds/640x480.png";
     }
-    if (Plymouth.GetMode() == "updates") {
+    if (mode == "updates") {
       local.config.downscale = TRUE;
       local.config.upscale = TRUE;
       config.image_path = "static/backgrounds/1024x768.png";
