@@ -105,11 +105,6 @@ BPAE.Object.Update = fun (delta)
     theta += spin;
     animations[actual_animation].Update(delta, theta);
 
-    for (local.i = 0; local.i < Array.Size(objects); local.i++)
-    {
-      objects[i].Update(delta);
-    }
-
     if (orientation_variator)
     {
       orientation = orientation_variator.Next(orientation, delta);
@@ -133,10 +128,11 @@ BPAE.Object.Update = fun (delta)
       SetZ(z);
       last_z = z;
     }
+    
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
-      objects[local.i].Update(delta);
-      objects[local.i].UpdateSubobjects(delta);
+      objects[i].Update(delta);
+      objects[i].UpdateSubobjects(delta);
     }
   };
 
