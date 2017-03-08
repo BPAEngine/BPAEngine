@@ -54,6 +54,8 @@ BPAE.Object = fun (config)
 
     new_object.anchors = config.anchors | []; # Named anchors to align to
 
+    new_object.actions = [];
+
     return new_object;
   } | [];
 
@@ -68,14 +70,44 @@ BPAE.Object.ShowInfo = fun ()
     this.info_sprite.SetPosition(GetX() + 20, GetY() + 20, BPAE.TOP_Z);
   };
 
+BPAE.Object.CommandActions = fun (delta)
+  {
+    if (actions[0].state == "new") {
+      StartAction(actions[0]);
+    }
+
+    if (actions[0].state == "running") {
+      UpdateAction(actions[0], delta);
+    }
+
+    if (actions[0].state == "finished") {
+      StopAction(actions[0]);
+      Array.Pop(actions);
+    }
+  };
+
+BPAE.Object.StartAction = fun (action)
+  {
+  };
+
+BPAE.Object.UpdateAction = fun (action, delta)
+  {
+  };
+
+BPAE.Object.StopAction = fun (action)
+  {
+  };
+
 BPAE.Object.Update = fun (delta)
   {
+    CommandActions(delta);
+
     theta += spin;
     animations[actual_animation].Update(delta, theta);
 
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
-      objects[local.i].Update(delta);
+      objects[i].Update(delta);
     }
 
     if (orientation_variator)
