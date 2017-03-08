@@ -9,8 +9,3 @@ BPAE.StaticImage = fun (config)
     new_object.class = "BPAE.StaticImage";
     return new_object;
   } | [];
-
-BPAE.StaticImage.Update = fun (delta)
-  {
-    # Avoid updating coordinates, animations and so on
-  };

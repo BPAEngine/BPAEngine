@@ -70,6 +70,20 @@ BPAE.Object.ShowInfo = fun ()
     this.info_sprite.SetPosition(GetX() + 20, GetY() + 20, BPAE.TOP_Z);
   };
 
+BPAE.Object.Update = fun (delta)
+  {
+    PlanActions();
+    CommandActions(delta);
+    UpdateAnimations(delta);
+    UpdateVariators(delta);
+    UpdateCoordinates();
+    UpdateSubobjects(delta);
+  };
+
+BPAE.Object.PlanActions = fun ()
+  {
+  };
+
 BPAE.Object.CommandActions = fun (delta)
   {
     if (actions[0].state == "new") {
@@ -98,13 +112,14 @@ BPAE.Object.StopAction = fun (action)
   {
   };
 
-BPAE.Object.Update = fun (delta)
+BPAE.Object.UpdateAnimations = fun (delta)
   {
-    CommandActions(delta);
-
     theta += spin;
     animations[actual_animation].Update(delta, theta);
+  };
 
+BPAE.Object.UpdateVariators = fun (delta)
+  {
     if (orientation_variator)
     {
       orientation = orientation_variator.Next(orientation, delta);
@@ -118,7 +133,10 @@ BPAE.Object.Update = fun (delta)
       opacity = opacity_variator.Next(opacity, delta);
       SetOpacity(opacity);
     }
+  };
 
+BPAE.Object.UpdateCoordinates = fun ()
+  {
     local.angle = ((orientation + 90.0) * Math.Pi) / 180.0;
     local.dx = speed * Math.Sin(local.angle);
     local.dy = speed * Math.Cos(local.angle);
@@ -128,11 +146,13 @@ BPAE.Object.Update = fun (delta)
       SetZ(z);
       last_z = z;
     }
-    
+  };
+
+BPAE.Object.UpdateSubobjects = fun (delta)
+  {
     for (local.i = 0; local.i < Array.Size(objects); local.i++)
     {
       objects[i].Update(delta);
-      objects[i].UpdateSubobjects(delta);
     }
   };
 

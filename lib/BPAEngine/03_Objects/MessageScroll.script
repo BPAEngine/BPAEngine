@@ -44,11 +44,6 @@ BPAE.MessageScroll.Add = fun (message)
     }
   };
 
-BPAE.MessageScroll.Update = fun (delta)
-  {
-    # Avoid updating coordinates, animations and so on
-  };
-
 BPAE.MessageScroll.SetSpritesOpacity = fun (new_opacity)
   {
     for (local.i = 0; local.i < max_lines; local.i++)

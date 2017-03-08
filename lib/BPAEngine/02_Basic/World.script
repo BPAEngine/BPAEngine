@@ -68,7 +68,6 @@ BPAE.World.Update = fun (new_time, progress)
       for (local.i = 0; local.i < Array.Size(objects); local.i++)
       {
         objects[local.i].Update(delta);
-        objects[local.i].UpdateSubobjects(delta);
       }
     }
     if (this.progress_bar) {
