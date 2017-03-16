@@ -73,7 +73,7 @@ BPAE.Object.ShowInfo = fun ()
 BPAE.Object.Update = fun (delta)
   {
     PlanActions();
-    CommandActions(delta);
+    RunAction(delta);
     UpdateAnimations(delta);
     UpdateVariators(delta);
     UpdateCoordinates();
@@ -84,32 +84,22 @@ BPAE.Object.PlanActions = fun ()
   {
   };
 
-BPAE.Object.CommandActions = fun (delta)
+BPAE.Object.RunAction = fun (delta)
   {
-    if (actions[0].state == "new") {
-      StartAction(actions[0]);
+    if (actions[0].IsNew()) {
+      actions[0].Start();
     }
-
-    if (actions[0].state == "running") {
-      UpdateAction(actions[0], delta);
+    else {
+      if (actions[0].IsRunning()) {
+        actions[0].Run(delta);
+      }
+      else {
+        if (actions[0].IsFinished()) {
+          actions[0].Stop();
+          Array.Pop(actions);
+        }
+      }
     }
-
-    if (actions[0].state == "finished") {
-      StopAction(actions[0]);
-      Array.Pop(actions);
-    }
-  };
-
-BPAE.Object.StartAction = fun (action)
-  {
-  };
-
-BPAE.Object.UpdateAction = fun (action, delta)
-  {
-  };
-
-BPAE.Object.StopAction = fun (action)
-  {
   };
 
 BPAE.Object.UpdateAnimations = fun (delta)
