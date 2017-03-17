@@ -318,6 +318,7 @@ BPAE.Object.AlignToObject = fun (object, object_anchor, my_anchor)
 
 BPAE.Object.PlayAnimation = fun (index)
   {
+    animations[actual_animation].Stop();
     animations[index].sprite = sprite;
     animations[index].Play();
     width = sprite.GetImage().GetWidth();
