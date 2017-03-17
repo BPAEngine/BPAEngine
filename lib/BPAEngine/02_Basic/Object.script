@@ -102,6 +102,12 @@ BPAE.Object.RunAction = fun (delta)
     }
   };
 
+
+BPAE.Object.AddAction = fun (action)
+  {
+    Array.Add(actions, action);
+  };
+
 BPAE.Object.UpdateAnimations = fun (delta)
   {
     theta += spin;
