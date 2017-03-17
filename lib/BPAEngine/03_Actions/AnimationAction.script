@@ -28,7 +28,7 @@ BPAE.AnimationAction.Update = fun (delta)
 
 BPAE.AnimationAction.StopCondition = fun ()
   {
-    return duration <= time_running;
+    return duration <= time_running || duration < 0;
   };
 
 BPAE.AnimationAction.To_String = fun ()
