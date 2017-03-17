@@ -5,7 +5,9 @@
 
 Array.Size = fun(array)
   {
-    local.size = 0;
+    if (array) {
+      local.size = 0;
+    }
     while (array[size] || array[size] == 0)
       size++;
     return size;
