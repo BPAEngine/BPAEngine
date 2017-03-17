@@ -5,7 +5,7 @@
 
 BPAE.StaticImage = fun (config)
   {
-    new_object =  [] | global.BPAE.StaticImage | global.BPAE.Object(config);
+    local.new_object =  [] | global.BPAE.StaticImage | global.BPAE.Object(config);
     new_object.class = "BPAE.StaticImage";
     return new_object;
   } | [];

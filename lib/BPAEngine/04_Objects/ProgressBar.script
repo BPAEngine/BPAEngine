@@ -5,7 +5,7 @@
 
 BPAE.ProgressBar = fun (config)
   {
-    new_object =  [] | global.BPAE.ProgressBar | global.BPAE.Object(config);
+    local.new_object =  [] | global.BPAE.ProgressBar | global.BPAE.Object(config);
     new_object.class = "BPAE.ProgressBar";
 
     new_object.show_label = config.show_label | TRUE;

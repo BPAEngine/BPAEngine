@@ -5,7 +5,7 @@
 
 BPAE.Box = fun (config)
   {
-    new_object =  [] | global.BPAE.Box | global.BPAE.Object(config);
+    local.new_object =  [] | global.BPAE.Box | global.BPAE.Object(config);
     new_object.class = "BPAE.Box";
 
     new_object.color = config.color | "black";

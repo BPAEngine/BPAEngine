@@ -6,7 +6,7 @@
 BPAE.Dimmer = fun (config)
   {
     config.opacity |= 0.85;
-    new_object =  [] | global.BPAE.Dimmer | global.BPAE.Object(config);
+    local.new_object =  [] | global.BPAE.Dimmer | global.BPAE.Object(config);
     new_object.class = "BPAE.Dimmer";
 
     new_object.color = config.color | "black";

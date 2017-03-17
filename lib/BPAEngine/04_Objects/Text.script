@@ -5,7 +5,7 @@
 
 BPAE.Text = fun (config)
   {
-    new_object =  [] | global.BPAE.Text | global.BPAE.Object(config);
+    local.new_object =  [] | global.BPAE.Text | global.BPAE.Object(config);
     new_object.class = "BPAE.Text";
 
     new_object.text = config.text | "";

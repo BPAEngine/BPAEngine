@@ -5,7 +5,7 @@
 
 BPAE.MessageScroll = fun (config)
   {
-    new_object =  [] | global.BPAE.MessageScroll | global.BPAE.Object(config);
+    local.new_object =  [] | global.BPAE.MessageScroll | global.BPAE.Object(config);
     new_object.class = "BPAE.MessageScroll";
     new_object.z = config.z | 1000;
 

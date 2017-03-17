@@ -5,7 +5,7 @@
 
 BPAE.Background = fun (config)
   {
-    new_object =  [] | global.BPAE.Background | global.BPAE.Object(config);
+    local.new_object =  [] | global.BPAE.Background | global.BPAE.Object(config);
     new_object.class = "BPAE.Background";
     new_object.alignment = config.alignment | ["cm", "cm"];
     new_object.z = config.z | BPAE.BACKGROUND_Z;
