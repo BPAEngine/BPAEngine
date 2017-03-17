@@ -31,6 +31,17 @@ Array.Pop = fun(array)
     return pop;
   };
 
+Array.Push = fun(array, element)
+  {
+    local.last = Array.Size(array);
+    for (local.i = 1; local.i < last; local.i++)
+    {
+      array[i] = array[i - 1];
+    }
+    array[0] = element;
+    return array;
+  };
+
 Array.Join = fun(lines, joint)
   {
     local.new_string = lines[0];
