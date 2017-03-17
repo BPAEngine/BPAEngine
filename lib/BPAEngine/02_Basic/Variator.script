@@ -5,7 +5,7 @@
 
 BPAE.Variator = fun (config)
   {
-    new_variator = [] | global.BPAE.Variator;
+    local.new_variator = [] | global.BPAE.Variator;
     new_variator.type = config.type | "linear";
     new_variator.constant = config.constant | 1.0;
     new_variator.max = config.max;

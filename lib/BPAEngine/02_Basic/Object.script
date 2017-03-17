@@ -5,7 +5,7 @@
 
 BPAE.Object = fun (config)
   {
-    new_object = [] | global.BPAE.Object;
+    local.new_object = [] | global.BPAE.Object;
     new_object.id = config.id | "id_" + Math.Int(Math.Random() * 10000);
     new_object.class = "BPAE.Object";
 

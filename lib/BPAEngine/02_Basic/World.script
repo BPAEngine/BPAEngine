@@ -5,7 +5,7 @@
 
 BPAE.World = fun (config)
   {
-    new_world = [] | global.BPAE.World;
+    local.new_world = [] | global.BPAE.World;
     new_world.background_colors = config.background_colors | [Color.FromPalette("Gray"), Color.FromPalette("DarkGray")];
 
     new_world.tick = 0;

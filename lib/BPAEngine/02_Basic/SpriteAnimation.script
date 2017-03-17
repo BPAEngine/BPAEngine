@@ -7,7 +7,7 @@ BPAE.INFINITE_LOOP = -1;
 
 BPAE.SpriteAnimation = fun (config)
   {
-    new_animation = [] | global.BPAE.SpriteAnimation;
+    local.new_animation = [] | global.BPAE.SpriteAnimation;
     new_animation.filename = config.filename | "animation-";
     new_animation.digits = config.digits | FALSE;
     new_animation.start_frame = config.start_frame | 0;
