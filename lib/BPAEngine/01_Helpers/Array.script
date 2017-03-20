@@ -33,10 +33,10 @@ Array.Pop = fun(array)
 
 Array.Push = fun(array, element)
   {
-    local.last = Array.Size(array);
-    for (local.i = 1; local.i < last; local.i++)
+    local.last = Array.Size(array) - 1;
+    for (local.i = last; local.i >= 0; local.i--)
     {
-      array[i] = array[i - 1];
+      array[i + 1] = array[i];
     }
     array[0] = element;
     return array;
