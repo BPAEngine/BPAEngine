@@ -1,0 +1,52 @@
+
+# -------------------------------------------------------------------------
+# MoveAction
+# -------------------------------------------------------------------------
+
+BPAE.MoveAction = fun (config)
+  {
+    local.new_action = [] | global.BPAE.MoveAction | global.BPAE.Action(config);
+    new_action.class = "BPAE.MoveAction";
+
+    # Duration for finishing the action
+    new_action.duration = config.options.duration | 0.0;
+    new_action.time_running = 0.0;
+
+    new_action.animation = config.options.animation | 0.0;
+    new_action.speed = config.options.speed | 1.0;
+    new_action.angle = config.options.angle | 0.0;
+
+    return new_action;
+  } | [];
+
+BPAE.MoveAction.Start = fun ()
+  {
+    state =  BPAE.ACTION_RUNNING;
+    time_running = 0.0;
+    object.PlayAnimation(animation);
+    object.speed = speed;
+    object.orientation = angle;
+  };
+
+BPAE.MoveAction.Update = fun (delta)
+  {
+    time_running += delta;
+  };
+
+BPAE.MoveAction.StopCondition = fun ()
+  {
+    return duration <= time_running || duration < 0;
+  };
+
+BPAE.Action.Stop = fun ()
+  {
+    state = BPAE.ACTION_STOPPED;
+    object.speed = 0.0;
+  };
+
+BPAE.MoveAction.To_String = fun ()
+  {
+    return class + " { name: "+name+" state: "+state+" anim: "+animation+" dur: "+duration+" time: "+time_running+" speed: "+speed+" angle: "+angle+"}";
+
+    return class + "\n{\nname: "+name+"\nobject: "+object.class+"\nstate: "+state+"\nanimation: "+animation+"\nduration: "+duration+"\ntime_running:"+time_running+"\nspeed: "+speed+"\nangle: "+angle+"\n}";
+  };
