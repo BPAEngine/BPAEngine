@@ -102,6 +102,10 @@ BPAE.Object.RunAction = fun (delta)
     }
   };
 
+BPAE.Object.PushAction = fun (action)
+  {
+    Array.Push(actions, action);
+  };
 
 BPAE.Object.AddAction = fun (action)
   {
