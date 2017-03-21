@@ -62,6 +62,9 @@ BPAE.World.Tick = fun ()
 BPAE.World.Update = fun (new_time, progress)
   {
     delta = (new_time - time) * speed;
+    if (delta > 0.1) {
+      delta = 0.1;
+    }
     if (delta > 0.0)
     {
       time = new_time;
