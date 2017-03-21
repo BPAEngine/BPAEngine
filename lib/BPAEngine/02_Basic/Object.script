@@ -76,7 +76,7 @@ BPAE.Object.Update = fun (delta)
     RunAction(delta);
     UpdateAnimations(delta);
     UpdateVariators(delta);
-    UpdateCoordinates();
+    UpdateCoordinates(delta);
     UpdateSubobjects(delta);
   };
 
@@ -135,11 +135,11 @@ BPAE.Object.UpdateVariators = fun (delta)
     }
   };
 
-BPAE.Object.UpdateCoordinates = fun ()
+BPAE.Object.UpdateCoordinates = fun (delta)
   {
     local.angle = ((orientation + 90.0) * Math.Pi) / 180.0;
-    local.dx = speed * Math.Sin(local.angle);
-    local.dy = speed * Math.Cos(local.angle);
+    local.dx = delta * speed * Math.Sin(local.angle);
+    local.dy = delta * speed * Math.Cos(local.angle);
     if (Math.Int(local.dx)) SetX(x + local.dx);
     if (Math.Int(local.dy)) SetY(y + local.dy);
     if (last_z != z) {
