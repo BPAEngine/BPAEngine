@@ -39,6 +39,7 @@ BPAE.Action.IsFinished = fun ()
 BPAE.Action.Start = fun ()
   {
     state = BPAE.ACTION_RUNNING;
+    DoStart();
   };
 
 BPAE.Action.Run = fun (delta)
@@ -53,6 +54,7 @@ BPAE.Action.Run = fun (delta)
 BPAE.Action.Stop = fun ()
   {
     state = BPAE.ACTION_STOPPED;
+    DoStop();
   };
 
 BPAE.Action.StopCondition = fun ()

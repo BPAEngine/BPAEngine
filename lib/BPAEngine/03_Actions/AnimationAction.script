@@ -14,9 +14,8 @@ BPAE.AnimationAction = fun (config)
     return new_action;
   } | [];
 
-BPAE.AnimationAction.Start = fun ()
+BPAE.AnimationAction.DoStart = fun ()
   {
-    state =  BPAE.ACTION_RUNNING;
     time_running = 0.0;
     object.PlayAnimation(animation);
   };

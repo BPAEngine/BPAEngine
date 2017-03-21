@@ -19,9 +19,8 @@ BPAE.MoveAction = fun (config)
     return new_action;
   } | [];
 
-BPAE.MoveAction.Start = fun ()
+BPAE.MoveAction.DoStart = fun ()
   {
-    state =  BPAE.ACTION_RUNNING;
     time_running = 0.0;
     object.PlayAnimation(animation);
     object.speed = speed;
@@ -38,9 +37,8 @@ BPAE.MoveAction.StopCondition = fun ()
     return duration <= time_running || duration < 0;
   };
 
-BPAE.Action.Stop = fun ()
+BPAE.Action.DoStop = fun ()
   {
-    state = BPAE.ACTION_STOPPED;
     object.speed = 0.0;
   };
 
