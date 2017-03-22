@@ -1,0 +1,36 @@
+
+# -------------------------------------------------------------------------
+# SpawnAction
+# -------------------------------------------------------------------------
+
+BPAE.SpawnAction = fun (config)
+  {
+    local.new_action = [] | global.BPAE.SpawnAction | global.BPAE.Action(config);
+    new_action.class = "BPAE.SpawnAction";
+
+    new_action.duration = config.options.duration | 0.0;
+    new_action.time_running = 0.0;
+    return new_action;
+  } | [];
+
+BPAE.SpawnAction.DoStart = fun ()
+  {
+    time_running = 0.0;
+    local.new_object = options.object_class(options.object_config);
+    object.world.Add(new_object);
+  };
+
+BPAE.SpawnAction.Update = fun (delta)
+  {
+    time_running += delta;
+  };
+
+BPAE.SpawnAction.StopCondition = fun ()
+  {
+    return duration <= time_running || duration < 0;
+  };
+
+BPAE.SpawnAction.To_String = fun ()
+  {
+    return class + "\n{\nname: "+name+"\nobject: "+object.class+"\nstate: "+state+"\nduration: "+duration+"\ntime_running:"+time_running+"\n}";
+  };
