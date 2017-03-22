@@ -92,7 +92,7 @@ Plymouth lacks of an Array class, it only defines a Hash type that can have sequ
 
 #### Array.Size
 
-Calculates the length of an array (based on sequential integer indexes).
+Calculates the length of an array based on sequential integer indexes.
 
 ###### Signature
 
@@ -120,6 +120,22 @@ Array.Size(my_array); // It returns 2
 ---
 
 ##### Array.Add
+
+Add the element given at the end of the array. Returns the changed array.
+
+###### Signature
+
+```js
+Array.Add(array, element) => Array
+```
+
+###### Examples
+
+A very basic example with sequential indexes implicitly created:
+```js
+my_array = [3, 2, 6];
+Array.Add(my_array, 5); // It returns [3, 2, 6, 5]
+```
 
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L16-L20)
 
