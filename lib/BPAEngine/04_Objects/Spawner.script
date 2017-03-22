@@ -1,0 +1,31 @@
+
+# -------------------------------------------------------------------------
+# Spawner
+# -------------------------------------------------------------------------
+
+BPAE.Spawner = fun (config)
+  {
+    local.new_object =  [] | global.BPAE.Spawner | global.BPAE.Object(config);
+    new_object.class = "BPAE.Spawner";
+    new_object.object_class = config.object_class;
+    new_object.object_config = config.object_config;
+
+    new_object.max = config.max | 0;
+    new_object.count = 0;
+    return new_object;
+  } | [];
+
+BPAE.Spawner.PlanActions = fun ()
+  {
+    if (Array.Size(actions) == 0 && count < max) {
+      local.action_config.name = "spawn";
+      action_config.object = this;
+      action_config.options.duration = Math.Random() + 0.2;
+      action_config.options.object_class = object_class;
+      action_config.options.object_config = object_config;
+      action_config.options.object_config.x = GetX();
+      action_config.options.object_config.y = GetY();
+      AddAction(BPAE.SpawnAction(action_config));
+      count++;
+    }
+  };
