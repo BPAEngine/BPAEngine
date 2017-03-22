@@ -88,20 +88,26 @@ Plymouth lacks of an Array class, it only defines a Hash type that can have sequ
 
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script)
 
-#### <a name="Array.Size"></a>Array.Size
+---
 
-Array.<b>Size</b>(array) => integer
+#### <a name="Array.Size"></a>Array.Size
 
 Calculates the length of an array (based on sequential integer indexes).
 
-###### Examples:
+###### Signature
+
+```js
+Array.Size(array) => integer
+```
+
+###### Examples
 
 A very basic example with sequential indexes implicitly created:
 ```js
 my_array = [3, 2, 6];
 Array.Size(my_array); // It returns 3
 ```
-When the indexes are not sequentialy added the method will return the longest sequence:
+When the indexes are not sequentially added the method will return the longest sequence:
 ```js
 my_array[0] = "a";
 my_array[1] = "b";
@@ -111,16 +117,37 @@ Array.Size(my_array); // It returns 2
 
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L6-L14)
 
+---
+
 ##### <a name="Array.Add"></a>Array.Add
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L16-L20)
+
+---
 
 ##### <a name="Array.Pop"></a>Array.Pop
 
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L22-L32)
+
+---
+
 ##### <a name="Array.Push"></a>Array.Push
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L34-L43)
+
+---
 
 ##### <a name="Array.Join"></a>Array.Join
 
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L45-L53)
+
+---
+
 ##### <a name="Array.Empty"></a>Array.Empty
 
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L55-L63)
+
+---
 
 ### <a name="color"></a>Color
 
