@@ -23,8 +23,8 @@ BPAE.Spawner.PlanActions = fun ()
       action_config.options.duration = Math.Random() + 0.2;
       action_config.options.object_class = object_class;
       action_config.options.object_config = object_config;
-      action_config.options.object_config.x = GetX();
-      action_config.options.object_config.y = GetY();
+      action_config.options.object_config.x = Math.Random() * GetWidth() + GetX();
+      action_config.options.object_config.y = Math.Random() * GetHeight() + GetY();
       AddAction(BPAE.SpawnAction(action_config));
       count++;
     }
