@@ -6,7 +6,7 @@
 fun boot_progress_callback (time, progress)
   {
     global.WORLD.Update(time, progress);
-    Debug("Refresh: " + global.WORLD.tick + " Time: " +  Math.Int(global.WORLD.time) + " Delta (ms): " +  (Math.Int(global.WORLD.delta*100000) / 100) + " Frames/s: " + Math.Int(1.0 / global.WORLD.delta)  + " Progress: " + Math.Int(progress*100) + "%"+ " Objects: " + Array.Size(global.WORLD.objects), 1);
+    Debug("Refresh: " + global.WORLD.tick + " Time: " +  Math.Int(global.WORLD.time) + " Progress: " + Math.Int(progress*100) + "%"+ " Objects: " + Array.Size(global.WORLD.objects) + " Frames/s: " + Math.Int(1.0 / global.WORLD.delta)  + " Delta (ms): " +  (Math.Int(global.WORLD.delta*100000) / 100), 1);
   }
 Plymouth.SetBootProgressFunction(boot_progress_callback);
 
