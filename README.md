@@ -85,7 +85,7 @@ Windows.
 
 ## Source Code Repository Layout
 
-The BPAEngine source code repository is hosted on [Github](http://github.com/mdeniz/BPAEngine) and organized like this:
+The BPAEngine source code repository is hosted on [Github](http://github.com/BPAEngine/BPAEngine) and organized like this:
 
     lib/BPAEngine   Script files that conform the engine
     lib             Other libs included
