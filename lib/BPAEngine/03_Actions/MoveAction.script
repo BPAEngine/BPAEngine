@@ -45,6 +45,4 @@ BPAE.Action.DoStop = fun ()
 BPAE.MoveAction.To_String = fun ()
   {
     return class + " { name: "+name+" state: "+state+" anim: "+animation+" dur: "+duration+" time: "+time_running+" speed: "+speed+" angle: "+angle+"}";
-
-    return class + "\n{\nname: "+name+"\nobject: "+object.class+"\nstate: "+state+"\nanimation: "+animation+"\nduration: "+duration+"\ntime_running:"+time_running+"\nspeed: "+speed+"\nangle: "+angle+"\n}";
   };

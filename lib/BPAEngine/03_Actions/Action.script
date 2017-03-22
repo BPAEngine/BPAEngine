@@ -57,6 +57,18 @@ BPAE.Action.Stop = fun ()
     DoStop();
   };
 
+BPAE.Action.DoStart = fun ()
+  {
+  };
+
+BPAE.Action.DoStop = fun ()
+  {
+  };
+
+BPAE.Action.Update = fun (delta)
+  {
+  };
+
 BPAE.Action.StopCondition = fun ()
   {
     return TRUE;
