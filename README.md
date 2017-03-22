@@ -8,7 +8,7 @@ The **Better Plymouth Animations Engine (BPAEngine)** is an engine based on plym
   1. [Licensing](#licensing)
   2. [Development / Contribution](#development-/-contribution)
       * [How to contribute code](#how-to-contribute-code)
-      * [How to setup an OBS development environment](#how-to-setup-an-bpaengine-development-environment)
+      * [How to setup an BPAEngine development environment](#how-to-setup-an-bpaengine-development-environment)
       * [How to contribute documentation](#how-to-contribute-documentation)
   3. [Source Code Repository Layout](#source-code-repository-layout)
 
