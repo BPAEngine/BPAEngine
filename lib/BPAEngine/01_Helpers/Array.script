@@ -42,12 +42,12 @@ Array.Push = fun(array, element)
     return array;
   };
 
-Array.Join = fun(lines, joint)
+Array.Join = fun(array, joint)
   {
-    local.new_string = lines[0];
-    for (local.i = 1; local.i < Array.Size(lines); local.i++)
+    local.new_string = array[0];
+    for (local.i = 1; local.i < Array.Size(array); local.i++)
     {
-      new_string += joint + lines[i];
+      new_string += joint + array[i];
     }
     return new_string;
   };
