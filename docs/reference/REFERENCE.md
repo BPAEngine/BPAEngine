@@ -344,8 +344,39 @@ Color.FromPalette("White"); // It returns [1, 1, 1]
 
 ### Debug
 
+Debug is just a global function that provides a way of showing information at the screen. Also it defines a `DEBUG` constant that enables/disables all the calls to Debug.
+
+```js
+DEBUG = FALSE; // By default all the debug logs are disabled
+```
+
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Debug.script)
 
+---
+
+##### Debug
+
+Shows the text given in the screen. If no `channel` is provided it just adds the text in the next line of the actual log text. If `channel` is an integer > 0 then the text will appear at `channel * 12` pixels from top.
+
+###### Signatures
+
+```js
+Debug(text)
+Debug(text, channel)
+```
+
+###### Examples
+
+Showing the typical *"Hello World!"* string:
+```js
+hello = "Hello World!";
+Debug(hello);     // It will add "Hello World!" to the end of the actual text shown
+Debug(hello, 10); // It will print the text at Y=120
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L55-L63)
+
+---
 
 ### String
 
