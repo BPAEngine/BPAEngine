@@ -553,13 +553,36 @@ This is the base class for every [objects](#objects) that lives in our [World](#
 
 #### new BPAE.Object
 
-Returns a new instance of BPAE.Object based on the `config` given.
+Returns a new instance of BPAE.Object based on the `config` hash given.
 
 ###### Signature
 
 ```js
 BPAE.Object(config) => BPAE.Object
 ```
+
+###### Options
+
+| Key         | Description                                 | Default Value   |
+|:-----------:| ------------------------------------------- |:---------------:|
+| id          | Id for the object                           | "id_{random}"   |
+| x           | Horizontal coordinate                       | 0               |
+| y           | Vertical coordinate                         | 0               |
+| z           | Deep coordinate, for sorting layers (don't set it to 0) | 1   |
+| width       | Horizontal dimension of the object          | 0               |
+| height      | Vertical dimension of the object            | 0               |
+| dx          | Horizontal displacement for the sprite      | 0               |
+| dy          | Vertical displacement for the sprite        | 0               |
+| theta       | Starting angle for image rotation in degrees | 0.0            |
+| spin        | Image rotation step in degrees / s          | 0               |
+| orientation | Angle of movement for x,y coordinates in degrees | 0.0        |
+| speed       | Pixels / s that the object will move        | 0.0             |
+| opacity     | Opacity applied to the image                | 1.0             |
+
+
+// Anchors
+anchors Named anchors to let align other objects to
+
 
 ###### Examples
 
