@@ -143,11 +143,43 @@ Array.Add(my_array, 5); // It returns [3, 2, 6, 5]
 
 ##### Array.Pop
 
+Removes the element in the first position of the given array. Returns the element removed.
+
+###### Signature
+
+```js
+Array.Pop(array) => element
+```
+
+###### Examples
+
+A very basic example with sequential indexes implicitly created:
+```js
+my_array = [3, 2, 6];
+Array.Pop(my_array); // It returns 3 and my_array = [2, 6]
+```
+
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L22-L32)
 
 ---
 
 ##### Array.Push
+
+Add the element given at the first position of the array. Returns the changed array.
+
+###### Signature
+
+```js
+Array.Push(array, element) => Array
+```
+
+###### Examples
+
+A very basic example with sequential indexes implicitly created:
+```js
+my_array = [3, 2, 6];
+Array.Push(my_array, 5); // It returns [5, 3, 2, 6]
+```
 
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L34-L43)
 
@@ -155,11 +187,43 @@ Array.Add(my_array, 5); // It returns [3, 2, 6, 5]
 
 ##### Array.Join
 
+Creates a string using the elements joined by `joint`.
+
+###### Signature
+
+```js
+Array.Push(array, joint) => String
+```
+
+###### Examples
+
+A very basic example with sequential indexes implicitly created:
+```js
+my_array = ["Hi", "my", "friend"];
+Array.Push(my_array, ", "); // It returns "Hi, my, friend"
+```
+
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L45-L53)
 
 ---
 
-##### Array.Empty
+##### Array.Clear
+
+Clears the passed array leaving it empty. Returns the empty array.
+
+###### Signature
+
+```js
+Array.Clear(array) => Array
+```
+
+###### Examples
+
+A very basic example with sequential indexes implicitly created:
+```js
+my_array = [4, 6, 7];
+Array.Clear(my_array); // It returns []
+```
 
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L55-L63)
 
