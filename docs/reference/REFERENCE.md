@@ -231,8 +231,116 @@ Array.Clear(my_array); // It returns []
 
 ### Color
 
+This class holds all related methods for managing colors in BPAEngine.
+
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Color.script)
 
+---
+
+##### Color.FromRGB
+
+Creates the color from the given RGB color components. Returns the color array.
+
+###### Signature
+
+```js
+Color.FromRGB(red, green, blue) => Array
+```
+
+###### Examples
+
+Some basic colors:
+```js
+Color.FromRGB(255, 0, 0);     // RED: It returns [1, 0, 0]
+Color.FromRGB(0, 255, 0);     // GREEN: It returns [0, 1, 0]
+Color.FromRGB(0, 0, 255);     // BLUE: It returns [0, 0, 1]
+Color.FromRGB(0, 0, 0);       // BLACK: It returns [0, 0, 0]
+Color.FromRGB(255, 255, 255); // WHITE: It returns [1, 1, 1]
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L55-L63)
+
+---
+
+##### Color.FromHex
+
+Creates the color from the given hexadecimal string. Returns the color array.
+
+###### Signature
+
+```js
+Color.FromHex(hex) => Array
+```
+
+###### Examples
+
+Some basic colors:
+```js
+Color.FromRGB("#FF0000"); // RED: It returns [1, 0, 0]
+Color.FromRGB("#00FF00"); // GREEN: It returns [0, 1, 0]
+Color.FromRGB("#0000FF"); // BLUE: It returns [0, 0, 1]
+Color.FromRGB("#000000"); // BLACK: It returns [0, 0, 0]
+Color.FromRGB("#FFFFFF"); // WHITE: It returns [1, 1, 1]
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L55-L63)
+
+---
+
+##### Color.Palette
+
+It holds every color in hexadecimal format indexed by tags. Those colors and tags are defined at https://www.w3schools.com/colors/colors_hex.asp
+
+###### Signature
+
+```js
+Color.Palette => Hash
+Color.Palette[tag] => String
+```
+
+###### Examples
+
+Some basic colors:
+```js
+Color.Palette["Black"] = "#000000";
+Color.Palette["Navy"] = "#000080";
+Color.Palette["DarkBlue"] = "#00008B";
+Color.Palette["MediumBlue"] = "#0000CD";
+Color.Palette["Blue"] = "#0000FF";
+Color.Palette["DarkGreen"] = "#006400";
+Color.Palette["Green"] = "#008000";
+Color.Palette["Teal"] = "#008080";
+```
+
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L55-L63)
+
+---
+
+##### Color.FromPalette
+
+Creates the color from the given hexadecimal string at the [Palette](#colorpalette). Returns the color array.
+
+###### Signature
+
+```js
+Color.FromPalette(color) => Array
+```
+
+###### Examples
+
+Some basic colors:
+```js
+Color.FromPalette("Red");   // It returns [1, 0, 0]
+Color.FromPalette("Lime");  // It returns [0, 1, 0]
+Color.FromPalette("Blue");  // It returns [0, 0, 1]
+Color.FromPalette("Black"); // It returns [0, 0, 0]
+Color.FromPalette("White"); // It returns [1, 1, 1]
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Array.script#L55-L63)
+
+---
 
 ### Debug
 
