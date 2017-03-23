@@ -502,7 +502,7 @@ Plymouth provides a Window class to ask for dimensions. GetWidth and GetHeight w
 
 #### Window.GetMaxWidth
 
-Returns the width in pixles of the bigger screen device.
+Returns the width in pixels of the bigest screen device.
 
 ###### Signature
 
@@ -522,7 +522,7 @@ Window.GetMaxWidth(); // It returns 800 (for example)
 
 #### Window.GetMaxHeight
 
-Returns the height in pixels of the bigger screen device.
+Returns the height in pixels of the bigest screen device.
 
 ###### Signature
 
@@ -537,3 +537,35 @@ Window.GetMaxHeight(); // It returns 600 (for example)
 ```
 
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Window.script#L12-L21)
+
+---
+
+## Basic
+
+Here and the [Actions](#actions) we define the core classes for almost everything in the BPAEngine. The most important ones are [World](#world) and [Object](#bpaeobject) because they enable us to abstract of just running code that shows something in a screen to a living POO environment.
+
+### BPAE.Object
+This is the base class for every [objects](#objects) that lives in our [World](#world).
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/02_Basic/Object.script)
+
+---
+
+#### new BPAE.Object
+
+Returns a new instance of BPAE.Object based on the `config` given.
+
+###### Signature
+
+```js
+BPAE.Object(config) => BPAE.Object
+```
+
+###### Examples
+
+```js
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/02_Basic/Object.script#L6-L60)
+
+---
