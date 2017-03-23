@@ -52,7 +52,7 @@ Array.Join = fun(array, joint)
     return new_string;
   };
 
-Array.Empty = fun(array)
+Array.Clear = fun(array)
   {
     local.last = Array.Size(array);
     for (local.i = 0; local.i < last; local.i++)
