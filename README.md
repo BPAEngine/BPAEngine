@@ -102,5 +102,8 @@ Subdirs in source/ are ment to be a theme dir, each theme dir should have the sa
     theme.script     Your main script for the theme
     lib              Directory with your own libs and helper scripts
 
+## API Reference and Guide
+
+We are continously evolving the documentation as BPAEngine grows, check our [API Reference](https://github.com/BPAEngine/BPAEngine/blob/master/docs/reference/REFERENCE.md) or our [Guide](https://github.com/BPAEngine/BPAEngine/blob/master/docs/guide/GUIDE.md) to learn more about BPAEngine.
 
 Happy Hacking! - :heart: Your BPAEngine Team
