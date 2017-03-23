@@ -97,7 +97,7 @@ Calculates the length of an array based on sequential integer indexes.
 ###### Signature
 
 ```js
-Array.Size(array) => integer
+Array.Size(array) => Integer
 ```
 
 ###### Examples
@@ -148,7 +148,7 @@ Removes the element in the first position of the given array. Returns the elemen
 ###### Signature
 
 ```js
-Array.Pop(array) => element
+Array.Pop(array) => Element
 ```
 
 ###### Examples
@@ -319,7 +319,7 @@ Color.Palette["Teal"] = "#008080";
 
 ##### Color.FromPalette
 
-Creates the color from the given hexadecimal string at the [Palette](#colorpalette). Returns the color array.
+Creates the color from the given hexadecimal string `color` at the [Palette](#colorpalette). Returns the color array.
 
 ###### Signature
 
@@ -356,7 +356,7 @@ DEBUG = FALSE; // By default all the debug logs are disabled
 
 ##### Debug
 
-Shows the text given in the screen. If no `channel` is provided it just adds the text in the next line of the actual log text. If `channel` is an integer > 0 then the text will appear at `channel * 12` pixels from top.
+Shows the `text` given in the screen. If no `channel` is provided it just adds the text in the next line of the actual log text. If `channel` is an integer > 0 then the text will appear at `channel * 12` pixels from top.
 
 ###### Signatures
 
@@ -380,8 +380,117 @@ Debug(hello, 10); // It will print the text at Y=120
 
 ### String
 
+Plymouth comes with a basic set of methods to manage strings. We have added some helpful methods.
+
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/String.script)
 
+---
+
+#### String.Size
+
+Calculates the length of the `string`.
+
+###### Signature
+
+```js
+String.Size(string) => Integer
+```
+
+###### Examples
+
+```js
+hello = "Hello World!";
+String.Size(hello); // It returns 12
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/String.script#L6-L13)
+
+---
+
+#### String.Truncate
+
+Shortens the `string` given to the `max` length passed. If the `string` is longer than `max`  then `...` will be added at the end.
+
+###### Signature
+
+```js
+String.Truncate(string, max) => String
+```
+
+###### Examples
+
+```js
+hello = "Hello World!";
+String.Truncate(hello, 20); // "Hello World!"
+String.Truncate(hello, 10); // "Hello W..."
+String.Truncate(hello, 12); // "Hello World!"
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/String.script#L15-L24)
+
+---
+
+#### String.Bullets
+
+Creates a string with a `number` number of `*`. This is helpful for showing password keystrokes.
+
+###### Signature
+
+```js
+String.Bullets(number) => String
+```
+
+###### Examples
+
+```js
+String.Bullets(5); // "*****"
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/String.script#L26-L34)
+
+---
+
+#### String.SplitByFixedSize
+
+Splits the given `string` into an array in chunks of fixed length (`max`).
+
+###### Signature
+
+```js
+String.SplitByFixedSize(string, max) => Array
+```
+
+###### Examples
+
+```js
+hello = "Hello World!";
+String.SplitByFixedSize(hello, 4); // ["Hell", "o Wo", "rld!"]
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/String.script#L36-L48)
+
+---
+
+#### String.Multiline
+
+Splits the given `string` in chunks of fixed length (`max`) and joins them into a multiline string (lines are ending with `\n`).
+
+###### Signature
+
+```js
+String.Multiline(string, max) => String
+```
+
+###### Examples
+
+```js
+hello = "Hello World!";
+String.Multiline(hello, 4); // "Hell\no Wo\nrld!"
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/String.script#L50-L53)
+
+---
 
 ### Window
 
