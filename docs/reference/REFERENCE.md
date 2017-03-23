@@ -494,4 +494,46 @@ String.Multiline(hello, 4); // "Hell\no Wo\nrld!"
 
 ### Window
 
+Plymouth provides a Window class to ask for dimensions. GetWidth and GetHeight won't work properly if there are more than one screen.
+
 [[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Window.script)
+
+---
+
+#### Window.GetMaxWidth
+
+Returns the width in pixles of the bigger screen device.
+
+###### Signature
+
+```js
+Window.GetMaxWidth() => Integer
+```
+
+###### Examples
+
+```js
+Window.GetMaxWidth(); // It returns 800 (for example)
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Window.script#L1-L10)
+
+---
+
+#### Window.GetMaxHeight
+
+Returns the height in pixels of the bigger screen device.
+
+###### Signature
+
+```js
+Window.GetMaxHeight() => Integer
+```
+
+###### Examples
+
+```js
+Window.GetMaxHeight(); // It returns 600 (for example)
+```
+
+[[View Source]](https://github.com/BPAEngine/BPAEngine/blob/master/lib/BPAEngine/01_Helpers/Window.script#L12-L21)
