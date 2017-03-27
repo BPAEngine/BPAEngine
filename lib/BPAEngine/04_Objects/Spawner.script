@@ -10,6 +10,8 @@ BPAE.Spawner = fun (config)
     new_object.object_class = config.object_class;
     new_object.object_config = config.object_config;
 
+    new_object.mode = config.mode | "constant";
+    new_object.min_wait = config.min_wait | 1.0;
     new_object.max = config.max | 0;
     new_object.count = 0;
     return new_object;
@@ -20,7 +22,12 @@ BPAE.Spawner.PlanActions = fun ()
     if (Array.Size(actions) == 0 && count < max) {
       local.action_config.name = "spawn";
       action_config.object = this;
-      action_config.options.duration = Math.Random() + 0.2;
+      if (mode == "constant") {
+        action_config.options.duration = min_wait;
+      }
+      else {
+        action_config.options.duration = Math.Random() + min_wait;
+      }
       action_config.options.object_class = object_class;
       action_config.options.object_config = object_config;
       action_config.options.object_config.x = Math.Random() * GetWidth() + GetX();
