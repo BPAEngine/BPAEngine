@@ -1,0 +1,67 @@
+
+# -------------------------------------------------------------------------
+# FollowAction
+# -------------------------------------------------------------------------
+
+BPAE.FollowAction = fun (config)
+  {
+    local.new_action = [] | global.BPAE.FollowAction | global.BPAE.Action(config);
+    new_action.class = "BPAE.FollowAction";
+
+    # Min distance for finishing the action
+    new_action.min_distance = config.options.min_distance | 1.0;
+    new_action.distance = 10000.0;
+    new_action.vx = 0.0;
+    new_action.vy = 0.0;
+
+    new_action.animation = config.options.animation | 0;
+    new_action.speed = config.options.speed | 1.0;
+    new_action.target_object = config.options.target_object;
+
+    return new_action;
+  } | [];
+
+BPAE.FollowAction.DoStart = fun ()
+  {
+    object.PlayAnimation(animation);
+    object.speed = speed;
+  };
+
+BPAE.FollowAction.Update = fun (delta)
+  {
+    FollowTarget();
+  };
+
+BPAE.FollowAction.StopCondition = fun ()
+  {
+    GetVectorToTarget();
+    MeasureDistance();
+    return distance <= min_distance;
+  };
+
+BPAE.FollowAction.DoStop = fun ()
+  {
+    object.speed = 0.0;
+  };
+
+BPAE.FollowAction.To_String = fun ()
+  {
+    return class + " {\n name: "+name+"\n state: "+state+"\n anim: "+animation+"\n speed: "+speed+"\n angle: "+
+            object.orientation+"\n target: "+target_object+"\n distance: "+distance+"\n}";
+  };
+
+BPAE.FollowAction.GetVectorToTarget = fun()
+  {
+    vx = target_object.GetX() - object.GetX();
+    vy = target_object.GetY() - object.GetY();
+  };
+
+BPAE.FollowAction.FollowTarget = fun()
+  {
+    object.orientation = Math.ATan2(vy, vx) * (-180.0 / Math.Pi);
+  };
+
+BPAE.FollowAction.MeasureDistance = fun()
+  {
+    distance = Math.Sqrt(vx * vx + vy * vy);
+  };
