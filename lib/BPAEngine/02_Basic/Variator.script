@@ -8,6 +8,7 @@ BPAE.Variator = fun (config)
     local.new_variator = [] | global.BPAE.Variator;
     new_variator.type = config.type | "linear";
     new_variator.constant = config.constant | 1.0;
+    new_variator.min = config.min;
     new_variator.max = config.max;
     return new_variator;
   } | [];
@@ -19,7 +20,8 @@ BPAE.Variator.Next = fun (value, delta)
     if (type == "random")
       local.next_value =  value + (Math.Random() * constant) - constant / 2;
     if (max || max == 0.0)
-      return Math.Min(local.next_value, max);
-    else
-      return local.next_value;
+      local.next_value = Math.Min(local.next_value, max);
+    if (min || min == 0.0)
+      local.next_value = Math.Max(local.next_value, min);
+    return local.next_value;
   };
